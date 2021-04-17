@@ -13,7 +13,6 @@
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.1.5",
     "@fontsource/mulish": "^4.2.2",
-    "@fontsource/nanum-myeongjo": "^4.2.2",
     "@visx/event": "^1.7.0",
     "@visx/group": "^1.7.0",
     "@visx/mock-data": "^1.7.0",

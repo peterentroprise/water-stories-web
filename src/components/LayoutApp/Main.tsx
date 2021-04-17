@@ -11,13 +11,8 @@ import { useMobileMenuState } from "./useMobileMenuState";
 type MainProps = {};
 
 export const Main: React.FC<MainProps> = ({ children }) => {
-  const { isOpen, toggle } = useMobileMenuState();
+  const { isOpen } = useMobileMenuState();
   const { colorMode } = useColorMode();
-
-  const bgColor = {
-    light: "rgba( 255, 255, 255, .5 )",
-    dark: "rgba( 0, 0, 0, .25 )",
-  };
 
   const color = { light: "black", dark: "white" };
 

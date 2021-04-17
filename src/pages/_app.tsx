@@ -1,4 +1,3 @@
-import "@fontsource/nanum-myeongjo/800.css";
 import "@fontsource/mulish/400.css";
 import "@fontsource/mulish/500.css";
 import "@fontsource/mulish/600.css";

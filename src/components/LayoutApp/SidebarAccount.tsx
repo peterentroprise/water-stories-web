@@ -3,20 +3,12 @@ import {
   Avatar,
   Box,
   HStack,
-  useColorMode,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
 
 type SidebarAccountProps = {};
 
 export const SidebarAccount: React.FC<SidebarAccountProps> = () => {
-  const { colorMode } = useColorMode();
-
-  const bgColor = {
-    light: "rgba( 255, 255, 255, 0.5 )",
-    dark: "rgba( 0, 0, 0, 0.25 )",
-  };
-
   return (
     <Box
       as="a"
