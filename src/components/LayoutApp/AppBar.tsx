@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import { Box, Flex, HStack, Heading, useColorMode } from "@chakra-ui/react";
 
 import { SidebarAccount } from "./SidebarAccount";
