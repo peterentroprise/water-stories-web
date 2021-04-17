@@ -1,1 +1,3 @@
-# water-stories-web
+# Water Stories Client
+
+Vercel

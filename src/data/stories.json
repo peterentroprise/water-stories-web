@@ -1,0 +1,74 @@
+{
+  "stories": [
+    {
+      "id": "0",
+      "title": "Take Me There",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis mi semper, hendrerit quam at, tempor erat. Mauris dapibus metus tortor, ut pulvinar augue accumsan a. Sed non euismod eros, euismod auctor ligula.",
+      "video": "http://www.nasa.gov/sites/default/files/thumbnails/image/archives_helix.jpg",
+      "tag": "Dope Thing"
+    },
+    {
+      "id": "1",
+      "title": "Nature isn't going to grow itself.",
+      "description": "Merging the finite with the infinite. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "video": "https://spaceplace.nasa.gov/nebula/en/nebula1.en.jpg",
+      "tag": "Dope Thing"
+    },
+    {
+      "id": "2",
+      "title": "I've Seen What Makes You Cheer",
+      "description": "Maecenas in elit nisl. Etiam vulputate sed magna quis cursus. Suspendisse nisl ligula, porta vel convallis a, posuere quis lectus. In sed arcu venenatis, viverra metus sed, consectetur ex.",
+      "video": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/04/hubble_s_28th_birthday_picture_the_lagoon_nebula/17464766-1-eng-GB/Hubble_s_28th_birthday_picture_The_Lagoon_Nebula_pillars.jpg",
+      "tag": "Dope Thing"
+    },
+    {
+      "id": "3",
+      "title": "Horse Snoute",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit elit nunc, quis imperdiet mi feugiat non. Vivamus a consectetur felis.",
+      "video": "https://ichef.bbci.co.uk/news/976/cpsprodpb/9397/production/_113838773_donkey.jpg",
+      "tag": "Dope Thing"
+    },
+    {
+      "id": "4",
+      "title": "Another Scrolly",
+      "description": "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit elit nunc, quis imperdiet mi feugiat non. Vivamus a consectetur felis. Suspendisse hendrerit hendrerit ligula, in ultrices augue condimentum pharetra. Sed aliquam, libero non molestie ultrices, orci massa aliquam lectus, ac egestas mi justo quis felis. Cras et lacus ac erat vulputate elementum nec non lectus. Maecenas varius sit amet lorem nec vehicula. Sed blandit, leo id pretium imperdiet, dolor neque mattis enim, ac vulputate metus velit vel sapien. Praesent sed orci consequat, euismod ante egestas, gravida sapien. Quisque cursus, augue nec aliquet blandit, nulla orci gravida nisi, eu pellentesque nunc metus ut lacus. Quisque tincidunt turpis nisl, sit amet rutrum metus iaculis quis. Praesent a dapibus ipsum. Morbi dolor quam, tincidunt eu massa eget, pretium iaculis odio. Maecenas hendrerit mollis ipsum, a mattis lectus rhoncus ac.",
+      "video": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcadBxq6E28UrBkDHZeFBzd8qruJ60eeYUP0KruSEc1gqqLezWu-3k6a7ohdP_mGsRQ6M&usqp=CAU",
+      "tag": "Dope Thing"
+    },
+    {
+      "id": "5",
+      "title": "Take Me There",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis mi semper, hendrerit quam at, tempor erat. Mauris dapibus metus tortor, ut pulvinar augue accumsan a. Sed non euismod eros, euismod auctor ligula.",
+      "video": "http://www.nasa.gov/sites/default/files/thumbnails/image/archives_helix.jpg",
+      "tag": "Dope Thing"
+    },
+    {
+      "id": "6",
+      "title": "Nature isn't going to grow itself.",
+      "description": "Merging the finite with the infinite. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "video": "https://spaceplace.nasa.gov/nebula/en/nebula1.en.jpg",
+      "tag": "Dope Thing"
+    },
+    {
+      "id": "7",
+      "title": "I've Seen What Makes You Cheer",
+      "description": "Maecenas in elit nisl. Etiam vulputate sed magna quis cursus. Suspendisse nisl ligula, porta vel convallis a, posuere quis lectus. In sed arcu venenatis, viverra metus sed, consectetur ex.",
+      "video": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/04/hubble_s_28th_birthday_picture_the_lagoon_nebula/17464766-1-eng-GB/Hubble_s_28th_birthday_picture_The_Lagoon_Nebula_pillars.jpg",
+      "tag": "Dope Thing"
+    },
+    {
+      "id": "8",
+      "title": "Horse Snoute",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit elit nunc, quis imperdiet mi feugiat non. Vivamus a consectetur felis.",
+      "video": "https://ichef.bbci.co.uk/news/976/cpsprodpb/9397/production/_113838773_donkey.jpg",
+      "tag": "Dope Thing"
+    },
+    {
+      "id": "9",
+      "title": "Another Scrolly",
+      "description": "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit elit nunc, quis imperdiet mi feugiat non. Vivamus a consectetur felis. Suspendisse hendrerit hendrerit ligula, in ultrices augue condimentum pharetra. Sed aliquam, libero non molestie ultrices, orci massa aliquam lectus, ac egestas mi justo quis felis. Cras et lacus ac erat vulputate elementum nec non lectus. Maecenas varius sit amet lorem nec vehicula. Sed blandit, leo id pretium imperdiet, dolor neque mattis enim, ac vulputate metus velit vel sapien. Praesent sed orci consequat, euismod ante egestas, gravida sapien. Quisque cursus, augue nec aliquet blandit, nulla orci gravida nisi, eu pellentesque nunc metus ut lacus. Quisque tincidunt turpis nisl, sit amet rutrum metus iaculis quis. Praesent a dapibus ipsum. Morbi dolor quam, tincidunt eu massa eget, pretium iaculis odio. Maecenas hendrerit mollis ipsum, a mattis lectus rhoncus ac.",
+      "video": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcadBxq6E28UrBkDHZeFBzd8qruJ60eeYUP0KruSEc1gqqLezWu-3k6a7ohdP_mGsRQ6M&usqp=CAU",
+      "tag": "Dope Thing"
+    }
+  ]
+}
