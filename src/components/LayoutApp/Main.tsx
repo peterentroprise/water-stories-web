@@ -20,8 +20,8 @@ export const Main: React.FC<MainProps> = ({ children }) => {
     <Box
       flex="1"
       pb={{ md: "1rem" }}
-      marginTop={{ md: "4rem" }}
-      marginStart={{ md: "var(--sidebar-width)" }}
+      marginTop={{ sm: "4rem" }}
+      marginStart={{ sm: "var(--sidebar-width)" }}
       marginEnd={{ xl: "var(--sidebar-width)" }}
       position="relative"
       left={isOpen ? "var(--sidebar-width)" : "0"}
@@ -29,7 +29,7 @@ export const Main: React.FC<MainProps> = ({ children }) => {
     >
       <Box
         height="100%"
-        rounded={{ md: "2xl" }}
+        rounded={{ sm: "2xl" }}
         bg="none"
         color={color[colorMode]}
       >

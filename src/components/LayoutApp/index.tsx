@@ -20,11 +20,11 @@ const LayoutApp: React.FC<LayoutAppProps> = ({ children }) => {
       overflow="hidden"
       sx={{ "--sidebar-width": "256px" }}
     >
-      <BottomNavBar />
-      <AppBar />
       <LottieBg />
-      <Main>{children}</Main>
+      <AppBar />
+      <BottomNavBar />
       <Sidebar />
+      <Main>{children}</Main>
     </Flex>
   );
 };

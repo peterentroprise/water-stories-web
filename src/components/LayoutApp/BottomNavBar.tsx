@@ -1,25 +1,35 @@
 import * as React from "react";
-import { Box, Flex, HStack, Heading, useColorMode } from "@chakra-ui/react";
+import {
+  ButtonGroup,
+  Button,
+  Box,
+  IconButton,
+  Flex,
+  HStack,
+  Heading,
+  useColorMode,
+} from "@chakra-ui/react";
 
-import { MainNavBreadcrumbs } from "./MainNavBreadcrumbs";
+import { MainMenuButton } from "./MainMenuButton";
+import { useMobileMenuState } from "./useMobileMenuState";
 type AppBarProps = {};
 
 export const BottomNavBar: React.FC<AppBarProps> = () => {
   const { colorMode } = useColorMode();
+  const { isOpen, toggle } = useMobileMenuState();
 
   const bgColor = {
-    light: "rgba( 255, 255, 255, 0.5 )",
+    light: "rgba( 255, 255, 255, .9 )",
     dark: "rgba( 0, 0, 0, 0.25 )",
   };
 
   const color = { light: "black", dark: "white" };
   return (
     <HStack
-      display="flex"
+      display={["flex", "none", "none", "none"]}
       flex="1"
       bottom="0"
       left="0"
-      paddingLeft="2rem"
       position="fixed"
       height="4rem"
       width="full"
@@ -28,16 +38,19 @@ export const BottomNavBar: React.FC<AppBarProps> = () => {
       color={color[colorMode]}
       sx={{
         boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
+        backdropFilter: "blur( 4px )",
+        WebkitBackdropFilter: "blur( 4px )",
+        zIndex: 4,
       }}
     >
-      <Box display={{ md: "block" }}>
-        <Heading size="md" fontWeight="extrabold">
-          Water Stories
-        </Heading>
-      </Box>
-      <Flex py="1rem" justify="space-between" align="center" px="1rem">
+      <Flex py="1rem" justify="center" align="center" px="1rem">
         <Flex align="center" minH=".5rem">
-          <MainNavBreadcrumbs />
+          <ButtonGroup variant="outline">
+            <MainMenuButton onClick={toggle} isOpen={isOpen} />
+            <Button>Browse</Button>
+            <Button>Explore</Button>
+            <Button>Search</Button>
+          </ButtonGroup>
         </Flex>
       </Flex>
     </HStack>

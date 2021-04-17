@@ -21,7 +21,7 @@ const LottieBg = () => {
     position: "absolute",
     top: 0,
     left: 0,
-    zIndex: -100,
+    zIndex: -1,
   };
 
   const { View } = useLottie(options, style);
