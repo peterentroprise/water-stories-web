@@ -20,10 +20,9 @@ export const Sidebar: React.FC<SidebarProps> = () => {
       as="nav"
       display="block"
       flex="1"
+      pr="2rem"
       width="var(--sidebar-width)"
       left="0"
-      px="1rem"
-      mt="4rem"
       position="fixed"
     >
       <Box fontSize="sm" lineHeight="tall">

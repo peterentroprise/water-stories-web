@@ -2,7 +2,12 @@ import { VStack } from "@chakra-ui/react";
 
 const StoryStack = ({ children }) => {
   return (
-    <VStack pt="5rem" pb="1.5rem" spacing="1rem" align="stretch">
+    <VStack
+      maxW="container.md"
+      pr={{ sm: "2rem" }}
+      spacing="1rem"
+      align="stretch"
+    >
       {children}
     </VStack>
   );

@@ -5,7 +5,7 @@ import { useColorModeValue } from "@chakra-ui/react";
 import nature from "./nature.json";
 import night from "./night.json";
 
-const LottieBg = () => {
+export const Background = () => {
   const options = {
     animationData: useColorModeValue(nature, night),
     loop: true,
@@ -18,7 +18,7 @@ const LottieBg = () => {
   const style = {
     width: "100vw",
     height: "100vh",
-    position: "absolute",
+    position: "fixed",
     top: 0,
     left: 0,
     zIndex: -1,
@@ -28,5 +28,3 @@ const LottieBg = () => {
 
   return View;
 };
-
-export default LottieBg;

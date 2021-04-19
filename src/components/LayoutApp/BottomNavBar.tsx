@@ -8,12 +8,13 @@ import {
 } from "@chakra-ui/react";
 
 import { MainMenuButton } from "./MainMenuButton";
-import { useMobileMenuState } from "./useMobileMenuState";
-type AppBarProps = {};
+type AppBarProps = {
+  isOpen: boolean;
+  toggle: () => void;
+};
 
-export const BottomNavBar: React.FC<AppBarProps> = () => {
+export const BottomNavBar: React.FC<AppBarProps> = ({ isOpen, toggle }) => {
   const { colorMode } = useColorMode();
-  const { isOpen, toggle } = useMobileMenuState();
 
   const bgColor = {
     light: "rgba( 255, 255, 255, .9 )",
@@ -26,7 +27,8 @@ export const BottomNavBar: React.FC<AppBarProps> = () => {
       display={["flex", "none", "none", "none"]}
       flex="1"
       bottom="0"
-      left="0"
+      left={isOpen ? "var(--sidebar-width)" : "0"}
+      transition="left 0.2s"
       position="fixed"
       height="4rem"
       width="full"
@@ -35,8 +37,8 @@ export const BottomNavBar: React.FC<AppBarProps> = () => {
       color={color[colorMode]}
       sx={{
         boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-        backdropFilter: "blur( 4px )",
-        WebkitBackdropFilter: "blur( 4px )",
+        backdropFilter: "blur( 8px )",
+        WebkitBackdropFilter: "blur( 8px )",
         zIndex: 4,
       }}
     >

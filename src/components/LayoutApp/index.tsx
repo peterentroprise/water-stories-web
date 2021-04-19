@@ -1,31 +1,26 @@
-import * as React from "react";
-import { Flex } from "@chakra-ui/react";
+import { Wrapper } from "./Wrapper";
+import { Background } from "./Background";
+import { Main } from "./Main";
 
 import { AppBar } from "./AppBar";
 import { BottomNavBar } from "./BottomNavBar";
 import { Sidebar } from "./Sidebar";
-import { Main } from "./Main";
-import LottieBg from "../CompLottieBg";
+import { useMobileMenuState } from "../../hooks/useMobileMenuState";
 
 type LayoutAppProps = {};
 
 const LayoutApp: React.FC<LayoutAppProps> = ({ children }) => {
+  const { isOpen, toggle } = useMobileMenuState();
   return (
-    <Flex
-      height="100vh"
-      // bgGradient={mode(
-      //   "linear(to-tr, teal.200, blue.500)",
-      //   "linear(to-tr, teal.200, blue.500)"
-      // )}
-      overflow="hidden"
-      sx={{ "--sidebar-width": "256px" }}
-    >
-      <LottieBg />
+    <Wrapper>
+      <Background />
       <AppBar />
-      <BottomNavBar />
       <Sidebar />
-      <Main>{children}</Main>
-    </Flex>
+      <Main isOpen={isOpen}>
+        {children}
+        <BottomNavBar isOpen={isOpen} toggle={toggle} />
+      </Main>
+    </Wrapper>
   );
 };
 

@@ -48,9 +48,6 @@ ${inlineCss}
   const encodedSVG = encodeURIComponent(bareSVG);
   const encodedUrl = `data:image/svg+xml,${encodedSVG}`;
 
-  console.log(bareSVG);
-  console.log(renderToStaticMarkup(content));
-
   const image = await loadImage(encodedUrl);
   ctx.drawImage(image, 0, 0);
   return canvas;

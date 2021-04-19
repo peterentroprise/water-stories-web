@@ -21,14 +21,13 @@ export const StoryContent = ({ story }) => {
   const color = { light: "black", dark: "white" };
   return (
     <Box
-      maxW="container.sm"
       borderRadius="2xl"
       bg={bgColor[colorMode]}
       color={color[colorMode]}
       sx={{
         boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-        backdropFilter: "blur( 4px )",
-        WebkitBackdropFilter: "blur( 4px )",
+        backdropFilter: "blur( 8px )",
+        WebkitBackdropFilter: "blur( 8px )",
         // border: "1px solid rgba( 255, 255, 255, 0.18 )",
       }}
     >

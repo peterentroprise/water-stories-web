@@ -4,7 +4,7 @@ const DarkModeSwitch = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   return (
-    <Box p="1rem">
+    <Box p="1rem" pl={["1rem", "2rem"]}>
       <Switch
         colorScheme="blue"
         isChecked={isDark}

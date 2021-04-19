@@ -22,8 +22,9 @@ export const SidebarLink = (props: SidebarLinkProps) => {
       <Box
         display="block"
         py=".5rem"
-        px="1rem"
-        rounded="md"
+        pl={["1rem", "2rem"]}
+        borderLeftRadius="none"
+        borderRightRadius="3xl"
         cursor="pointer"
         _hover={{
           color: mode("white", "white"),

@@ -7,11 +7,12 @@ import {
 } from "@chakra-ui/react";
 import { HiChevronRight } from "react-icons/hi";
 
-type MainNavBreadcrumbsProps = {};
+type NavBreadcrumbsProps = {};
 
-export const MainNavBreadcrumbs: React.FC<MainNavBreadcrumbsProps> = () => {
+export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = () => {
   return (
     <Breadcrumb
+      pr="1rem"
       fontSize="sm"
       separator={
         <Box as={HiChevronRight} fontSize="md" top=".1rem" pos="relative" />
