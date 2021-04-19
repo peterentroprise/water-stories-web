@@ -3,7 +3,7 @@ import CompLink from "../CompLink";
 
 const PageText = () => {
   return (
-    <Flex bg="white" width="full" p="1rem" direction="column">
+    <Flex bg="gray" width="full" p="1rem" direction="column">
       <Text>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus
         velit non tortor fringilla dapibus. Vestibulum iaculis metus vitae metus

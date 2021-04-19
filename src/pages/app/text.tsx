@@ -1,11 +1,11 @@
 import PageText from "../../components/PageText";
-import LayoutApp from "../../components/LayoutApp";
+import CompLayoutApp from "../../components/CompLayoutApp";
 
 const App = () => {
   return (
-    <LayoutApp>
+    <CompLayoutApp>
       <PageText />
-    </LayoutApp>
+    </CompLayoutApp>
   );
 };
 
