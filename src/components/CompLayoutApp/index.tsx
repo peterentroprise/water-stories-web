@@ -19,23 +19,7 @@ const CompLayoutApp: React.FC<CompLayoutAppProps> = ({
   children,
   pageName = "Default Page Name",
 }) => {
-  const { isOpen, toggle } = useMobileMenuState();
-  return (
-    <RootWrapper>
-      {/* <TopWrapper> */}
-      <AppBar pageName={pageName} />
-      {/* </TopWrapper> */}
-      <BottomWrapper>
-        <LeftWrapper>
-          <SideBar />
-        </LeftWrapper>
-        <RightWrapper>
-          <PageWrapper>{children}</PageWrapper>
-        </RightWrapper>
-      </BottomWrapper>
-      <BottomBar isOpen={isOpen} toggle={toggle} />
-    </RootWrapper>
-  );
+  return <RootWrapper pageName={pageName}>{children}</RootWrapper>;
 };
 
 export default CompLayoutApp;

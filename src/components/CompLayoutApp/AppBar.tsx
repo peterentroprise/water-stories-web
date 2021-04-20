@@ -2,6 +2,7 @@ import { Flex, Heading, useColorMode } from "@chakra-ui/react";
 
 import { useElementScrollPosition } from "../../hooks/useElementScrollPosition";
 import { AccountButton } from "./AccountButton";
+import { NavBreadcrumbs } from "./NavBreadcrumbs";
 import { bgColor, textColor } from "./constants";
 
 type AppBarProps = {
@@ -16,11 +17,12 @@ export const AppBar: React.FC<AppBarProps> = ({
 
   return (
     <Flex
-      position="fixed"
+      position="sticky"
       top="0rem"
       height="3.5rem"
       w="full"
       p="1rem"
+      pl={"calc(var(--sidebar-width) + 1rem)"}
       align="center"
       color={textColor[colorMode]}
       bg={isScrolledTop ? "none" : bgColor[colorMode]}
@@ -34,17 +36,18 @@ export const AppBar: React.FC<AppBarProps> = ({
       }}
       zIndex={1}
     >
-      {!isScrolledTop && (
-        <Heading
-          pr="1rem"
-          // display={["none", "block"]}
-          size="md"
-          fontWeight="extrabold"
-          transition="0.5s"
-        >
-          {pageName}
-        </Heading>
-      )}
+      <Heading
+        pr="1rem"
+        position="absolute"
+        display={["none", "block"]}
+        m={"calc((var(--sidebar-width) - 1rem)*-1)"}
+        size="md"
+        fontWeight="extrabold"
+        transition="0.5s"
+      >
+        Water Stories
+      </Heading>
+      {!isScrolledTop && <NavBreadcrumbs />}
 
       <Flex flexGrow={1} />
       <AccountButton />

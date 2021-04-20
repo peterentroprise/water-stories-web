@@ -8,6 +8,7 @@ import "../../public/fonts/canela/canela.css";
 
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
@@ -23,11 +24,16 @@ function handleExitComplete() {
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   return (
-    <ChakraProvider resetCSS theme={theme}>
-      <AnimatePresence onExitComplete={handleExitComplete}>
-        <Component {...pageProps} key={router.route} />
-      </AnimatePresence>
-    </ChakraProvider>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <ChakraProvider resetCSS theme={theme}>
+        <AnimatePresence onExitComplete={handleExitComplete}>
+          <Component {...pageProps} key={router.route} />
+        </AnimatePresence>
+      </ChakraProvider>
+    </>
   );
 }
 

@@ -11,7 +11,7 @@ type SideBarProps = {};
 
 export const SideBar: React.FC<SideBarProps> = () => {
   return (
-    <Box as="nav" height="full">
+    <Box as="nav" height="full" pt="1rem">
       <SideBarLink href="/" icon={<HiOutlineGlobe />}>
         Marketing
       </SideBarLink>

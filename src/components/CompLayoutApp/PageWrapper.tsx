@@ -7,7 +7,7 @@ type PageWrapperProps = {};
 export const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
   const { colorMode } = useColorMode();
   return (
-    <Flex flexDirection="column" pt="10rem" align="center">
+    <Flex flexDirection="column" pt="10rem" align="left">
       <Box
         flex={1}
         maxW="container.sm"

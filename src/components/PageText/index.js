@@ -3,7 +3,7 @@ import CompLink from "../CompLink";
 
 const PageText = ({ pageName = "Default Page Name" }) => {
   return (
-    <Flex width="full" py="1rem" direction="column">
+    <Flex width="full" maxW="container.sm" py="1rem" direction="column">
       <Heading pt="2rem" pb="1rem" size="2xl" fontWeight="extrabold">
         {pageName}
       </Heading>

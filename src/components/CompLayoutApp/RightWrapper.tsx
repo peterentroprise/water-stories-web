@@ -7,7 +7,10 @@ export const RightWrapper: React.FC<RightWrapperProps> = ({ children }) => {
     <Box
       id="scrollTarget"
       height="100vh"
+      width="full"
       overflowY="auto"
+      overflowX="visible"
+      pl="2rem"
       sx={{
         "&::-webkit-scrollbar-track": {
           bg: "transparent",

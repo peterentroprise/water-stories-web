@@ -1,20 +1,39 @@
-import { Flex } from "@chakra-ui/react";
+import { useState, useEffect, useCallback } from "react";
 
-import { Background } from "./Background";
-type RootWrapperProps = {};
+import { Mobile } from "./Mobile";
+import { Desktop } from "./Desktop";
 
-export const RootWrapper: React.FC<RootWrapperProps> = ({ children }) => {
-  return (
-    <Flex
-      height="100vh"
-      flexDirection="column"
-      overflow="hidden"
-      sx={{
-        "--sidebar-width": "256px",
-      }}
-    >
-      <Background />
-      {children}
-    </Flex>
-  );
+type RootWrapperProps = {
+  pageName: string;
+};
+
+export const RootWrapper: React.FC<RootWrapperProps> = ({
+  children,
+  pageName = "Default Page Name",
+}) => {
+  const breakpoint = "52em";
+
+  const [targetReached, setTargetReached] = useState(false);
+
+  const updateTarget = useCallback((e) => {
+    if (e.matches) {
+      setTargetReached(true);
+    } else {
+      setTargetReached(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia(`(max-width: ${breakpoint})`);
+    media.addEventListener("change", (e) => updateTarget(e));
+    if (media.matches) {
+      setTargetReached(true);
+    }
+    return () => media.removeEventListener("change", (e) => updateTarget(e));
+  }, []);
+
+  if (targetReached) {
+    return <Mobile pageName={pageName}>{children}</Mobile>;
+  }
+  return <Desktop pageName={pageName}>{children}</Desktop>;
 };
