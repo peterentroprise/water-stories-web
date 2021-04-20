@@ -13,6 +13,11 @@ export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = () => {
   return (
     <Breadcrumb
       m={"calc((1rem)*-1)"}
+      ml={[
+        "calc((1rem)*-1)",
+        "calc((1rem)*-1)",
+        "calc((var(--sidebar-width) - 1rem)*-1)",
+      ]}
       pr="1rem"
       fontSize="sm"
       separator={

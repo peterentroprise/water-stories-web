@@ -10,7 +10,7 @@ export const RightWrapper: React.FC<RightWrapperProps> = ({ children }) => {
       width="full"
       overflowY="auto"
       overflowX="visible"
-      pl="2rem"
+      px="2rem"
       sx={{
         "&::-webkit-scrollbar-track": {
           bg: "transparent",

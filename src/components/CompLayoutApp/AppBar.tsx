@@ -22,7 +22,7 @@ export const AppBar: React.FC<AppBarProps> = ({
       height="3.5rem"
       w="full"
       p="1rem"
-      pl={"calc(var(--sidebar-width) + 1rem)"}
+      pl="calc(var(--sidebar-width) + 1rem)"
       align="center"
       color={textColor[colorMode]}
       bg={isScrolledTop ? "none" : bgColor[colorMode]}
@@ -39,7 +39,7 @@ export const AppBar: React.FC<AppBarProps> = ({
       <Heading
         pr="1rem"
         position="absolute"
-        display={["none", "block"]}
+        display={["none", "none", "block"]}
         m={"calc((var(--sidebar-width) - 1rem)*-1)"}
         size="md"
         fontWeight="extrabold"
@@ -47,6 +47,7 @@ export const AppBar: React.FC<AppBarProps> = ({
       >
         Water Stories
       </Heading>
+
       {!isScrolledTop && <NavBreadcrumbs />}
 
       <Flex flexGrow={1} />
