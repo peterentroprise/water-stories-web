@@ -10,12 +10,12 @@ import { HiX } from "react-icons/hi";
 
 import CompLink from "../CompLink";
 
-interface SidebarLinkProps extends BoxProps {
+interface SideBarLinkProps extends BoxProps {
   icon?: React.ReactElement;
   href?: String;
 }
 
-export const SidebarLink = (props: SidebarLinkProps) => {
+export const SideBarLink = (props: SideBarLinkProps) => {
   const { children, icon = <HiX />, href = "/" } = props;
   return (
     <CompLink href={href}>

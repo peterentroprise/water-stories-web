@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 
-const useScrollPosition = () => {
+export const useScrollPosition = () => {
   if (typeof window !== "undefined") {
-    const [scrollPos, setScrollPos] = useState(window.pageYOffset);
-
+    const [scrollPos, setScrollPos] = useState(document.body.scrollTop);
     const onScroll = () => {
-      setScrollPos(window.pageYOffset);
+      setScrollPos(document.body.scrollTop);
     };
 
     useEffect(() => {
-      window.addEventListener("scroll", onScroll);
+      document.body.addEventListener("scroll", onScroll);
       return () => {
-        window.removeEventListener("scroll", onScroll);
+        document.body.removeEventListener("scroll", onScroll);
       };
     });
 
@@ -19,5 +18,3 @@ const useScrollPosition = () => {
   }
   return 0;
 };
-
-export default useScrollPosition;

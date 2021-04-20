@@ -17,7 +17,7 @@ export const Wrapper: React.FC<WrapperProps> = ({ children }) => {
           bg: "transparent",
         },
         "&::-webkit-scrollbar-thumb": {
-          bg: useColorModeValue("blue.600", "gray.700"),
+          bg: useColorModeValue("purple.900", "gray.700"),
           borderRadius: "xl",
         },
       }}

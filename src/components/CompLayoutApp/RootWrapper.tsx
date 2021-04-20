@@ -1,13 +1,20 @@
-import { Box } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 import { Background } from "./Background";
 type RootWrapperProps = {};
 
 export const RootWrapper: React.FC<RootWrapperProps> = ({ children }) => {
   return (
-    <Box>
+    <Flex
+      height="100vh"
+      flexDirection="column"
+      overflow="hidden"
+      sx={{
+        "--sidebar-width": "256px",
+      }}
+    >
       <Background />
       {children}
-    </Box>
+    </Flex>
   );
 };

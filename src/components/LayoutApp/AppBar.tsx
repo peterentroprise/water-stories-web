@@ -2,7 +2,7 @@ import { Flex, HStack, Heading, useColorMode } from "@chakra-ui/react";
 
 import { AccountButton } from "./AccountButton";
 import { NavBreadcrumbs } from "./NavBreadcrumbs";
-import useScrollPosition from "../../hooks/useScrollPosition";
+import { useScrollPosition } from "../../hooks/useScrollPosition";
 
 type AppBarProps = {};
 

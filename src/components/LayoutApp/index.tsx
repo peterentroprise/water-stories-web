@@ -15,11 +15,12 @@ const LayoutApp: React.FC<LayoutAppProps> = ({ children }) => {
     <Wrapper>
       <Background />
       <AppBar />
-      <Sidebar />
+
       <Main isOpen={isOpen}>
         {children}
         <BottomNavBar isOpen={isOpen} toggle={toggle} />
       </Main>
+      <Sidebar />
     </Wrapper>
   );
 };

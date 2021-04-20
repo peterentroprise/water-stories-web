@@ -1,19 +1,30 @@
 import { Box, Text } from "@chakra-ui/react";
-type MainProps = {};
+import {
+  HiOutlineGlobe,
+  HiOutlineHome,
+  HiOutlineBookOpen,
+} from "react-icons/hi";
+import { BiNetworkChart } from "react-icons/bi";
+import { SideBarLink } from "./SideBarLink";
+import DarkModeSwitch from "../CompDarkModeSwitch";
+type SideBarProps = {};
 
-export const SideBar: React.FC<MainProps> = () => {
+export const SideBar: React.FC<SideBarProps> = () => {
   return (
-    <Box
-      position="fixed"
-      left={0}
-      top={0}
-      w="300px"
-      p="1rem"
-      h="full"
-      mt="4rem"
-      bg="red"
-    >
-      <Text>Sidebar</Text>
+    <Box as="nav" height="full">
+      <SideBarLink href="/" icon={<HiOutlineGlobe />}>
+        Marketing
+      </SideBarLink>
+      <SideBarLink href="/app" icon={<HiOutlineHome />}>
+        Application
+      </SideBarLink>
+      <SideBarLink href="/app/stories" icon={<HiOutlineBookOpen />}>
+        Stories
+      </SideBarLink>
+      <SideBarLink href="/app/map" icon={<BiNetworkChart />}>
+        Node Map
+      </SideBarLink>
+      <DarkModeSwitch />
     </Box>
   );
 };

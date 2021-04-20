@@ -22,7 +22,7 @@ export const SidebarScrollStack: React.FC<SidebarScrollStackProps> = ({
           width: ".25rem",
         },
         "&::-webkit-scrollbar-thumb": {
-          bg: mode("blue.600", "gray.700"),
+          bg: mode("purple.900", "gray.700"),
           borderRadius: "xl",
         },
       }}

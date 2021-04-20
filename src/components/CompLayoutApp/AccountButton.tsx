@@ -8,8 +8,6 @@ export const AccountButton: React.FC<AccountButtonProps> = () => {
     <Box
       as="a"
       href="#"
-      px=".5rem"
-      py=".5rem"
       display="block"
       transition="background 0.1s"
       rounded="md"

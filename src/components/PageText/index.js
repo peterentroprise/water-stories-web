@@ -1,9 +1,12 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, Heading } from "@chakra-ui/react";
 import CompLink from "../CompLink";
 
-const PageText = () => {
+const PageText = ({ pageName = "Default Page Name" }) => {
   return (
-    <Flex bg="gray" width="full" p="1rem" direction="column">
+    <Flex width="full" py="1rem" direction="column">
+      <Heading pt="2rem" pb="1rem" size="2xl" fontWeight="extrabold">
+        {pageName}
+      </Heading>
       <Text>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus
         velit non tortor fringilla dapibus. Vestibulum iaculis metus vitae metus
