@@ -28,11 +28,11 @@ export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = ({ pageName }) => {
         <Box as={HiChevronRight} fontSize="md" top=".1rem" pos="relative" />
       }
     >
-      <BreadcrumbItem color="inherit">
+      {/* <BreadcrumbItem color="inherit">
         <BreadcrumbLink as={Link} href="/app/stories">
           Stories
         </BreadcrumbLink>
-      </BreadcrumbItem>
+      </BreadcrumbItem> */}
       <BreadcrumbItem
         fontWeight="bold"
         fontFamily="Canela"

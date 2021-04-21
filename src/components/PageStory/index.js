@@ -21,9 +21,9 @@ const contentVariants = {
 
 const PageStory = ({ id, story }) => {
   return (
-    <>
-      <CompLink href="/app/stories" mt={1} display="block" lineHeight="normal">
-        Back To Stories
+    <Box p="1rem">
+      <CompLink href="/app/browse" mt={1} display="block" lineHeight="normal">
+        Back To Browse
       </CompLink>
       <MotionBox py="1rem" variants={imageVariants}>
         <Image borderRadius="md" src={story.video} alt="Moat" />
@@ -36,7 +36,7 @@ const PageStory = ({ id, story }) => {
           <Tag>{story.tag}</Tag>
         </>
       </MotionBox>
-    </>
+    </Box>
   );
 };
 

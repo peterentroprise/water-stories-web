@@ -1,9 +1,15 @@
 import { Flex, Text, Heading } from "@chakra-ui/react";
 import CompLink from "../CompLink";
 
-const PageText = ({ pageName = "Default Page Name" }) => {
+const PageSearch = ({ pageName = "Search" }) => {
   return (
-    <Flex width="full" maxW="container.sm" py="1rem" direction="column">
+    <Flex
+      p="1rem"
+      width="full"
+      maxW="container.sm"
+      py="1rem"
+      direction="column"
+    >
       <Heading pt="2rem" pb="1rem" size="2xl" fontWeight="extrabold">
         {pageName}
       </Heading>
@@ -194,4 +200,4 @@ const PageText = ({ pageName = "Default Page Name" }) => {
   );
 };
 
-export default PageText;
+export default PageSearch;

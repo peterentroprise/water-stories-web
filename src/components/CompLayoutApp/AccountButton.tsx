@@ -8,7 +8,7 @@ export const AccountButton: React.FC<AccountButtonProps> = () => {
     <Box
       as="a"
       href="#"
-      display="block"
+      display={["none", "none", "block"]}
       transition="background 0.1s"
       rounded="md"
       cursor="pointer"

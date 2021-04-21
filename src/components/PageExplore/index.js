@@ -1,8 +1,8 @@
 import MapGraph from "./MapGraph";
 import data from "../../data/mapNodes.json";
 
-const PageMap = () => {
+const PageExplore = () => {
   return <MapGraph data={data} />;
 };
 
-export default PageMap;
+export default PageExplore;

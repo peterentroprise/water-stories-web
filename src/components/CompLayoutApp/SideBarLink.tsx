@@ -28,12 +28,12 @@ export const SideBarLink = (props: SideBarLinkProps) => {
         cursor="pointer"
         _hover={{
           color: mode("white", "white"),
-          bg: mode("purple.900", "gray.600"),
+          bg: mode("purple.400", "gray.600"),
         }}
       >
         <HStack>
           <Box>{icon}</Box>
-          <Text fontSize="sm" fontWeight="semibold">
+          <Text fontSize="sm" fontWeight="bold">
             {children}
           </Text>
         </HStack>

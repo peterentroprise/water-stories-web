@@ -1,11 +1,11 @@
 import PageApp from "../../components/PageApp";
-import LayoutApp from "../../components/LayoutApp";
+import CompLayoutApp from "../../components/CompLayoutApp";
 
 const App = () => {
   return (
-    <LayoutApp>
+    <CompLayoutApp pageName="Hello Universe">
       <PageApp />
-    </LayoutApp>
+    </CompLayoutApp>
   );
 };
 

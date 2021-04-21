@@ -2,7 +2,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { Box } from "@chakra-ui/react";
 
-import LayoutApp from "../../../components/LayoutApp";
+import CompLayoutApp from "../../../components/CompLayoutApp";
 import PageStory from "../../../components/PageStory";
 import data from "../../../data/stories.json";
 
@@ -10,11 +10,11 @@ const MotionBox = motion(Box);
 
 const Story = ({ id, story }) => {
   return (
-    <LayoutApp>
+    <CompLayoutApp pageName={story.name}>
       <MotionBox initial="exit" animate="enter" exit="exit">
         <PageStory id={id} story={story} />
       </MotionBox>
-    </LayoutApp>
+    </CompLayoutApp>
   );
 };
 

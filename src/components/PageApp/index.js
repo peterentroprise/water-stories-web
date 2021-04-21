@@ -1,10 +1,12 @@
-import { Heading, Box } from "@chakra-ui/react";
+import { Heading, Flex } from "@chakra-ui/react";
 
 const PageApp = () => {
   return (
-    <Box pt="10rem">
-      <Heading size="3xl">Hello Universe</Heading>
-    </Box>
+    <Flex py="10rem" w="full">
+      <Heading px="3rem" pb="30rem" size="3xl">
+        Hello Universe
+      </Heading>
+    </Flex>
   );
 };
 

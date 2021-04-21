@@ -11,7 +11,7 @@ export const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
       <Box
         flex={1}
         maxW="container.sm"
-        px="1rem"
+        // px="1rem"
         borderTopRadius="2xl"
         bg={bgColor[colorMode]}
         color={textColor[colorMode]}
