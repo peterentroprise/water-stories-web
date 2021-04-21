@@ -3,8 +3,8 @@ import { Box } from "@chakra-ui/react";
 import { HiMenuAlt2, HiX } from "react-icons/hi";
 
 type DrawerButtonProps = {
-  onClick: () => void;
-  isOpen: boolean;
+  onClick?: () => void;
+  isOpen?: boolean;
 };
 
 export const DrawerButton: React.FC<DrawerButtonProps> = ({
@@ -13,7 +13,6 @@ export const DrawerButton: React.FC<DrawerButtonProps> = ({
 }) => {
   return (
     <Box
-      mr="1rem"
       as="button"
       type="button"
       rounded="md"

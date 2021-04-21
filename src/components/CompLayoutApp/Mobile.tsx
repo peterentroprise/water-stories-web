@@ -1,23 +1,17 @@
 import { Flex } from "@chakra-ui/react";
 
 import { Background } from "./Background";
-import { LeftWrapper } from "./LeftWrapper";
 import { RightWrapper } from "./RightWrapper";
 import { BottomWrapper } from "./BottomWrapper";
 
 import { PageWrapper } from "./PageWrapper";
-import { SideBar } from "./SideBar";
 import { AppBar } from "./AppBar";
 import { BottomBar } from "./BottomBar";
-import { useMobileMenuState } from "../../hooks/useMobileMenuState";
 type MobileProps = {
   pageName: string;
 };
 
-export const Mobile: React.FC<MobileProps> = ({
-  children,
-  pageName = { pageName },
-}) => {
+export const Mobile: React.FC<MobileProps> = ({ children, pageName }) => {
   return (
     <Flex
       height="100vh"
@@ -32,6 +26,7 @@ export const Mobile: React.FC<MobileProps> = ({
       <BottomWrapper>
         <RightWrapper>
           <PageWrapper>{children}</PageWrapper>
+          <BottomBar />
         </RightWrapper>
       </BottomWrapper>
     </Flex>

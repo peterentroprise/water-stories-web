@@ -7,17 +7,21 @@ import {
 } from "@chakra-ui/react";
 import { HiChevronRight } from "react-icons/hi";
 
-type NavBreadcrumbsProps = {};
+import Link from "../CompLink";
 
-export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = () => {
+type NavBreadcrumbsProps = {
+  pageName: string;
+};
+
+export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = ({ pageName }) => {
   return (
     <Breadcrumb
       m={"calc((1rem)*-1)"}
-      ml={[
-        "calc((1rem)*-1)",
-        "calc((1rem)*-1)",
-        "calc((var(--sidebar-width) - 1rem)*-1)",
-      ]}
+      // ml={[
+      //   "calc((1rem)*-1)",
+      //   "calc((1rem)*-1)",
+      //   "calc((var(--sidebar-width) - 1rem)*-1)",
+      // ]}
       pr="1rem"
       fontSize="sm"
       separator={
@@ -25,10 +29,19 @@ export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = () => {
       }
     >
       <BreadcrumbItem color="inherit">
-        <BreadcrumbLink>Stories</BreadcrumbLink>
+        <BreadcrumbLink as={Link} href="/app/stories">
+          Stories
+        </BreadcrumbLink>
       </BreadcrumbItem>
-      <BreadcrumbItem color="inherit" isCurrentPage>
-        <BreadcrumbLink>Hello Universe</BreadcrumbLink>
+      <BreadcrumbItem
+        fontWeight="bold"
+        fontFamily="Canela"
+        isCurrentPagecolor="inherit"
+        isCurrentPage
+      >
+        <BreadcrumbLink as={Link} href="#">
+          {pageName}
+        </BreadcrumbLink>
       </BreadcrumbItem>
     </Breadcrumb>
   );

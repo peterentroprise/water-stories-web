@@ -1,21 +1,14 @@
-import {
-  ButtonGroup,
-  Button,
-  Text,
-  Flex,
-  HStack,
-  useColorMode,
-} from "@chakra-ui/react";
+import { Button, Flex, useColorMode } from "@chakra-ui/react";
 
 import { DrawerButton } from "./DrawerButton";
 import { textColor, bgColor } from "./constants";
 
 type BottomBarProps = {
-  isOpen: boolean;
-  toggle: () => void;
+  isOpen?: boolean;
+  toggle?: () => void;
 };
 
-export const BottomBar: React.FC<BottomBarProps> = ({ isOpen, toggle }) => {
+export const BottomBar: React.FC<BottomBarProps> = () => {
   const { colorMode } = useColorMode();
   return (
     <Flex
@@ -35,18 +28,19 @@ export const BottomBar: React.FC<BottomBarProps> = ({ isOpen, toggle }) => {
         WebkitBackdropFilter: "blur( 8px )",
       }}
     >
-      <HStack height="full" width="full" align="center">
-        <Flex py="1rem" justify="center" align="center" px="1rem">
-          <Flex align="center" minH=".5rem">
-            <DrawerButton onClick={toggle} isOpen={isOpen} />
-            <ButtonGroup variant="outline">
-              <Button>Browse</Button>
-              <Button>Explore</Button>
-              <Button>Search</Button>
-            </ButtonGroup>
-          </Flex>
-        </Flex>
-      </HStack>
+      <Flex
+        align="center"
+        minH=".5rem"
+        height="full"
+        width="full"
+        justifyContent="space-between"
+        p="1rem"
+      >
+        <DrawerButton />
+        <Button variant="ghost">Browse</Button>
+        <Button variant="ghost">Explore</Button>
+        <Button variant="ghost">Search</Button>
+      </Flex>
     </Flex>
   );
 };

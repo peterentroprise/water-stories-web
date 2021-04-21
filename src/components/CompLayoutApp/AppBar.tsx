@@ -17,17 +17,18 @@ export const AppBar: React.FC<AppBarProps> = ({
 
   return (
     <Flex
-      position="sticky"
+      position="fixed"
       top="0rem"
       height="3.5rem"
       w="full"
       p="1rem"
-      pl="calc(var(--sidebar-width) + 1rem)"
+      // pl="calc(var(--sidebar-width) + 1rem)"
+      pl={["2rem", "2rem", "calc(var(--sidebar-width) + 1rem)"]}
       align="center"
       color={textColor[colorMode]}
       bg={isScrolledTop ? "none" : bgColor[colorMode]}
       sx={{
-        transition: isScrolledTop ? "1s" : "1s",
+        transition: isScrolledTop ? ".3s" : ".5s",
         boxShadow: isScrolledTop
           ? "none"
           : "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
@@ -38,6 +39,8 @@ export const AppBar: React.FC<AppBarProps> = ({
     >
       <Heading
         pr="1rem"
+        flexGrow={1}
+        textAlign="center"
         position="absolute"
         display={["none", "none", "block"]}
         m={"calc((var(--sidebar-width) - 1rem)*-1)"}
@@ -48,7 +51,7 @@ export const AppBar: React.FC<AppBarProps> = ({
         Water Stories
       </Heading>
 
-      {!isScrolledTop && <NavBreadcrumbs />}
+      {!isScrolledTop && <NavBreadcrumbs pageName={pageName} />}
 
       <Flex flexGrow={1} />
       <AccountButton />

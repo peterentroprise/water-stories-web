@@ -1,22 +1,29 @@
-import { Box, useColorModeValue } from "@chakra-ui/react";
+import { Flex, useColorModeValue, useColorMode } from "@chakra-ui/react";
+import { bgColor } from "./constants";
 
 type RightWrapperProps = {};
 
 export const RightWrapper: React.FC<RightWrapperProps> = ({ children }) => {
+  const { colorMode } = useColorMode();
   return (
-    <Box
+    <Flex
       id="scrollTarget"
+      flexDirection="column"
+      align="flex-start"
       height="100vh"
       width="full"
       overflowY="auto"
-      overflowX="visible"
-      px="2rem"
+      overflowX="hidden"
+      px={["0rem", "0rem", "2rem"]}
       sx={{
         "&::-webkit-scrollbar-track": {
-          bg: "transparent",
+          bg: bgColor[colorMode],
+          backdropFilter: "blur( 8px )",
+          WebkitBackdropFilter: "blur( 8px )",
         },
         "&::-webkit-scrollbar": {
-          width: ".25rem",
+          width: "none",
+          display: "none",
         },
         "&::-webkit-scrollbar-thumb": {
           bg: useColorModeValue("purple.900", "gray.700"),
@@ -25,6 +32,6 @@ export const RightWrapper: React.FC<RightWrapperProps> = ({ children }) => {
       }}
     >
       {children}
-    </Box>
+    </Flex>
   );
 };

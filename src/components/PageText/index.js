@@ -13,6 +13,13 @@ const PageText = ({ pageName = "Default Page Name" }) => {
         bibendum commodo. Sed consectetur urna sed ante aliquet rhoncus. Class
         aptent taciti sociosqu ad litora torquent per conubia nostra, per
         inceptos himenaeos. Nullam consectetur pulvinar lorem vitae aliquam.
+      </Text>
+      <Text pt="1rem">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus
+        velit non tortor fringilla dapibus. Vestibulum iaculis metus vitae metus
+        bibendum commodo. Sed consectetur urna sed ante aliquet rhoncus. Class
+        aptent taciti sociosqu ad litora torquent per conubia nostra, per
+        inceptos himenaeos. Nullam consectetur pulvinar lorem vitae aliquam.
         Nunc elementum, purus id ornare facilisis, libero dui ultrices massa, et
         eleifend tortor arcu mollis sapien. Mauris tincidunt orci lectus, eget
         vehicula erat consectetur at. Phasellus sed nibh vehicula, dapibus ex
