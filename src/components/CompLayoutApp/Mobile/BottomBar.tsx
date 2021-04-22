@@ -5,9 +5,10 @@ import { MobileMenuDrawer } from "./MobileMenuDrawer";
 import { MobileMenuDrawerButton } from "./MobileMenuDrawerButton";
 import { textColor, bgColor } from "../constants";
 import { BottomBarNavButton } from "./BottomBarNavButton";
-import { GiFiles, GiJourney, GiArchiveResearch } from "react-icons/gi";
 
-import Link from "../../CompLink";
+import LibraryBooksIcon from "@material-ui/icons/LibraryBooksOutlined";
+import AutoGraphIcon from "@material-ui/icons/AutoGraphOutlined";
+import SearchIcon from "@material-ui/icons/SearchOutlined";
 
 type BottomBarProps = {};
 
@@ -21,48 +22,37 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
       height="3.5rem"
       w="full"
       align="center"
-      // bg={bgColor[colorMode]}
-      // color={textColor[colorMode]}
-      // borderTopRadius="2xl"
-      // sx={{
-      //   boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-      //   backdropFilter: "blur( 8px )",
-      //   WebkitBackdropFilter: "blur( 8px )",
-      // }}
     >
       <Box
-        id="tab--left"
-        bg="white"
-        // borderTopLeftRadius="1rem"
+        bg={bgColor[colorMode]}
         borderTopRightRadius="1rem"
-        w="100%"
+        w="16px"
         h="100%"
+        borderTop=" 1px solid rgba(167, 161, 161, 0.12)"
       ></Box>
-      <Box id="tab--fab" w="151px" h="28px" bg="transparent" border="none">
+      <Box id="tab--fab" w="72px" h="28px" bg="transparent" border="none">
         <Flex
-          id="top"
-          w="64px"
-          h="28px"
-          borderBottomRadius="28px"
+          w="72px"
+          h="32px"
+          borderBottomRadius="36px"
           bgColor="transparent"
-          boxShadow="0px 28px 0px 28px #fff"
+          boxShadow={`0px 28px 0px 26px ${bgColor[colorMode]}`}
+          borderBottom=" 1px solid rgba(167, 161, 161, 0.12)"
         >
           <Flex
-            id="fab"
             borderRadius="50%"
             align="center"
             justifyContent="center"
             w="56px"
             h="56px"
-            bg="white"
-            transform="translate(4px,-32px)"
+            bg={bgColor[colorMode]}
+            transform="translate(8px,-32px)"
             position="relative"
+            onClick={onOpen}
             sx={{
               boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-              backdropFilter: "blur( 8px )",
-              WebkitBackdropFilter: "blur( 8px )",
             }}
-            onClick={onOpen}
+            zIndex="-1"
           >
             <MobileMenuDrawerButton
               isOpen={isOpen}
@@ -78,24 +68,33 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
         </Flex>
       </Box>
       <Box
-        id="tab--right"
-        bg="white"
+        bg={bgColor[colorMode]}
         borderTopLeftRadius="1rem"
-        borderTopRightRadius="1rem"
-        w="100%"
+        w="16px"
         h="3.5rem"
+        borderTop=" 1px solid rgba(167, 161, 161, 0.12)"
       ></Box>
-      {/* 
-
-        <BottomBarNavButton href="/app/browse" icon={GiFiles}>
+      <Flex
+        bg={bgColor[colorMode]}
+        borderTopRightRadius="1rem"
+        w="full"
+        h="3.5rem"
+        pr="1rem"
+        color={textColor[colorMode]}
+        borderTop=" 1px solid rgba(167, 161, 161, 0.12)"
+        boxShadow="0 8px 32px 0 rgba( 31, 38, 135, 0.37 )"
+        zIndex="-1"
+      >
+        <BottomBarNavButton href="/app/browse" icon={LibraryBooksIcon}>
           Browse
         </BottomBarNavButton>
-        <BottomBarNavButton href="/app/explore" icon={GiJourney}>
+        <BottomBarNavButton href="/app/explore" icon={AutoGraphIcon}>
           Explore
         </BottomBarNavButton>
-        <BottomBarNavButton href="/app/search" icon={GiArchiveResearch}>
+        <BottomBarNavButton href="/app/search" icon={SearchIcon}>
           Search
-        </BottomBarNavButton> */}
+        </BottomBarNavButton>
+      </Flex>
     </Flex>
   );
 };

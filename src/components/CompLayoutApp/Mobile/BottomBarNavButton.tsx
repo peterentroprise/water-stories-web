@@ -1,11 +1,12 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, useColorMode } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/react";
 
 import Link from "../../CompLink";
+import { textColor } from "../constants";
 
 type BottomBarNavButtonProps = {
   href: string;
-  icon: React.ReactNode;
+  icon: any;
 };
 
 export const BottomBarNavButton: React.FC<BottomBarNavButtonProps> = ({
@@ -13,15 +14,21 @@ export const BottomBarNavButton: React.FC<BottomBarNavButtonProps> = ({
   href,
   icon,
 }) => {
+  const { colorMode } = useColorMode();
   return (
-    <Box flex="1" as="button" h="56px" pt="6px" pb="10px" pl="12px" pr="12px">
+    <Box flex="1" as="button" h="56px" pt="8px" pb="8" pl="12px" pr="12px">
       <Link href={href}>
-        <Box h="40px">
+        <Flex
+          flexDirection="column"
+          align="center"
+          h="40px"
+          color={textColor[colorMode]}
+        >
           <Icon as={icon} h="20px" w="20px" />
-          <Text h="16px" fontSize="14px">
+          <Text h="16px" fontSize="14px" fontWeight="semibold">
             {children}
           </Text>
-        </Box>
+        </Flex>
       </Link>
     </Box>
   );

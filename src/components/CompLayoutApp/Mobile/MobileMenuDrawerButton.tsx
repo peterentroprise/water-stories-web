@@ -1,5 +1,8 @@
-import { Box, Icon } from "@chakra-ui/react";
-import { HiMenuAlt2, HiX } from "react-icons/hi";
+import { useColorMode, Icon } from "@chakra-ui/react";
+import MenuIcon from "@material-ui/icons/MenuOutlined";
+import CloseIcon from "@material-ui/icons/CloseOutlined";
+
+import { textColor } from "../constants";
 
 type MobileMenuDrawerButtonProps = {
   isOpen: boolean;
@@ -10,12 +13,13 @@ type MobileMenuDrawerButtonProps = {
 export const MobileMenuDrawerButton: React.FC<MobileMenuDrawerButtonProps> = ({
   isOpen,
 }) => {
+  const { colorMode } = useColorMode();
   return (
     <>
       {isOpen ? (
-        <Icon as={HiX} w="24px" h="24px" />
+        <Icon color={textColor[colorMode]} as={CloseIcon} w="20px" h="20px" />
       ) : (
-        <Icon as={HiMenuAlt2} w="24px" h="24px" />
+        <Icon color={textColor[colorMode]} as={MenuIcon} w="20px" h="20px" />
       )}
     </>
   );
