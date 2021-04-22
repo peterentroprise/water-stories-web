@@ -14,7 +14,7 @@ export const StoryContent = ({ story }) => {
   const { colorMode } = useColorMode();
 
   const bgColor = {
-    light: "rgba( 255, 255, 255, 0.5 )",
+    light: "rgba( 255, 255, 255, 0.9 )",
     dark: "rgba( 0, 0, 0, 0.25 )",
   };
 

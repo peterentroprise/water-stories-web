@@ -33,7 +33,12 @@ export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = ({ pageName }) => {
           Stories
         </BreadcrumbLink>
       </BreadcrumbItem> */}
-      <BreadcrumbItem fontWeight="bold" fontFamily="Canela" isCurrentPage>
+      <BreadcrumbItem
+        fontWeight="bold"
+        fontSize="20px"
+        fontFamily="Canela"
+        isCurrentPage
+      >
         <BreadcrumbLink as={Link} href="#">
           {pageName}
         </BreadcrumbLink>

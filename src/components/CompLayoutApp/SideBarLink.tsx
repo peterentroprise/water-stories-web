@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   Box,
+  Flex,
   BoxProps,
   HStack,
   Text,
@@ -19,8 +20,9 @@ export const SideBarLink = (props: SideBarLinkProps) => {
   const { children, icon = <HiX />, href = "/" } = props;
   return (
     <CompLink href={href}>
-      <Box
-        display="block"
+      <Flex
+        align="center"
+        height="48px"
         py=".5rem"
         pl={["1rem", "2rem"]}
         borderLeftRadius="none"
@@ -31,13 +33,13 @@ export const SideBarLink = (props: SideBarLinkProps) => {
           bg: mode("purple.400", "gray.600"),
         }}
       >
-        <HStack>
+        <HStack align="center">
           <Box>{icon}</Box>
           <Text fontSize="sm" fontWeight="semibold">
             {children}
           </Text>
         </HStack>
-      </Box>
+      </Flex>
     </CompLink>
   );
 };

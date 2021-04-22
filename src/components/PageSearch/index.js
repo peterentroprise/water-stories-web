@@ -10,7 +10,7 @@ const PageSearch = ({ pageName = "Search" }) => {
       py="1rem"
       direction="column"
     >
-      <Heading pt="2rem" pb="1rem" size="2xl" fontWeight="extrabold">
+      <Heading pt="2rem" pb="1rem" size="3xl" fontWeight="extrabold">
         {pageName}
       </Heading>
       <Text>

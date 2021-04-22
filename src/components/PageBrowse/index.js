@@ -9,7 +9,7 @@ import data from "../../data/stories.json";
 const PageBrowse = ({ pageName }) => {
   return (
     <>
-      <Heading px="1rem" pt="3rem" pb="2rem" size="2xl" fontWeight="extrabold">
+      <Heading px="1rem" pt="3rem" pb="2rem" size="3xl" fontWeight="extrabold">
         {pageName}
       </Heading>
       <StoryStack>

@@ -21,7 +21,14 @@ const contentVariants = {
 
 const PageStory = ({ id, story }) => {
   return (
-    <Box p="1rem">
+    <Box
+      p="1rem"
+      sx={{
+        boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
+        backdropFilter: "blur( 8px )",
+        WebkitBackdropFilter: "blur( 8px )",
+      }}
+    >
       <CompLink href="/app/browse" mt={1} display="block" lineHeight="normal">
         Back To Browse
       </CompLink>

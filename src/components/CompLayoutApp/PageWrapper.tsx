@@ -1,6 +1,6 @@
 import { Box, Flex, useColorMode } from "@chakra-ui/react";
 
-import { bgColor, textColor } from "./constants";
+import { textColor } from "./constants";
 
 type PageWrapperProps = {};
 
@@ -13,13 +13,13 @@ export const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
         maxW="container.sm"
         // px="1rem"
         borderTopRadius="2xl"
-        bg={bgColor[colorMode]}
+        // bg={bgColor[colorMode]}
         color={textColor[colorMode]}
-        sx={{
-          boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-          backdropFilter: "blur( 8px )",
-          WebkitBackdropFilter: "blur( 8px )",
-        }}
+        // sx={{
+        //   boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
+        //   backdropFilter: "blur( 8px )",
+        //   WebkitBackdropFilter: "blur( 8px )",
+        // }}
       >
         {children}
       </Box>
