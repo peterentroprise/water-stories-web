@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-import { Mobile } from "./Mobile";
+import Mobile from "./Mobile";
 import { Desktop } from "./Desktop";
 
 type RootWrapperProps = {

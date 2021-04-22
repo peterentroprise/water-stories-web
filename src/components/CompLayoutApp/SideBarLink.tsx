@@ -33,7 +33,7 @@ export const SideBarLink = (props: SideBarLinkProps) => {
       >
         <HStack>
           <Box>{icon}</Box>
-          <Text fontSize="sm" fontWeight="bold">
+          <Text fontSize="sm" fontWeight="semibold">
             {children}
           </Text>
         </HStack>

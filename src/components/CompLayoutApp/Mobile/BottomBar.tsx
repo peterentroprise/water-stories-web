@@ -1,20 +1,19 @@
 import { Button, Flex, useColorMode } from "@chakra-ui/react";
 
-import { DrawerButton } from "./DrawerButton";
-import { textColor, bgColor } from "./constants";
+import { useMobileMenuState } from "../../../hooks/useMobileMenuState";
+import { MobileMenuDrawer } from "./MobileMenuDrawer";
+import { MobileMenuDrawerButton } from "./MobileMenuDrawerButton";
+import { textColor, bgColor } from "../constants";
 
-import Link from "../CompLink";
+import Link from "../../CompLink";
 
-type BottomBarProps = {
-  isOpen?: boolean;
-  toggle?: () => void;
-};
+type BottomBarProps = {};
 
 export const BottomBar: React.FC<BottomBarProps> = () => {
   const { colorMode } = useColorMode();
+  const { isOpen, onOpen, onClose } = useMobileMenuState();
   return (
     <Flex
-      // display={["flex", "none", "none", "none"]}
       position="fixed"
       bottom="0rem"
       height="3.5rem"
@@ -38,7 +37,12 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
         justifyContent="space-between"
         p="1rem"
       >
-        <DrawerButton />
+        <MobileMenuDrawer isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+        <MobileMenuDrawerButton
+          isOpen={isOpen}
+          onOpen={onOpen}
+          onClose={onClose}
+        />
         <Button as={Link} href="/app/browse" variant="ghost" fontWeight="bold">
           Browse
         </Button>

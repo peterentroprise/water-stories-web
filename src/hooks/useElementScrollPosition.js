@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 export const useElementScrollPosition = () => {
-  if (typeof window !== "undefined") {
+  if (
+    typeof window !== "undefined" &&
+    document.getElementById("scrollTarget") != null
+  ) {
     const [scrollPos, setScrollPos] = useState(
       document.getElementById("scrollTarget").scrollTop
     );
     const onScroll = () => {
       setScrollPos(document.getElementById("scrollTarget").scrollTop);
-      console.log(scrollPos);
     };
 
     useEffect(() => {
@@ -15,9 +17,11 @@ export const useElementScrollPosition = () => {
         .getElementById("scrollTarget")
         .addEventListener("scroll", onScroll);
       return () => {
-        document
-          .getElementById("scrollTarget")
-          .removeEventListener("scroll", onScroll);
+        if (document.getElementById("scrollTarget") != null) {
+          document
+            .getElementById("scrollTarget")
+            .removeEventListener("scroll", onScroll);
+        }
       };
     });
 
