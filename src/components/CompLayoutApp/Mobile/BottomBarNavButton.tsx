@@ -16,7 +16,7 @@ export const BottomBarNavButton: React.FC<BottomBarNavButtonProps> = ({
 }) => {
   const { colorMode } = useColorMode();
   return (
-    <Box flex="1" as="button" h="56px" pt="8px" pb="8" pl="12px" pr="12px">
+    <Box flex="1" as="button" h="full" pt="12px" pb="12px" pl="12px" pr="12px">
       <Link href={href}>
         <Flex
           flexDirection="column"

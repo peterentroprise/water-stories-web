@@ -16,13 +16,7 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
   const { colorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useMobileMenuState();
   return (
-    <Flex
-      position="fixed"
-      bottom="0rem"
-      height="3.5rem"
-      w="full"
-      align="center"
-    >
+    <Flex position="fixed" bottom="0rem" height="4rem" w="full" align="center">
       <Box
         bg={bgColor[colorMode]}
         borderTopRightRadius="1rem"
@@ -30,7 +24,13 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
         h="100%"
         borderTop=" 1px solid rgba(167, 161, 161, 0.12)"
       ></Box>
-      <Box id="tab--fab" w="72px" h="28px" bg="transparent" border="none">
+      <Box
+        w="72px"
+        h="36px"
+        bg="transparent"
+        border="none"
+        pointerEvents="none"
+      >
         <Flex
           w="72px"
           h="32px"
@@ -38,6 +38,7 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
           bgColor="transparent"
           boxShadow={`0px 28px 0px 26px ${bgColor[colorMode]}`}
           borderBottom=" 1px solid rgba(167, 161, 161, 0.12)"
+          pointerEvents="none"
         >
           <Flex
             borderRadius="50%"
@@ -48,11 +49,12 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
             bg={bgColor[colorMode]}
             transform="translate(8px,-32px)"
             position="relative"
-            onClick={onOpen}
             sx={{
               boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
             }}
             zIndex="-1"
+            pointerEvents="all"
+            onClick={onOpen}
           >
             <MobileMenuDrawerButton
               isOpen={isOpen}
@@ -71,14 +73,14 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
         bg={bgColor[colorMode]}
         borderTopLeftRadius="1rem"
         w="16px"
-        h="3.5rem"
+        h="full"
         borderTop=" 1px solid rgba(167, 161, 161, 0.12)"
       ></Box>
       <Flex
         bg={bgColor[colorMode]}
         borderTopRightRadius="1rem"
         w="full"
-        h="3.5rem"
+        h="full"
         pr="1rem"
         color={textColor[colorMode]}
         borderTop=" 1px solid rgba(167, 161, 161, 0.12)"
