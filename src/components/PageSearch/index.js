@@ -46,7 +46,10 @@ const PageSearch = ({
         {...rest}
       >
         <Configure hitsPerPage={12} />
-        <SearchBox />
+        <Box position="sticky" top="1rem">
+          <SearchBox />
+        </Box>
+
         <Box>
           <RefinementList attribute="fields.storyName.en-US" />
         </Box>

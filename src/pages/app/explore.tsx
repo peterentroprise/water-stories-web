@@ -9,7 +9,7 @@ const PageExplore = dynamic(() => import("../../components/PageExplore"), {
 const Map = () => {
   return (
     <CompLayoutApp pageName="Explore">
-      <PageExplore />
+      <PageExplore pageName="Explore" />
     </CompLayoutApp>
   );
 };

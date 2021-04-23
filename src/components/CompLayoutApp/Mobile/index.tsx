@@ -4,13 +4,12 @@ import { Background } from "../Background";
 import { RightWrapper } from "../RightWrapper";
 
 import { PageWrapper } from "../PageWrapper";
-import { AppBar } from "../AppBar";
 import { BottomBar } from "./BottomBar";
 type MobileProps = {
   pageName: string;
 };
 
-const Mobile: React.FC<MobileProps> = ({ children, pageName }) => {
+const Mobile: React.FC<MobileProps> = ({ children }) => {
   return (
     <Flex
       height="100vh"
@@ -21,7 +20,6 @@ const Mobile: React.FC<MobileProps> = ({ children, pageName }) => {
       }}
     >
       <Background />
-      <AppBar pageName={pageName} />
 
       <RightWrapper>
         <PageWrapper>{children}</PageWrapper>
