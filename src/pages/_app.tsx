@@ -5,6 +5,7 @@ import "@fontsource/mulish/700.css";
 import "@fontsource/mulish/800.css";
 import "@fontsource/mulish/800.css";
 import "../../public/fonts/canela/canela.css";
+import "../../public/algolia/satellite.css";
 
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";

@@ -1,4 +1,3 @@
-import NextHead from "next/head";
 import { isEqual } from "lodash";
 import React from "react";
 import PropTypes from "prop-types";
@@ -84,9 +83,6 @@ class Search extends React.Component {
   render() {
     return (
       <>
-        <NextHead>
-          <link rel="stylesheet" href="algolia.satellite.css" />
-        </NextHead>
         <CompLayoutApp pageName="Search">
           <PageSearch
             {...DEFAULT_PROPS}

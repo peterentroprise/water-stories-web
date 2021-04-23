@@ -1,4 +1,4 @@
-import { Box, VStack } from "@chakra-ui/react";
+import { Box, VStack, Heading } from "@chakra-ui/react";
 import {
   HiOutlineGlobe,
   HiOutlineHome,
@@ -13,6 +13,14 @@ type SideBarProps = {};
 export const SideBar: React.FC<SideBarProps> = () => {
   return (
     <Box as="nav" height="full" pt="1rem">
+      <Heading
+        p="1rem"
+        display={["block", "block", "none"]}
+        size="md"
+        fontWeight="extrabold"
+      >
+        Water Stories
+      </Heading>
       <VStack spacing=".5rem" align="stretch">
         <SideBarLink href="/" icon={<HiOutlineGlobe />}>
           Community
