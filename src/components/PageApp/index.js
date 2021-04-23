@@ -2,8 +2,8 @@ import { Heading, Flex } from "@chakra-ui/react";
 
 const PageApp = () => {
   return (
-    <Flex py="1rem" w="full">
-      <Heading px="4rem" pb="1rem" size="3xl">
+    <Flex w="full">
+      <Heading px="1rem" pt="3rem" pb="2rem" size="3xl" fontWeight="extrabold">
         Hello Universe
       </Heading>
     </Flex>
