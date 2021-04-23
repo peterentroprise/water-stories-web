@@ -1,5 +1,5 @@
 import { Highlight } from "react-instantsearch-dom";
-import { Box, Text } from "@chakra-ui/react";
+import { Flex, Box, Text, AspectRatio } from "@chakra-ui/react";
 
 export const Hit = ({ hit }) => {
   console.log(hit.fields.slug);
@@ -9,23 +9,15 @@ export const Hit = ({ hit }) => {
   );
   console.log(hit.fields.coverVideoUrl["en-US"]);
   return (
-    <Box>
-      <Box>
+    <Flex>
+      <Box maxW="128px" pr="1rem">
         <video src={`${hit.fields.coverVideoUrl["en-US"]}`} />
       </Box>
-
       <Box>
-        <Box>
-          <Highlight attribute="name" hit={hit} />
-          <Text>{hit.fields.storyName["en-US"]}</Text>
-        </Box>
-        <Box>
-          <Highlight attribute="type" hit={hit} />
-        </Box>
-        <Box>
-          <Highlight attribute="description" hit={hit} />
-        </Box>
+        <Highlight attribute="fields.storyName.en-US" hit={hit} />
+        <br />
+        <Highlight attribute="fields.storyShortDescription.en-US" hit={hit} />
       </Box>
-    </Box>
+    </Flex>
   );
 };

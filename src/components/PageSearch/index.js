@@ -26,6 +26,7 @@ const PageSearch = ({
   return (
     <Flex
       p="1rem"
+      mb="10rem"
       width="full"
       maxW="container.sm"
       py="1rem"
@@ -46,10 +47,10 @@ const PageSearch = ({
       >
         <Configure hitsPerPage={12} />
         <SearchBox />
-        <Box className="menu">
-          <RefinementList attribute="categories" />
-        </Box>
         <Box>
+          <RefinementList attribute="fields.storyName.en-US" />
+        </Box>
+        <Box listStyleType="none">
           <Hits hitComponent={Hit} />
         </Box>
 
