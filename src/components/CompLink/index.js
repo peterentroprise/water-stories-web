@@ -1,10 +1,12 @@
-import { Link as ChakraLink } from "@chakra-ui/react";
+import { Box, Link as ChakraLink } from "@chakra-ui/react";
 import NextLink from "next/link";
 
-const Link = ({ children, href, ...rest }) => {
+const Link = ({ children, href, useChakraLink = false, ...rest }) => {
   return (
     <NextLink passHref href={href}>
-      <ChakraLink {...rest}> {children}</ChakraLink>
+      {(useChakraLink && <ChakraLink {...rest}>{children}</ChakraLink>) || (
+        <Box {...rest}>{children}</Box>
+      )}
     </NextLink>
   );
 };

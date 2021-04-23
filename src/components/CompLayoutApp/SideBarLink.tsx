@@ -22,7 +22,7 @@ export const SideBarLink = (props: SideBarLinkProps) => {
     <CompLink href={href}>
       <Flex
         align="center"
-        height="48px"
+        height="40px"
         py=".5rem"
         pl={["1rem", "2rem"]}
         borderLeftRadius="none"

@@ -2,7 +2,7 @@ import { Box, Flex, Text, useColorMode } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/react";
 
 import Link from "../../CompLink";
-import { textColor } from "../constants";
+import { hoverColor, primaryColor } from "../constants";
 
 type BottomBarNavButtonProps = {
   href: string;
@@ -16,14 +16,32 @@ export const BottomBarNavButton: React.FC<BottomBarNavButtonProps> = ({
 }) => {
   const { colorMode } = useColorMode();
   return (
-    <Box flex="1" as="button" h="full" pt="12px" pb="12px" pl="12px" pr="12px">
+    <Box
+      flex="1"
+      as="button"
+      h="full"
+      w="full"
+      p="12px"
+      transition="color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,padding-top 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms"
+      _hover={{
+        bg: hoverColor[colorMode],
+        color: primaryColor[colorMode],
+        fontWeight: "bold",
+      }}
+      _focus={{
+        color: primaryColor[colorMode],
+        outline: "none",
+        WebkitTapHighlightColor: "transparent",
+        fontWeight: "bold",
+      }}
+      _active={{
+        color: primaryColor[colorMode],
+        WebkitTapHighlightColor: "transparent",
+        fontWeight: "bold",
+      }}
+    >
       <Link href={href}>
-        <Flex
-          flexDirection="column"
-          align="center"
-          h="40px"
-          color={textColor[colorMode]}
-        >
+        <Flex flexDirection="column" align="center" h="40px">
           <Icon as={icon} h="20px" w="20px" />
           <Text h="16px" fontSize="14px" fontWeight="semibold">
             {children}

@@ -22,7 +22,6 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
         borderTopRightRadius="1rem"
         w="16px"
         h="100%"
-        borderTop=" 1px solid rgba(167, 161, 161, 0.12)"
       ></Box>
       <Box
         w="72px"
@@ -37,7 +36,6 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
           borderBottomRadius="36px"
           bgColor="transparent"
           boxShadow={`0px 28px 0px 26px ${bgColor[colorMode]}`}
-          borderBottom=" 1px solid rgba(167, 161, 161, 0.12)"
           pointerEvents="none"
         >
           <Flex
@@ -74,16 +72,15 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
         borderTopLeftRadius="1rem"
         w="16px"
         h="full"
-        borderTop=" 1px solid rgba(167, 161, 161, 0.12)"
       ></Box>
       <Flex
         bg={bgColor[colorMode]}
         borderTopRightRadius="1rem"
+        justifyContent="space-between"
         w="full"
         h="full"
         pr="1rem"
         color={textColor[colorMode]}
-        borderTop=" 1px solid rgba(167, 161, 161, 0.12)"
         boxShadow="0 8px 32px 0 rgba( 31, 38, 135, 0.37 )"
         zIndex="-1"
       >
