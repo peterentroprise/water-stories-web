@@ -75,11 +75,10 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
       ></Box>
       <Flex
         bg={bgColor[colorMode]}
-        borderTopRightRadius="1rem"
         justifyContent="space-between"
         w="full"
         h="full"
-        pr="1rem"
+        px="1rem"
         color={textColor[colorMode]}
         boxShadow="0 8px 32px 0 rgba( 31, 38, 135, 0.37 )"
         zIndex="-1"

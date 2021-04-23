@@ -21,21 +21,21 @@ export const BottomBarNavButton: React.FC<BottomBarNavButtonProps> = ({
       as="button"
       h="full"
       w="full"
-      p="12px"
+      py="12px"
       transition="color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,padding-top 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms"
       _hover={{
         bg: hoverColor[colorMode],
-        color: primaryColor[colorMode],
+        color: "white",
         fontWeight: "bold",
       }}
       _focus={{
-        color: primaryColor[colorMode],
+        color: "white",
         outline: "none",
         WebkitTapHighlightColor: "transparent",
         fontWeight: "bold",
       }}
       _active={{
-        color: primaryColor[colorMode],
+        color: "white",
         WebkitTapHighlightColor: "transparent",
         fontWeight: "bold",
       }}

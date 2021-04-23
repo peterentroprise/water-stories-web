@@ -1,8 +1,8 @@
 export const textColor = { light: "black", dark: "white" };
 
-export const primaryColor = { light: "purple.500", dark: "purple.500" };
+export const primaryColor = { light: "purple.400", dark: "purple.400" };
 
-export const hoverColor = { light: "purple.100", dark: "purple.100" };
+export const hoverColor = { light: "purple.400", dark: "purple.400" };
 
 export const bgColor = {
   light: "rgba( 255, 255, 255, 1 )",
