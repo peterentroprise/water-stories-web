@@ -13,7 +13,7 @@ const PageIndex = () => {
         <Text>Marketing Site</Text>
       </Box>
       <Box mt="2rem">
-        <CompLink href="/app">
+        <CompLink href="/client">
           <Button>Go To App</Button>
         </CompLink>
       </Box>

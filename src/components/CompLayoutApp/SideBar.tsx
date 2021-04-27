@@ -25,16 +25,16 @@ export const SideBar: React.FC<SideBarProps> = () => {
         <SideBarLink href="/" icon={<HiOutlineGlobe />}>
           Community
         </SideBarLink>
-        <SideBarLink href="/app" icon={<HiOutlineHome />}>
+        <SideBarLink href="/client" icon={<HiOutlineHome />}>
           Water Stories
         </SideBarLink>
-        <SideBarLink href="/app/browse" icon={<HiOutlineBookOpen />}>
+        <SideBarLink href="/client/stories" icon={<HiOutlineBookOpen />}>
           Browse
         </SideBarLink>
-        <SideBarLink href="/app/explore" icon={<BiNetworkChart />}>
+        <SideBarLink href="/client/stories" icon={<BiNetworkChart />}>
           Explore
         </SideBarLink>
-        <SideBarLink href="/app/search" icon={<HiSearch />}>
+        <SideBarLink href="/client/search" icon={<HiSearch />}>
           Search
         </SideBarLink>
       </VStack>

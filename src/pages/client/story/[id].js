@@ -6,14 +6,12 @@ import CompLayoutApp from "../../../components/CompLayoutApp";
 import PageStory from "../../../components/PageStory";
 import data from "../../../data/stories.json";
 
-const MotionBox = motion(Box);
-
 const Story = ({ id, story }) => {
   return (
     <CompLayoutApp pageName={story.name}>
-      <MotionBox initial="exit" animate="enter" exit="exit">
-        <PageStory id={id} story={story} />
-      </MotionBox>
+      {/* <MotionBox initial="exit" animate="enter" exit="exit"> */}
+      <PageStory id={id} story={story} />
+      {/* </MotionBox> */}
     </CompLayoutApp>
   );
 };

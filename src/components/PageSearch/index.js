@@ -7,10 +7,13 @@ import {
   Pagination,
   InstantSearch,
 } from "react-instantsearch-dom";
+import { motion } from "framer-motion";
 
 import { Flex, Box, Heading } from "@chakra-ui/react";
 
 import { Hit } from "./Hit";
+
+const MotionHeading = motion(Heading);
 
 const PageSearch = ({
   pageName = "Search",
@@ -32,9 +35,17 @@ const PageSearch = ({
       py="1rem"
       direction="column"
     >
-      <Heading pt="2rem" pb="1rem" size="3xl" fontWeight="extrabold">
+      <MotionHeading
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        pt="2rem"
+        pb="1rem"
+        size="3xl"
+        fontWeight="extrabold"
+      >
         {pageName}
-      </Heading>
+      </MotionHeading>
       <InstantSearch
         searchClient={searchClient}
         resultsState={resultsState}

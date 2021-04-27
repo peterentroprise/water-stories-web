@@ -1,12 +1,12 @@
-import PageApp from "../../components/PageApp";
+import PageClient from "../../components/PageClient";
 import CompLayoutApp from "../../components/CompLayoutApp";
 
-const App = () => {
+const Client = () => {
   return (
     <CompLayoutApp pageName="Hello Universe">
-      <PageApp />
+      <PageClient />
     </CompLayoutApp>
   );
 };
 
-export default App;
+export default Client;

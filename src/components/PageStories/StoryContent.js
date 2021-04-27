@@ -12,6 +12,7 @@ import Link from "../CompLink";
 
 export const StoryContent = ({ story }) => {
   const { colorMode } = useColorMode();
+  console.log(story);
 
   const bgColor = {
     light: "rgba( 255, 255, 255, 0.9 )",
@@ -21,7 +22,8 @@ export const StoryContent = ({ story }) => {
   const color = { light: "black", dark: "white" };
   return (
     <Box
-      borderRadius="2xl"
+      borderRadius="sm"
+      borderTopRightRadius="2xl"
       bg={bgColor[colorMode]}
       color={color[colorMode]}
       sx={{
@@ -33,10 +35,9 @@ export const StoryContent = ({ story }) => {
     >
       <AspectRatio ratio={16 / 9}>
         <Image
-          borderRadius="md"
-          borderTopLeftRadius="2xl"
+          borderRadius="sm"
           borderTopRightRadius="2xl"
-          src={story.video}
+          src={story.coverImage.url}
           alt="Moat"
           objectFit="cover"
         />
@@ -48,15 +49,16 @@ export const StoryContent = ({ story }) => {
             fontSize="lg"
             lineHeight="normal"
             fontWeight="semibold"
-            href={`/app/story/${story.id}`}
+            href={`/client/stories/${story.sys.id}`}
           >
-            {story.title}
+            {story.storyName}
           </Link>
-          <Text mt=".5rem">{story.description}</Text>
+
+          <Text mt=".5rem">{story.storyShortDescription}</Text>
         </Box>
 
         <Flex my=".5rem" alignItems="baseline">
-          <Tag>{story.tag}</Tag>
+          <Tag>{story.slug}</Tag>
         </Flex>
       </Box>
     </Box>

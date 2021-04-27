@@ -83,13 +83,13 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
         boxShadow="0 8px 32px 0 rgba( 31, 38, 135, 0.37 )"
         zIndex="-1"
       >
-        <BottomBarNavButton href="/app/browse" icon={LibraryBooksIcon}>
+        <BottomBarNavButton href="/client/stories" icon={LibraryBooksIcon}>
           Browse
         </BottomBarNavButton>
-        <BottomBarNavButton href="/app/explore" icon={AutoGraphIcon}>
+        <BottomBarNavButton href="/client/stories" icon={AutoGraphIcon}>
           Explore
         </BottomBarNavButton>
-        <BottomBarNavButton href="/app/search" icon={SearchIcon}>
+        <BottomBarNavButton href="/client/search" icon={SearchIcon}>
           Search
         </BottomBarNavButton>
       </Flex>
