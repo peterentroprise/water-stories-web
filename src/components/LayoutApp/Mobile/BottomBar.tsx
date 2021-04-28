@@ -3,7 +3,7 @@ import { Box, Flex, useColorMode } from "@chakra-ui/react";
 import { useMobileMenuState } from "../../../hooks/useMobileMenuState";
 import { MobileMenuDrawer } from "./MobileMenuDrawer";
 import { MobileMenuDrawerButton } from "./MobileMenuDrawerButton";
-import { textColor, bgColor } from "../constants";
+import { textColor, bgColor } from "../../../constants";
 import { BottomBarNavButton } from "./BottomBarNavButton";
 
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooksOutlined";
@@ -83,10 +83,10 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
         boxShadow="0 8px 32px 0 rgba( 31, 38, 135, 0.37 )"
         zIndex="-1"
       >
-        <BottomBarNavButton href="/client/stories" icon={LibraryBooksIcon}>
-          Browse
+        <BottomBarNavButton href="/client/browse" icon={LibraryBooksIcon}>
+          Stories
         </BottomBarNavButton>
-        <BottomBarNavButton href="/client/stories" icon={AutoGraphIcon}>
+        <BottomBarNavButton href="/client/explore" icon={AutoGraphIcon}>
           Explore
         </BottomBarNavButton>
         <BottomBarNavButton href="/client/search" icon={SearchIcon}>

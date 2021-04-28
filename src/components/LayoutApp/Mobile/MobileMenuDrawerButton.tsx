@@ -2,7 +2,7 @@ import { useColorMode, Icon } from "@chakra-ui/react";
 import MenuIcon from "@material-ui/icons/MenuOutlined";
 import CloseIcon from "@material-ui/icons/CloseOutlined";
 
-import { textColor } from "../constants";
+import { textColor } from "../../../constants";
 
 type MobileMenuDrawerButtonProps = {
   isOpen: boolean;

@@ -2,7 +2,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 
 import contenfulFetch from "../../../utils/contenfulFetch";
 import { PageStoryProps, Story } from "../../../types";
-import { GET_STORY_COLLECTION } from "../../../gql/Stories";
+import { GET_STORY, GET_STORY_COLLECTION } from "../../../gql/story";
 import PageStory from "../../../components/PageStory";
 
 const WithStaticProps = ({ story }: PageStoryProps) => {
@@ -12,9 +12,11 @@ const WithStaticProps = ({ story }: PageStoryProps) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const id = params?.id;
-    const data = await contenfulFetch(GET_STORY_COLLECTION);
-    const stories = data.storyCollection.items;
-    const story = stories.find((story: Story) => story.sys.id === String(id));
+    const data = await contenfulFetch(GET_STORY, {
+      variables: { id: id },
+    });
+
+    const story = data.story;
     return { props: { story } };
   } catch (err) {
     return { props: { errors: err.message } };

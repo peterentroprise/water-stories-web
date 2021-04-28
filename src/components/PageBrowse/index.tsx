@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Heading } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-import CompLayoutApp from "../../components/CompLayoutApp";
+import LayoutApp from "../LayoutApp";
 import { StoryContent } from "./StoryContent";
 import StoryStack from "./StoryStack";
 
@@ -16,10 +16,10 @@ type PageProps = {
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 
-const PageStories = ({ stories }: PageProps) => {
-  const pageName = "Stories";
+const PageBrowse = ({ stories }: PageProps) => {
+  const pageName = "Browse";
   return (
-    <CompLayoutApp pageName={pageName}>
+    <LayoutApp pageName={pageName}>
       <MotionBox layout>
         <MotionHeading
           layout
@@ -37,8 +37,8 @@ const PageStories = ({ stories }: PageProps) => {
           ))}
         </StoryStack>
       </MotionBox>
-    </CompLayoutApp>
+    </LayoutApp>
   );
 };
 
-export default PageStories;
+export default PageBrowse;

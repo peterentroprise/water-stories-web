@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-import CompLayoutApp from "../../components/CompLayoutApp";
+import LayoutApp from "../../components/LayoutApp";
 
 const PageExplore = dynamic(() => import("../../components/PageExplore"), {
   ssr: false,
@@ -8,9 +8,9 @@ const PageExplore = dynamic(() => import("../../components/PageExplore"), {
 
 const Map = () => {
   return (
-    <CompLayoutApp pageName="Explore">
+    <LayoutApp pageName="Explore">
       <PageExplore pageName="Explore" />
-    </CompLayoutApp>
+    </LayoutApp>
   );
 };
 

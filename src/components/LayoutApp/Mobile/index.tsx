@@ -20,7 +20,6 @@ const Mobile: React.FC<MobileProps> = ({ children }) => {
       }}
     >
       <Background />
-
       <RightWrapper>
         <PageWrapper>{children}</PageWrapper>
         <BottomBar />

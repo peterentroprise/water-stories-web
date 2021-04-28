@@ -1,11 +1,11 @@
 import PageClient from "../../components/PageClient";
-import CompLayoutApp from "../../components/CompLayoutApp";
+import LayoutApp from "../../components/LayoutApp";
 
 const Client = () => {
   return (
-    <CompLayoutApp pageName="Hello Universe">
+    <LayoutApp pageName="Hello Universe">
       <PageClient />
-    </CompLayoutApp>
+    </LayoutApp>
   );
 };
 

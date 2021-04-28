@@ -7,7 +7,7 @@ import {
 
 import { SideBar } from "../SideBar";
 
-import { bgColor, textColor } from "../constants";
+import { bgColor, textColor } from "../../../constants";
 
 type MobileMenuDrawerProps = {
   isOpen: boolean;

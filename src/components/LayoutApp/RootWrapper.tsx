@@ -9,7 +9,7 @@ type RootWrapperProps = {
 
 export const RootWrapper: React.FC<RootWrapperProps> = ({
   children,
-  pageName = "Default Page Name",
+  pageName = "Water Stories",
 }) => {
   const breakpoint = "52em";
 

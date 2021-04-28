@@ -7,25 +7,32 @@ import {
   Tag,
   useColorMode,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 import Link from "../CompLink";
 
+import { textColor, bgColor } from "../../constants";
+
+const MotionBox = motion(Box);
+
 export const StoryContent = ({ story }) => {
   const { colorMode } = useColorMode();
-  console.log(story);
 
-  const bgColor = {
-    light: "rgba( 255, 255, 255, 0.9 )",
-    dark: "rgba( 0, 0, 0, 0.25 )",
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
   };
 
-  const color = { light: "black", dark: "white" };
   return (
-    <Box
+    <MotionBox
+      variants={item}
       borderRadius="sm"
       borderTopRightRadius="2xl"
       bg={bgColor[colorMode]}
-      color={color[colorMode]}
+      color={textColor[colorMode]}
       sx={{
         boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
         backdropFilter: "blur( 8px )",
@@ -61,6 +68,6 @@ export const StoryContent = ({ story }) => {
           <Tag>{story.slug}</Tag>
         </Flex>
       </Box>
-    </Box>
+    </MotionBox>
   );
 };

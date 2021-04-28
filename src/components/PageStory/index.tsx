@@ -1,26 +1,22 @@
-import { Text, Tag, Box, Heading } from "@chakra-ui/react";
+import { Text, Tag, Box, Heading, useColorMode } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-import CompLayoutApp from "../CompLayoutApp";
+import LayoutApp from "../LayoutApp";
 import CompLink from "../CompLink";
 import CompVideoPlayer from "../CompVideoPlayer";
 import { PageStoryProps } from "../../types";
+
+import { bgColor } from "../../constants";
 
 const MotionHeading = motion(Heading);
 const MotionBox = motion(Box);
 
 const PageStory = ({ story }: PageStoryProps) => {
   const pageName = story.storyName;
+  const { colorMode } = useColorMode();
   return (
-    <CompLayoutApp pageName={pageName}>
-      <MotionBox
-        layout
-        sx={{
-          boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-          backdropFilter: "blur( 8px )",
-          WebkitBackdropFilter: "blur( 8px )",
-        }}
-      >
+    <LayoutApp pageName={pageName}>
+      <MotionBox layout>
         <MotionHeading
           layout
           px="1rem"
@@ -31,23 +27,33 @@ const PageStory = ({ story }: PageStoryProps) => {
         >
           {story.storyName}
         </MotionHeading>
-        <CompVideoPlayer videoUrl={story.coverVideoUrl} />
-        <Box pb="50rem">
-          <Box p="1rem">
-            <Text>{story.storyShortDescription}</Text>
-            <Tag>{story.slug}</Tag>
-            <CompLink
-              href="/client/stories"
-              mt={1}
-              display="block"
-              lineHeight="normal"
-            >
-              Back To Browse
-            </CompLink>
+        <Box
+          borderTopRightRadius="2xl"
+          sx={{
+            boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
+            backdropFilter: "blur( 8px )",
+            WebkitBackdropFilter: "blur( 8px )",
+          }}
+          bg={bgColor[colorMode]}
+        >
+          <CompVideoPlayer videoUrl={story.coverVideoUrl} />
+          <Box pb="50rem">
+            <Box p="1rem">
+              <Text>{story.storyShortDescription}</Text>
+              <Tag>{story.slug}</Tag>
+              <CompLink
+                href="/client/browse"
+                mt={1}
+                display="block"
+                lineHeight="normal"
+              >
+                Back To Browse
+              </CompLink>
+            </Box>
           </Box>
         </Box>
       </MotionBox>
-    </CompLayoutApp>
+    </LayoutApp>
   );
 };
 

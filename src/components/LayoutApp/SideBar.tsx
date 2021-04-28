@@ -28,10 +28,10 @@ export const SideBar: React.FC<SideBarProps> = () => {
         <SideBarLink href="/client" icon={<HiOutlineHome />}>
           Water Stories
         </SideBarLink>
-        <SideBarLink href="/client/stories" icon={<HiOutlineBookOpen />}>
+        <SideBarLink href="/client/browse" icon={<HiOutlineBookOpen />}>
           Browse
         </SideBarLink>
-        <SideBarLink href="/client/stories" icon={<BiNetworkChart />}>
+        <SideBarLink href="/client/explore" icon={<BiNetworkChart />}>
           Explore
         </SideBarLink>
         <SideBarLink href="/client/search" icon={<HiSearch />}>

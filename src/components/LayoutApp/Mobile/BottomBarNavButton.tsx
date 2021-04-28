@@ -2,7 +2,7 @@ import { Box, Flex, Text, useColorMode } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/react";
 
 import Link from "../../CompLink";
-import { primaryColor } from "../constants";
+import { primaryColor } from "../../../constants";
 
 type BottomBarNavButtonProps = {
   href: string;

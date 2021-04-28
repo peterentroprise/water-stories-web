@@ -1,5 +1,5 @@
 import { Flex, useColorModeValue, useColorMode } from "@chakra-ui/react";
-import { bgColor } from "./constants";
+import { bgColor } from "../../constants";
 
 type RightWrapperProps = {};
 

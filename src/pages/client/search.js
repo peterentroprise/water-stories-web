@@ -7,7 +7,6 @@ import algoliasearch from "algoliasearch/lite";
 import { findResultsState } from "react-instantsearch-dom/server";
 
 import PageSearch from "../../components/PageSearch";
-import CompLayoutApp from "../../components/CompLayoutApp";
 
 const ALGOLIA_APP_ID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
 const ALGOLIA_SEARCH_ONLY_API_KEY =
@@ -82,18 +81,14 @@ class Search extends React.Component {
 
   render() {
     return (
-      <>
-        <CompLayoutApp pageName="Search">
-          <PageSearch
-            {...DEFAULT_PROPS}
-            pageName="Search"
-            searchState={this.state.searchState}
-            resultsState={this.props.resultsState}
-            onSearchStateChange={this.onSearchStateChange}
-            createURL={createURL}
-          />
-        </CompLayoutApp>
-      </>
+      <PageSearch
+        {...DEFAULT_PROPS}
+        pageName="Search"
+        searchState={this.state.searchState}
+        resultsState={this.props.resultsState}
+        onSearchStateChange={this.onSearchStateChange}
+        createURL={createURL}
+      />
     );
   }
 }

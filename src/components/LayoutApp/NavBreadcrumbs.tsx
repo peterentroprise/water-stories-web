@@ -29,7 +29,7 @@ export const NavBreadcrumbs: React.FC<NavBreadcrumbsProps> = ({ pageName }) => {
       }
     >
       {/* <BreadcrumbItem color="inherit">
-        <BreadcrumbLink as={Link} href="/client/stories">
+        <BreadcrumbLink as={Link} href="/client/browse">
           Stories
         </BreadcrumbLink>
       </BreadcrumbItem> */}

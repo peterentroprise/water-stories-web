@@ -1,14 +1,14 @@
 import { RootWrapper } from "./RootWrapper";
 
-type CompLayoutAppProps = {
+type LayoutAppProps = {
   pageName: string;
 };
 
-const CompLayoutApp: React.FC<CompLayoutAppProps> = ({
+const LayoutApp: React.FC<LayoutAppProps> = ({
   children,
-  pageName = "Default Page Name",
+  pageName = "Water Stories",
 }) => {
   return <RootWrapper pageName={pageName}>{children}</RootWrapper>;
 };
 
-export default CompLayoutApp;
+export default LayoutApp;

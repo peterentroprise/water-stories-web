@@ -3,7 +3,7 @@ import { Flex, Heading, useColorMode } from "@chakra-ui/react";
 import { useElementScrollPosition } from "../../hooks/useElementScrollPosition";
 import { AccountButton } from "./AccountButton";
 import { NavBreadcrumbs } from "./NavBreadcrumbs";
-import { bgColor, textColor } from "./constants";
+import { bgColor, textColor } from "../../constants";
 
 type AppBarProps = {
   pageName: string;
