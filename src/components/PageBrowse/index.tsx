@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import LayoutApp from "../LayoutApp";
 import { StoryContent } from "./StoryContent";
-import StoryStack from "./StoryStack";
+import { container } from "../../constants/motion";
 
 import { Stories } from "../../types";
 import { Story } from "../../types";
@@ -31,11 +31,12 @@ const PageBrowse = ({ stories }: PageProps) => {
         >
           {pageName}
         </MotionHeading>
-        <StoryStack>
+
+        <MotionBox variants={container} initial="hidden" animate="visible">
           {stories.map((story: Story) => (
             <StoryContent key={story.sys.id} story={story} />
           ))}
-        </StoryStack>
+        </MotionBox>
       </MotionBox>
     </LayoutApp>
   );

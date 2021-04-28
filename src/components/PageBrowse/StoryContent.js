@@ -12,27 +12,21 @@ import { motion } from "framer-motion";
 import Link from "../CompLink";
 
 import { textColor, bgColor } from "../../constants";
+import { item } from "../../constants/motion";
 
 const MotionBox = motion(Box);
 
 export const StoryContent = ({ story }) => {
   const { colorMode } = useColorMode();
 
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
-
   return (
     <MotionBox
-      variants={item}
       borderRadius="sm"
+      variants={item}
       borderTopRightRadius="2xl"
       bg={bgColor[colorMode]}
       color={textColor[colorMode]}
+      mb="1rem"
       sx={{
         boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
         backdropFilter: "blur( 8px )",
