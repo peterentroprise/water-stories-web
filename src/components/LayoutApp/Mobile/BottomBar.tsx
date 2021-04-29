@@ -17,7 +17,12 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
   const { isOpen, onOpen, onClose } = useMobileMenuState();
   return (
     <Flex position="fixed" bottom="0rem" height="4rem" w="full" align="center">
-      <Box bg={bgColor[colorMode]} w="16px" h="100%"></Box>
+      <Box
+        bg={bgColor[colorMode]}
+        borderTopRightRadius="1rem"
+        w="16px"
+        h="100%"
+      ></Box>
       <Box
         w="72px"
         h="36px"
