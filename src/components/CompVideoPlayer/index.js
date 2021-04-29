@@ -1,15 +1,13 @@
 import React from "react";
-import ReactJWPlayer from "react-jw-player";
+import dynamic from "next/dynamic";
 import { Box } from "@chakra-ui/react";
+
+const Player = dynamic(() => import("./player"), { ssr: false });
 
 const CompVideoPlayer = ({ videoUrl }) => {
   return (
     <Box position="sticky" top={0}>
-      <ReactJWPlayer
-        playerId="jw-player"
-        playerScript="https://cdn.jwplayer.com/libraries/zu9ZTlIy.js"
-        file={videoUrl}
-      />
+      <Player videoUrl={videoUrl} />
     </Box>
   );
 };

@@ -10,7 +10,6 @@ import "../../public/algolia/satellite.css";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import Head from "next/head";
-
 import { ChakraProvider } from "@chakra-ui/react";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
@@ -32,26 +31,7 @@ function App({ Component, pageProps }: AppProps) {
       <ChakraProvider resetCSS theme={theme}>
         <AnimateSharedLayout>
           <AnimatePresence onExitComplete={handleExitComplete}>
-            {/* <motion.div
-              key={router.route}
-              initial="pageInitial"
-              animate="pageAnimate"
-              exit="pageExit"
-              variants={{
-                pageInitial: {
-                  opacity: 0,
-                },
-                pageAnimate: {
-                  opacity: 1,
-                },
-                pageExit: {
-                  backgroundColor: "white",
-                  opacity: 0,
-                },
-              }}
-            > */}
             <Component {...pageProps} key={router.route} />
-            {/* </motion.div> */}
           </AnimatePresence>
         </AnimateSharedLayout>
       </ChakraProvider>

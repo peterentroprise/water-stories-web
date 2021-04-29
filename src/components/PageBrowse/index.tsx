@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 import LayoutApp from "../LayoutApp";
@@ -33,9 +33,11 @@ const PageBrowse = ({ stories }: PageProps) => {
         </MotionHeading>
 
         <MotionBox variants={container} initial="hidden" animate="visible">
-          {stories.map((story: Story) => (
-            <StoryContent key={story.sys.id} story={story} />
-          ))}
+          <SimpleGrid minChildWidth="360px" spacing="1rem" pb="3rem">
+            {stories.map((story: Story) => (
+              <StoryContent key={story.sys.id} story={story} />
+            ))}
+          </SimpleGrid>
         </MotionBox>
       </MotionBox>
     </LayoutApp>

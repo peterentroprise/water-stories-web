@@ -15,7 +15,7 @@ type DesktopProps = {
 
 export const Desktop: React.FC<DesktopProps> = ({
   children,
-  pageName = "Default Page Name",
+  pageName = "Water Stories",
 }) => {
   return (
     <Flex

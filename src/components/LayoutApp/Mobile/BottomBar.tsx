@@ -17,12 +17,7 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
   const { isOpen, onOpen, onClose } = useMobileMenuState();
   return (
     <Flex position="fixed" bottom="0rem" height="4rem" w="full" align="center">
-      <Box
-        bg={bgColor[colorMode]}
-        borderTopRightRadius="1rem"
-        w="16px"
-        h="100%"
-      ></Box>
+      <Box bg={bgColor[colorMode]} w="16px" h="100%"></Box>
       <Box
         w="72px"
         h="36px"
@@ -79,12 +74,13 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
         w="full"
         h="full"
         px="1rem"
+        borderTopRightRadius="1rem"
         color={textColor[colorMode]}
         boxShadow="0 8px 32px 0 rgba( 31, 38, 135, 0.37 )"
         zIndex="-1"
       >
         <BottomBarNavButton href="/client/browse" icon={LibraryBooksIcon}>
-          Stories
+          Browse
         </BottomBarNavButton>
         <BottomBarNavButton href="/client/explore" icon={AutoGraphIcon}>
           Explore

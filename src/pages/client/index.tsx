@@ -1,12 +1,7 @@
 import PageClient from "../../components/PageClient";
-import LayoutApp from "../../components/LayoutApp";
 
 const Client = () => {
-  return (
-    <LayoutApp pageName="Hello Universe">
-      <PageClient />
-    </LayoutApp>
-  );
+  return <PageClient />;
 };
 
 export default Client;

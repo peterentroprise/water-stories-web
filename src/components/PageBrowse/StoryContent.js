@@ -26,7 +26,6 @@ export const StoryContent = ({ story }) => {
       borderTopRightRadius="2xl"
       bg={bgColor[colorMode]}
       color={textColor[colorMode]}
-      mb="1rem"
       sx={{
         boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
         backdropFilter: "blur( 8px )",

@@ -37,6 +37,7 @@ const PageStory = ({ story }: PageStoryProps) => {
           bg={bgColor[colorMode]}
         >
           <CompVideoPlayer videoUrl={story.coverVideoUrl} />
+
           <Box pb="50rem">
             <Box p="1rem">
               <Text>{story.storyShortDescription}</Text>
