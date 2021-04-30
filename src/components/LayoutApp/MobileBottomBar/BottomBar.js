@@ -1,20 +1,19 @@
 import { Box, Flex, useColorMode } from "@chakra-ui/react";
-
-import { useMobileMenuState } from "../../../hooks/useMobileMenuState";
-import { MobileMenuDrawer } from "./MobileMenuDrawer";
-import { MobileMenuDrawerButton } from "./MobileMenuDrawerButton";
-import { textColor, bgColor } from "../../../constants";
-import { BottomBarNavButton } from "./BottomBarNavButton";
-
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooksOutlined";
 import AutoGraphIcon from "@material-ui/icons/AutoGraphOutlined";
 import SearchIcon from "@material-ui/icons/SearchOutlined";
 
-type BottomBarProps = {};
+import { MobileMenuDrawerButton } from "./MobileMenuDrawerButton";
+import { textColor, bgColor } from "../../../constants";
+import { BottomBarNavButton } from "./BottomBarNavButton";
+import { useMobileMenuState } from "../../../hooks/useMobileMenuState";
+import { useSearchDrawerState } from "../../../hooks/useSearchDrawerState";
 
-export const BottomBar: React.FC<BottomBarProps> = () => {
+export const BottomBar = () => {
   const { colorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useMobileMenuState();
+  const { mobileMenuIsOpen, toggleMobileMenu } = useMobileMenuState();
+  const { toggleSearchDrawer } = useSearchDrawerState();
+
   return (
     <Flex position="fixed" bottom="0rem" height="4rem" w="full" align="center">
       <Box
@@ -52,17 +51,12 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
             }}
             zIndex="-1"
             pointerEvents="all"
-            onClick={onOpen}
+            onClick={toggleMobileMenu}
           >
             <MobileMenuDrawerButton
-              isOpen={isOpen}
-              onOpen={onOpen}
-              onClose={onClose}
-            />
-            <MobileMenuDrawer
-              isOpen={isOpen}
-              onOpen={onOpen}
-              onClose={onClose}
+              isOpen={mobileMenuIsOpen}
+              onOpen={toggleMobileMenu}
+              onClose={toggleMobileMenu}
             />
           </Flex>
         </Flex>
@@ -90,7 +84,7 @@ export const BottomBar: React.FC<BottomBarProps> = () => {
         <BottomBarNavButton href="/client/explore" icon={AutoGraphIcon}>
           Explore
         </BottomBarNavButton>
-        <BottomBarNavButton href="/client/search" icon={SearchIcon}>
+        <BottomBarNavButton onClick={toggleSearchDrawer} icon={SearchIcon}>
           Search
         </BottomBarNavButton>
       </Flex>

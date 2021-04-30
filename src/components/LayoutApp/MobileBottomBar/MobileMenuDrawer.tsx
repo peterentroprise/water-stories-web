@@ -5,7 +5,7 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 
-import { SideBar } from "../SideBar";
+import { SideBarContent } from "../SideBar/SideBarContent";
 
 import { bgColor, textColor } from "../../../constants";
 
@@ -37,7 +37,7 @@ export const MobileMenuDrawer: React.FC<MobileMenuDrawerProps> = ({
         maxW="64"
         pr="1rem"
       >
-        <SideBar />
+        <SideBarContent />
       </DrawerContent>
     </Drawer>
   );

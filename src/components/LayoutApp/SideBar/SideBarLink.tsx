@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { HiX } from "react-icons/hi";
 
-import CompLink from "../CompLink";
+import CompLink from "../../CompLink";
 
 interface SideBarLinkProps extends BoxProps {
   icon?: React.ReactElement;

@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { RecoilRoot } from "recoil";
 
 import theme from "../constants/theme";
 
@@ -31,7 +32,9 @@ function App({ Component, pageProps }: AppProps) {
       <ChakraProvider resetCSS theme={theme}>
         <AnimateSharedLayout>
           <AnimatePresence onExitComplete={handleExitComplete}>
-            <Component {...pageProps} key={router.route} />
+            <RecoilRoot>
+              <Component {...pageProps} key={router.route} />
+            </RecoilRoot>
           </AnimatePresence>
         </AnimateSharedLayout>
       </ChakraProvider>

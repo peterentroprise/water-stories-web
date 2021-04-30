@@ -7,11 +7,13 @@ import { primaryColor } from "../../../constants";
 type BottomBarNavButtonProps = {
   href: string;
   icon: any;
+  onClick: any;
 };
 
 export const BottomBarNavButton: React.FC<BottomBarNavButtonProps> = ({
   children,
   href,
+  onClick,
   icon,
 }) => {
   const { colorMode } = useColorMode();
@@ -39,14 +41,23 @@ export const BottomBarNavButton: React.FC<BottomBarNavButtonProps> = ({
         fontWeight: "bold",
       }}
     >
-      <Link href={href}>
-        <Flex flexDirection="column" align="center" h="40px">
+      {(!onClick && (
+        <Link href={href}>
+          <Flex flexDirection="column" align="center" h="40px">
+            <Icon as={icon} h="20px" w="20px" />
+            <Text h="16px" fontSize="14px" fontWeight="semibold">
+              {children}
+            </Text>
+          </Flex>
+        </Link>
+      )) || (
+        <Flex flexDirection="column" align="center" h="40px" onClick={onClick}>
           <Icon as={icon} h="20px" w="20px" />
           <Text h="16px" fontSize="14px" fontWeight="semibold">
             {children}
           </Text>
         </Flex>
-      </Link>
+      )}
     </Box>
   );
 };

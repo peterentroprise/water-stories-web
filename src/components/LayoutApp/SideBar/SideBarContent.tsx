@@ -1,4 +1,4 @@
-import { Box, VStack, Heading } from "@chakra-ui/react";
+import { VStack, Heading } from "@chakra-ui/react";
 import {
   HiOutlineGlobe,
   HiOutlineHome,
@@ -7,12 +7,13 @@ import {
 } from "react-icons/hi";
 import { BiNetworkChart } from "react-icons/bi";
 import { SideBarLink } from "./SideBarLink";
-import DarkModeSwitch from "../CompDarkModeSwitch";
+import DarkModeSwitch from "../../CompDarkModeSwitch";
+import { SearchButton } from "../../CompSearch/SearchButton";
 type SideBarProps = {};
 
-export const SideBar: React.FC<SideBarProps> = () => {
+export const SideBarContent: React.FC<SideBarProps> = () => {
   return (
-    <Box as="nav" height="full" pt="1rem">
+    <>
       <Heading
         p="1rem"
         display={["block", "block", "none"]}
@@ -37,9 +38,10 @@ export const SideBar: React.FC<SideBarProps> = () => {
         <SideBarLink href="/client/search" icon={<HiSearch />}>
           Search
         </SideBarLink>
+        <SearchButton />
       </VStack>
 
       <DarkModeSwitch />
-    </Box>
+    </>
   );
 };

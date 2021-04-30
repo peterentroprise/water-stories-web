@@ -5,8 +5,12 @@ import { withRouter } from "next/router";
 import qs from "qs";
 import algoliasearch from "algoliasearch/lite";
 import { findResultsState } from "react-instantsearch-dom/server";
+import dynamic from "next/dynamic";
 
 import PageSearch from "../../components/PageSearch";
+// const PageSearch = dynamic(() => import("../../components/PageSearch"), {
+//   ssr: false,
+// });
 
 const ALGOLIA_APP_ID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
 const ALGOLIA_SEARCH_ONLY_API_KEY =

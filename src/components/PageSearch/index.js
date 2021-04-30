@@ -29,52 +29,52 @@ const PageSearch = ({
   ...rest
 }) => {
   return (
-    <LayoutApp pageName={pageName}>
-      <MotionBox layout>
-        <Flex
-          p="1rem"
-          mb="10rem"
-          width="full"
-          maxW="container.sm"
-          py="1rem"
-          direction="column"
+    // <LayoutApp pageName={pageName}>
+    <MotionBox layout>
+      <Flex
+        p="1rem"
+        mb="10rem"
+        width="full"
+        maxW="container.sm"
+        py="1rem"
+        direction="column"
+      >
+        <MotionHeading
+          layout
+          pt="2rem"
+          pb="1rem"
+          size="3xl"
+          fontWeight="extrabold"
         >
-          <MotionHeading
-            layout
-            pt="2rem"
-            pb="1rem"
-            size="3xl"
-            fontWeight="extrabold"
-          >
-            {pageName}
-          </MotionHeading>
-          <InstantSearch
-            searchClient={searchClient}
-            resultsState={resultsState}
-            onSearchStateChange={onSearchStateChange}
-            searchState={searchState}
-            createURL={createURL}
-            indexName={indexName}
-            onSearchParameters={onSearchParameters}
-            {...rest}
-          >
-            <Configure hitsPerPage={12} />
-            <Box position="sticky" top="1rem">
-              <SearchBox />
-            </Box>
+          {pageName}
+        </MotionHeading>
+        <InstantSearch
+          searchClient={searchClient}
+          resultsState={resultsState}
+          onSearchStateChange={onSearchStateChange}
+          searchState={searchState}
+          createURL={createURL}
+          indexName={indexName}
+          onSearchParameters={onSearchParameters}
+          {...rest}
+        >
+          <Configure hitsPerPage={12} />
+          <Box position="sticky" top="1rem">
+            <SearchBox />
+          </Box>
 
-            <Box>
-              <RefinementList attribute="fields.storyName.en-US" />
-            </Box>
-            <Box listStyleType="none">
-              <Hits hitComponent={Hit} />
-            </Box>
+          <Box>
+            <RefinementList attribute="fields.storyName.en-US" />
+          </Box>
+          <Box listStyleType="none">
+            <Hits hitComponent={Hit} />
+          </Box>
 
-            <Pagination />
-          </InstantSearch>
-        </Flex>
-      </MotionBox>
-    </LayoutApp>
+          <Pagination />
+        </InstantSearch>
+      </Flex>
+    </MotionBox>
+    // </LayoutApp>
   );
 };
 
