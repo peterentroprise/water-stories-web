@@ -1,12 +1,14 @@
 import { Highlight } from "react-instantsearch-dom";
 import { Flex, Box, Text, AspectRatio } from "@chakra-ui/react";
 import CompLink from "../CompLink";
+import { useSearchDrawerState } from "../../hooks/useSearchDrawerState";
 
 export const SearchHit = ({ hit }) => {
+  const { toggleSearchDrawer } = useSearchDrawerState();
+
   return (
-    <CompLink href={`/stories/${hit.fields.slug["en-US"]}`}>
-      {console.log(hit.fields)}
-      <Flex width="full">
+    <CompLink href={`/client/stories/${hit.fields.slug["en-US"]}`}>
+      <Flex onClick={toggleSearchDrawer} width="full">
         <Box maxW="128px" pr="1rem">
           <video src={`${hit.fields.coverVideoUrl["en-US"]}`} />
         </Box>

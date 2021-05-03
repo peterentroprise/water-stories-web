@@ -22,6 +22,7 @@ export const SearchModal = () => {
       isOpen={searchDrawerIsOpen}
       blockScrollOnMount={false}
       onOverlayClick={toggleSearchDrawer}
+      scrollBehavior="inside"
     >
       <ModalOverlay />
       <SearchWrapper>

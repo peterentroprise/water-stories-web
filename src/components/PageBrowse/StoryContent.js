@@ -5,11 +5,12 @@ import {
   AspectRatio,
   Image,
   Tag,
+  LinkBox,
   useColorMode,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-import Link from "../CompLink";
+import { LinkOverlay } from "../CompLink";
 
 import { textColor, bgColor } from "../../constants";
 import { item } from "../../constants/motion";
@@ -33,34 +34,36 @@ export const StoryContent = ({ story }) => {
         // border: "1px solid rgba( 255, 255, 255, 0.18 )",
       }}
     >
-      <AspectRatio ratio={16 / 9}>
-        <Image
-          borderRadius="sm"
-          borderTopRightRadius="2xl"
-          src={story.coverImage.url}
-          alt="Moat"
-          objectFit="cover"
-        />
-      </AspectRatio>
-      <Box p="1rem">
-        <Box mt=".5rem">
-          <Link
-            display="block"
-            fontSize="lg"
-            lineHeight="normal"
-            fontWeight="semibold"
-            href={`/client/stories/${story.sys.id}`}
-          >
-            {story.storyName}
-          </Link>
+      <LinkBox>
+        <AspectRatio ratio={16 / 9}>
+          <Image
+            borderRadius="sm"
+            borderTopRightRadius="2xl"
+            src={story.coverImage.url}
+            alt="Moat"
+            objectFit="cover"
+          />
+        </AspectRatio>
+        <Box p="1rem">
+          <Box mt=".5rem">
+            <LinkOverlay href={`/client/stories/${story.slug}`}></LinkOverlay>
+            <Text
+              display="block"
+              fontSize="lg"
+              lineHeight="normal"
+              fontWeight="semibold"
+            >
+              {story.storyName}
+            </Text>
 
-          <Text mt=".5rem">{story.storyShortDescription}</Text>
+            <Text mt=".5rem">{story.storyShortDescription}</Text>
+          </Box>
+
+          <Flex my=".5rem" alignItems="baseline">
+            <Tag>{story.slug}</Tag>
+          </Flex>
         </Box>
-
-        <Flex my=".5rem" alignItems="baseline">
-          <Tag>{story.slug}</Tag>
-        </Flex>
-      </Box>
+      </LinkBox>
     </MotionBox>
   );
 };

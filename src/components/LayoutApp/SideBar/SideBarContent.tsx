@@ -3,7 +3,6 @@ import {
   HiOutlineGlobe,
   HiOutlineHome,
   HiOutlineBookOpen,
-  HiSearch,
 } from "react-icons/hi";
 import { BiNetworkChart } from "react-icons/bi";
 import { SideBarLink } from "./SideBarLink";
@@ -34,9 +33,6 @@ export const SideBarContent: React.FC<SideBarProps> = () => {
         </SideBarLink>
         <SideBarLink href="/client/explore" icon={<BiNetworkChart />}>
           Explore
-        </SideBarLink>
-        <SideBarLink href="/client/search" icon={<HiSearch />}>
-          Search
         </SideBarLink>
         <SearchButton />
       </VStack>
