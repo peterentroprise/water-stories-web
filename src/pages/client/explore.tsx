@@ -1,6 +1,8 @@
 import dynamic from "next/dynamic";
+import CompLoading from "../../components/CompLoading";
 
 const PageExplore = dynamic(() => import("../../components/PageExplore"), {
+  loading: () => <CompLoading />,
   ssr: false,
 });
 

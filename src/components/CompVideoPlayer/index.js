@@ -1,8 +1,12 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { Box } from "@chakra-ui/react";
+import CompLoading from "../CompLoading";
 
-const Player = dynamic(() => import("./player"), { ssr: false });
+const Player = dynamic(() => import("./player"), {
+  loading: () => <CompLoading />,
+  ssr: false,
+});
 
 const CompVideoPlayer = ({ videoUrl }) => {
   return (

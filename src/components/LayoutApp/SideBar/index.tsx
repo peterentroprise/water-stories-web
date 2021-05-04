@@ -11,8 +11,8 @@ const SideBar: React.FC<DesktopSideBarProps> = () => {
       flex="1"
       width="var(--sidebar-width)"
       left="0"
-      py="5"
-      px="3"
+      py="1rem"
+      pr="1rem"
       position="fixed"
     >
       <SideBarContent />

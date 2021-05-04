@@ -5,5 +5,9 @@ type SearchButtonProps = {};
 
 export const SearchButton: React.FC<SearchButtonProps> = () => {
   const { toggleSearchDrawer } = useSearchDrawerState();
-  return <Button onClick={toggleSearchDrawer}>Search</Button>;
+  return (
+    <Button m="1rem" onClick={toggleSearchDrawer}>
+      Search
+    </Button>
+  );
 };

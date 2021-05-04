@@ -1,11 +1,15 @@
-import config from "./contentfulConfig";
+import {
+  CONTENTFUL_API_URL,
+  CONTENTFUL_SPACE,
+  CONTENTFUL_ACCESS_TOKEN,
+} from "../constants/contentful";
 
 export default async function contenfulFetch(query, { variables } = {}) {
-  const res = await fetch(config.CONTENTFUL_API_URL + config.CONTENTFUL_SPACE, {
+  const res = await fetch(CONTENTFUL_API_URL + CONTENTFUL_SPACE, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${config.CONTENTFUL_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${CONTENTFUL_ACCESS_TOKEN}`,
     },
     body: JSON.stringify({
       query,
