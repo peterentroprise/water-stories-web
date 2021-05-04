@@ -1,3 +1,1 @@
 # Water Stories Client
-
-Vercel
