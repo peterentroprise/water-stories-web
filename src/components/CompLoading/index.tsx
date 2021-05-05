@@ -1,4 +1,4 @@
-import { Flex, Box, CircularProgress } from "@chakra-ui/react";
+import { Flex, CircularProgress } from "@chakra-ui/react";
 // import { CSSProperties } from "react";
 // import { useLottie } from "lottie-react";
 // import data from "./data2.json";

@@ -13,6 +13,7 @@ import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { RecoilRoot } from "recoil";
+import { Provider } from "next-auth/client";
 
 import theme from "../constants/theme";
 
@@ -29,15 +30,23 @@ function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <ChakraProvider resetCSS theme={theme}>
-        <AnimateSharedLayout>
-          <AnimatePresence onExitComplete={handleExitComplete}>
-            <RecoilRoot>
-              <Component {...pageProps} key={router.route} />
-            </RecoilRoot>
-          </AnimatePresence>
-        </AnimateSharedLayout>
-      </ChakraProvider>
+      <Provider
+        options={{
+          clientMaxAge: 0,
+          keepAlive: 0,
+        }}
+        session={pageProps.session}
+      >
+        <ChakraProvider resetCSS theme={theme}>
+          <AnimateSharedLayout>
+            <AnimatePresence onExitComplete={handleExitComplete}>
+              <RecoilRoot>
+                <Component {...pageProps} key={router.route} />
+              </RecoilRoot>
+            </AnimatePresence>
+          </AnimateSharedLayout>
+        </ChakraProvider>
+      </Provider>
     </>
   );
 }
