@@ -16,8 +16,9 @@ export default NextAuth({
   jwt: {
     secret: process.env.OAUTH_SECRET,
     encode: async ({ secret, token, maxAge }) => {
+      console.log(token);
       const jwtClaims = {
-        // sub: token.id.toString(),
+        sub: token.sub,
         name: token.name,
         email: token.email,
         iat: Date.now() / 1000,
