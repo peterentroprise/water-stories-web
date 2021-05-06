@@ -1,10 +1,8 @@
-export const INSERT_USERS_AUTH_ONE = `
-mutation insertUsersAuthOne($id: String!, $name: String!) {
-  insert_users(objects: {id: $id, name: $name}) {
-    returning {
-      id
-      created_at
-    }
+export const INSERT_USERS_ONE = `
+mutation insert_users_one($id: String!, $name: String!) {
+  insert_users_one(object: {id: $id, name: $name}) {
+    id
+    created_at
   }
 }`;
 

@@ -1,9 +1,8 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 import jwt from "jsonwebtoken";
-import { INSERT_USERS_AUTH_ONE } from "../../../gql/user";
-import hasuraFetch from "../../../utils/hasuraFetch";
-import { HASURA_API_URL } from "../../../constants/hasura";
+import { INSERT_USERS_ONE } from "../../../gql/user";
+import { HASURA_API_URL, HASURA_ADMIN_SECRET } from "../../../constants/hasura";
 import { GraphQLClient } from "graphql-request";
 
 export default NextAuth({
@@ -63,34 +62,21 @@ export default NextAuth({
     //jwt
     async jwt(token, user, account, profile, isNewUser) {
       const isUserSignedIn = user ? true : false;
-
-      if (account?.accessToken) {
-        token.accessToken = account.accessToken;
+      if (isUserSignedIn) {
+        token.id = user.id.toString();
       }
 
-      if (isUserSignedIn) {
-        const encodedToken = jwt.sign(
-          token.accessToken,
-          process.env.OAUTH_SECRET,
-          {
-            algorithm: "HS256",
-          }
-        );
-        const client = new GraphQLClient(HASURA_API_URL);
-        const variables = { id: user.id, name: user.name };
+      console.log({ token, user, account, profile, isNewUser });
 
-        const codedToken =
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDEzNzk0NzU5NjMwNDA1OTUyODUiLCJuYW1lIjoiUGV0ZXIgQXJub2xkIiwiZW1haWwiOiJwZXRlckBlbnRyb3ByaXNlLmNvbSIsImlhdCI6MTYyMDI2MDI1NS4yMjMsImV4cCI6MTYyMDM0NjY1NSwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbImFkbWluIiwidXNlciJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJ1c2VyIiwieC1oYXN1cmEtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS11c2VyLWlkIjoiMTAxMzc5NDc1OTYzMDQwNTk1Mjg1In19.dRfb_26KNc46B_LHrly_gzTcv8h9TaFySX-5UGqnIcA";
-
-        const requestHeaders = {
-          Authorization: "Bearer " + codedToken,
-        };
-
-        console.log({ codedToken, encodedToken, token });
-        console.log(token.accessToken);
-
-        await client.request(INSERT_USERS_AUTH_ONE, variables, requestHeaders);
-        token.id = user.id.toString();
+      const client = new GraphQLClient(HASURA_API_URL);
+      const variables = { id: token.sub, name: token.name };
+      const requestHeaders = {
+        "x-hasura-admin-secret": HASURA_ADMIN_SECRET,
+      };
+      try {
+        await client.request(INSERT_USERS_ONE, variables, requestHeaders);
+      } catch (err) {
+        console.log(err.message);
       }
 
       return Promise.resolve(token);
