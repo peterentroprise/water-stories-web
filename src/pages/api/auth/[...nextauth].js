@@ -1,6 +1,10 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 import jwt from "jsonwebtoken";
+import { INSERT_USERS_AUTH_ONE } from "../../../gql/user";
+import hasuraFetch from "../../../utils/hasuraFetch";
+import { HASURA_API_URL } from "../../../constants/hasura";
+import { GraphQLClient } from "graphql-request";
 
 export default NextAuth({
   providers: [
@@ -16,15 +20,14 @@ export default NextAuth({
   jwt: {
     secret: process.env.OAUTH_SECRET,
     encode: async ({ secret, token, maxAge }) => {
-      console.log(token);
       const jwtClaims = {
-        sub: token.sub,
+        sub: token.id,
         name: token.name,
         email: token.email,
         iat: Date.now() / 1000,
         exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60,
         "https://hasura.io/jwt/claims": {
-          "x-hasura-allowed-roles": ["user"],
+          "x-hasura-allowed-roles": ["admin", "user"],
           "x-hasura-default-role": "user",
           "x-hasura-role": "user",
           "x-hasura-user-id": token.id,
@@ -52,18 +55,44 @@ export default NextAuth({
       const encodedToken = jwt.sign(token, process.env.OAUTH_SECRET, {
         algorithm: "HS256",
       });
+
       session.id = token.id;
       session.token = encodedToken;
       return Promise.resolve(session);
     },
+    //jwt
     async jwt(token, user, account, profile, isNewUser) {
       const isUserSignedIn = user ? true : false;
-      // make a http call to our graphql api
-      // store this in postgres
+
+      if (account?.accessToken) {
+        token.accessToken = account.accessToken;
+      }
 
       if (isUserSignedIn) {
+        const encodedToken = jwt.sign(
+          token.accessToken,
+          process.env.OAUTH_SECRET,
+          {
+            algorithm: "HS256",
+          }
+        );
+        const client = new GraphQLClient(HASURA_API_URL);
+        const variables = { id: user.id, name: user.name };
+
+        const codedToken =
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDEzNzk0NzU5NjMwNDA1OTUyODUiLCJuYW1lIjoiUGV0ZXIgQXJub2xkIiwiZW1haWwiOiJwZXRlckBlbnRyb3ByaXNlLmNvbSIsImlhdCI6MTYyMDI2MDI1NS4yMjMsImV4cCI6MTYyMDM0NjY1NSwiaHR0cHM6Ly9oYXN1cmEuaW8vand0L2NsYWltcyI6eyJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbImFkbWluIiwidXNlciJdLCJ4LWhhc3VyYS1kZWZhdWx0LXJvbGUiOiJ1c2VyIiwieC1oYXN1cmEtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS11c2VyLWlkIjoiMTAxMzc5NDc1OTYzMDQwNTk1Mjg1In19.dRfb_26KNc46B_LHrly_gzTcv8h9TaFySX-5UGqnIcA";
+
+        const requestHeaders = {
+          Authorization: "Bearer " + codedToken,
+        };
+
+        console.log({ codedToken, encodedToken, token });
+        console.log(token.accessToken);
+
+        await client.request(INSERT_USERS_AUTH_ONE, variables, requestHeaders);
         token.id = user.id.toString();
       }
+
       return Promise.resolve(token);
     },
   },
