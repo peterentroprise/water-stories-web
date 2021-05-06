@@ -1,11 +1,6 @@
 import { Box, Heading, Flex, Button } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { signIn, signOut, useSession } from "next-auth/client";
-import { setHeader } from "graphql-request";
-import useSWR from "swr";
-import { hasuraClient } from "../../utils/hasuraClient";
-import { GET_USER_BY_PK } from "../../gql/user";
-import { HASURA_API_URL } from "../../constants/hasura";
 
 import LayoutApp from "../LayoutApp";
 
@@ -15,23 +10,6 @@ const MotionHeading = motion(Heading);
 const PageClient = () => {
   const [session, loading] = useSession();
 
-  const fetcher = async (query, variables, headers) =>
-    await hasuraClient.request(query, variables, headers);
-
-  const variables = {
-    id: "123",
-  };
-
-  const requestHeaders = {
-    authorization: "asd",
-  };
-
-  const { data, error } = useSWR(
-    GET_USER_BY_PK,
-    variables,
-    requestHeaders,
-    fetcher
-  );
   return (
     <LayoutApp pageName="Account">
       <MotionBox layout>
@@ -59,7 +37,6 @@ const PageClient = () => {
       </Button>
       {session && (
         <>
-          {console.log({ data, session })}
           {session.user.image && (
             <span style={{ backgroundImage: `url(${session.user.image})` }} />
           )}

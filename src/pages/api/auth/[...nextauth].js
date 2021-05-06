@@ -76,7 +76,7 @@ export default NextAuth({
       try {
         await client.request(INSERT_USERS_ONE, variables, requestHeaders);
       } catch (err) {
-        console.log(err.message);
+        console.log("User already exists.");
       }
 
       return Promise.resolve(token);
