@@ -2,14 +2,22 @@ import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 import jwt from "jsonwebtoken";
 import { INSERT_USERS_ONE } from "../../../gql/user";
-import { HASURA_API_URL, HASURA_ADMIN_SECRET } from "../../../constants/hasura";
-import { GraphQLClient } from "graphql-request";
+import { HASURA_ADMIN_SECRET } from "../../../constants/hasura";
+import { hasuraClient } from "../../../utils/hasuraClient";
 
 export default NextAuth({
   providers: [
     Providers.Google({
       clientId: process.env.GOOGLE_OAUTH_CLIENT_ID,
       clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+    }),
+    Providers.Apple({
+      clientId: process.env.OAUTH_APPLE_ID,
+      clientSecret: {
+        teamId: process.env.OAUTH_APPLE_TEAM_ID,
+        privateKey: process.env.OAUTH_APPLE_PRIVATE_KEY,
+        keyId: process.env.OAUTH_APPLE_KEY_ID,
+      },
     }),
   ],
   secret: process.env.OAUTH_SECRET,
@@ -41,15 +49,16 @@ export default NextAuth({
     },
   },
   pages: {
-    // signIn: "/auth/signin", // Displays signin buttons
-    // signOut: "/auth/signout", // Displays form with sign out button
-    // error: "/auth/error", // Error code passed in query string as ?error=
-    // verifyRequest: "/auth/verify-request", // Used for check email page
-    // newUser: null, // If set, new users will be directed here on first sign in
+    signIn: "/client/auth/signin",
   },
   callbacks: {
-    // async signIn(user, account, profile) { return true },
-    // async redirect(url, baseUrl) { return baseUrl },
+    async signIn(user, account, profile) {
+      return true;
+    },
+    async redirect(url, baseUrl) {
+      console.log(url.startsWith(baseUrl) ? url : baseUrl);
+      return url.startsWith(baseUrl) ? url : baseUrl;
+    },
     async session(session, token) {
       const encodedToken = jwt.sign(token, process.env.OAUTH_SECRET, {
         algorithm: "HS256",
@@ -65,16 +74,12 @@ export default NextAuth({
       if (isUserSignedIn) {
         token.id = user.id.toString();
       }
-
-      console.log({ token, user, account, profile, isNewUser });
-
-      const client = new GraphQLClient(HASURA_API_URL);
-      const variables = { id: token.sub, name: token.name };
-      const requestHeaders = {
-        "x-hasura-admin-secret": HASURA_ADMIN_SECRET,
-      };
       try {
-        await client.request(INSERT_USERS_ONE, variables, requestHeaders);
+        const variables = { id: token.sub, name: token.name };
+        const requestHeaders = {
+          "x-hasura-admin-secret": HASURA_ADMIN_SECRET,
+        };
+        await hasuraClient.request(INSERT_USERS_ONE, variables, requestHeaders);
       } catch (err) {
         console.log("User already exists.");
       }

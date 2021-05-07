@@ -27,7 +27,7 @@ const PageClient = () => {
         </Flex>
       </MotionBox>
       <Button
-        href={`/api/auth/signin`}
+        href={`/client/auth/signin`}
         onClick={(e) => {
           e.preventDefault();
           signIn();
