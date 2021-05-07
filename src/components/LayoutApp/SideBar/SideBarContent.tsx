@@ -8,7 +8,6 @@ import {
 import { BiNetworkChart } from "react-icons/bi";
 import { SideBarLink } from "./SideBarLink";
 import DarkModeSwitch from "../../CompDarkModeSwitch";
-import { SearchButton } from "../../CompSearch/SearchButton";
 type SideBarProps = {};
 
 export const SideBarContent: React.FC<SideBarProps> = () => {
@@ -38,7 +37,6 @@ export const SideBarContent: React.FC<SideBarProps> = () => {
         <SideBarLink href="/client/account" icon={<HiOutlineUserCircle />}>
           Account
         </SideBarLink>
-        <SearchButton />
       </VStack>
 
       <DarkModeSwitch />
