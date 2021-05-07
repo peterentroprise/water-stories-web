@@ -31,6 +31,7 @@ export default NextAuth({
         sub: token.id,
         name: token.name,
         email: token.email,
+        image: token.image,
         iat: Date.now() / 1000,
         exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60,
         "https://hasura.io/jwt/claims": {
@@ -52,12 +53,13 @@ export default NextAuth({
     signIn: "/client/auth/signin",
   },
   callbacks: {
-    async signIn(user, account, profile) {
-      return true;
-    },
-    async redirect(url, baseUrl) {
-      console.log(url.startsWith(baseUrl) ? url : baseUrl);
-      return url.startsWith(baseUrl) ? url : baseUrl;
+    // async signIn(user, account, profile) {
+    //   return true;
+    // },
+    redirect: async (url, baseUrl) => {
+      return url.startsWith(baseUrl)
+        ? Promise.resolve(url)
+        : Promise.resolve(baseUrl);
     },
     async session(session, token) {
       const encodedToken = jwt.sign(token, process.env.OAUTH_SECRET, {
@@ -66,6 +68,8 @@ export default NextAuth({
 
       session.id = token.id;
       session.token = encodedToken;
+      session.user.image = token.image;
+
       return Promise.resolve(session);
     },
     //jwt
@@ -73,6 +77,7 @@ export default NextAuth({
       const isUserSignedIn = user ? true : false;
       if (isUserSignedIn) {
         token.id = user.id.toString();
+        token.image = user.image;
       }
       try {
         const variables = { id: token.sub, name: token.name };

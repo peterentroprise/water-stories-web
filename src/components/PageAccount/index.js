@@ -1,4 +1,4 @@
-import { Box, Heading, Flex, Button } from "@chakra-ui/react";
+import { Box, Button, Text, Avatar, Heading, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { signIn, signOut, useSession } from "next-auth/client";
 
@@ -12,11 +12,10 @@ const PageClient = () => {
 
   return (
     <LayoutApp pageName="Account">
-      <MotionBox layout>
+      <MotionBox layout px="1rem">
         <Flex w="full" maxW="container.sm">
           <MotionHeading
             layout
-            px="1rem"
             pt="3rem"
             pb="2rem"
             size="3xl"
@@ -25,37 +24,44 @@ const PageClient = () => {
             Account
           </MotionHeading>
         </Flex>
-      </MotionBox>
-      <Button
-        href={`/client/auth/signin`}
-        onClick={(e) => {
-          e.preventDefault();
-          signIn();
-        }}
-      >
-        Sign In
-      </Button>
-      {session && (
-        <>
-          {session.user.image && (
-            <span style={{ backgroundImage: `url(${session.user.image})` }} />
-          )}
-          <span>
-            <small>Signed in as</small>
-            <br />
-            <strong>{session.user.email || session.user.name}</strong>
-          </span>
-          <a
-            href={`/api/auth/signout`}
+        {(session && (
+          <Box>
+            <Flex>
+              {session.user.image && (
+                <Avatar
+                  mr="1rem"
+                  src={session.user.image}
+                  name={session.user.name}
+                />
+              )}
+              <Box>
+                <Text>Signed in as</Text>
+                <Text>{session.user.email || session.user.name}</Text>
+              </Box>
+            </Flex>
+            <Button
+              mt="1rem"
+              href={`/api/auth/signout`}
+              onClick={(e) => {
+                e.preventDefault();
+                signOut();
+              }}
+            >
+              Sign out
+            </Button>
+          </Box>
+        )) || (
+          <Button
+            href={`/client/auth/signin`}
             onClick={(e) => {
               e.preventDefault();
-              signOut();
+              signIn();
             }}
           >
-            Sign out
-          </a>
-        </>
-      )}
+            Sign In
+          </Button>
+        )}
+      </MotionBox>
     </LayoutApp>
   );
 };
