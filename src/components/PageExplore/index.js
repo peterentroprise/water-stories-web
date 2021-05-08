@@ -2,6 +2,7 @@ import { Box, Heading } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 import LayoutApp from "../LayoutApp";
+import CompHeader from "../../components/CompHeader";
 
 import MapGraph from "./MapGraph";
 import data from "../../data/mapNodes.json";
@@ -13,16 +14,12 @@ const PageExplore = ({ pageName }) => {
   return (
     <LayoutApp pageName="Explore">
       <MotionBox layout>
-        <MotionHeading
-          layout
-          px="1rem"
-          pt="3rem"
-          pb="2rem"
-          size="3xl"
-          fontWeight="extrabold"
-        >
-          {pageName}
-        </MotionHeading>
+        <CompHeader
+          heading="Explore"
+          text="Traverse the nodes for experience."
+          action="Lost?"
+          href="/client/browse"
+        />
         <Box pb="30rem"></Box>
         <MapGraph data={data} />
       </MotionBox>

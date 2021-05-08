@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { signIn, signOut, useSession } from "next-auth/client";
 
 import LayoutApp from "../LayoutApp";
+import CompHeader from "../../components/CompHeader";
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
@@ -13,17 +14,12 @@ const PageClient = () => {
   return (
     <LayoutApp pageName="Account">
       <MotionBox layout px="1rem">
-        <Flex w="full" maxW="container.sm">
-          <MotionHeading
-            layout
-            pt="3rem"
-            pb="2rem"
-            size="3xl"
-            fontWeight="extrabold"
-          >
-            Account
-          </MotionHeading>
-        </Flex>
+        <CompHeader
+          heading="Account"
+          text="Thank you for being."
+          action="Find Your Community"
+          href="/"
+        />
         {(session && (
           <Box>
             <Flex>

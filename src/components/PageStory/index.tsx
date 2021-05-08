@@ -1,14 +1,14 @@
-import { Text, Tag, Box, Heading, useColorMode } from "@chakra-ui/react";
+import { Text, Tag, Box, useColorMode } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 import LayoutApp from "../LayoutApp";
 import CompLink from "../CompLink";
+import CompHeader from "../CompHeader";
 import CompVideoPlayer from "../CompVideoPlayer";
 import { PageStoryProps } from "../../types";
 
 import { bgColor } from "../../constants";
 
-const MotionHeading = motion(Heading);
 const MotionBox = motion(Box);
 
 const PageStory = ({ story }: PageStoryProps) => {
@@ -17,16 +17,12 @@ const PageStory = ({ story }: PageStoryProps) => {
   return (
     <LayoutApp pageName={pageName}>
       <MotionBox layout>
-        <MotionHeading
-          layout
-          px="1rem"
-          pt="3rem"
-          pb="2rem"
-          size="3xl"
-          fontWeight="extrabold"
-        >
-          {story.storyName}
-        </MotionHeading>
+        <CompHeader
+          heading={pageName}
+          text="Already read this story?"
+          action="Find Your Next"
+          href="/"
+        />
         <Box
           borderTopRightRadius="2xl"
           sx={{

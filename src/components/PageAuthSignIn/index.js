@@ -8,6 +8,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { FaApple } from "react-icons/fa";
 
 import LayoutApp from "../LayoutApp";
+import CompHeader from "../../components/CompHeader";
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
@@ -23,18 +24,11 @@ const PageAuthClient = ({ providers }) => {
   return (
     <LayoutApp pageName="Sign In">
       <MotionBox layout px="1rem" maxW="container.sm">
-        <Box pt="3rem" pb="2rem">
-          <MotionHeading layout size="3xl" fontWeight="extrabold" pb=".5rem">
-            Sign In
-          </MotionHeading>
-          <Flex w="full" flexDirection="row" align="center">
-            <Text fontSize="xs">Don't have an account?</Text>
-            <Text pl=".25rem" fontSize="sm" fontWeight="semibold">
-              Create One
-            </Text>
-          </Flex>
-        </Box>
-
+        <CompHeader
+          heading="Sign In"
+          text="Don't want to sign in?"
+          action="Continue Without"
+        />
         <Flex flexDirection="column" align="center">
           {Object.values(providers).map((provider) => (
             <>

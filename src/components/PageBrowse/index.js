@@ -16,6 +16,8 @@ import {
 import { count } from "d3-array";
 
 import { graphQLClient } from "../../utils/graphqlClient";
+import CompHeader from "../../components/CompHeader";
+
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 
@@ -28,17 +30,12 @@ const PageBrowse = ({ stories }) => {
   return (
     <LayoutApp pageName={pageName}>
       <MotionBox layout>
-        <MotionHeading
-          layout
-          px="1rem"
-          pt="3rem"
-          pb="2rem"
-          size="3xl"
-          fontWeight="extrabold"
-        >
-          {pageName}
-        </MotionHeading>
-
+        <CompHeader
+          heading="Browse"
+          text="Learn from these stories."
+          action="Try Exploring"
+          href="/client/explore"
+        />
         <MotionBox variants={container} initial="hidden" animate="visible">
           <SimpleGrid minChildWidth="360px" spacing="1rem" pb="3rem">
             {stories.map((story) => (

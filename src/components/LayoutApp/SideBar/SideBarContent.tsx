@@ -15,7 +15,7 @@ export const SideBarContent: React.FC<SideBarProps> = () => {
     <>
       <Heading
         p="1rem"
-        display={["block", "block", "none"]}
+        // display={["block", "block", "none"]}
         size="md"
         fontWeight="extrabold"
       >
