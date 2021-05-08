@@ -19,7 +19,6 @@ export const SideBarContent: React.FC<SideBarProps> = () => {
         // display={["block", "block", "none"]}
         size="md"
         fontWeight="extrabold"
-        color="gray.50"
       >
         Water Stories
       </Heading>
