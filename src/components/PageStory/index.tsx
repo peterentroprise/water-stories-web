@@ -17,12 +17,15 @@ const PageStory = ({ story }: PageStoryProps) => {
   return (
     <LayoutApp pageName={pageName}>
       <MotionBox layout>
-        <CompHeader
-          heading={pageName}
-          text="Already read this story?"
-          action="Find Your Next"
-          href="/"
-        />
+        <Box pl="1rem">
+          <CompHeader
+            heading={pageName}
+            text="Already read this story?"
+            action="Find Your Next"
+            href="/"
+          />
+        </Box>
+
         <Box
           borderTopRightRadius="2xl"
           sx={{
