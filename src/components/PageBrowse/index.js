@@ -40,7 +40,7 @@ const PageBrowse = ({ stories }) => {
         </Box>
 
         <MotionBox variants={container} initial="hidden" animate="visible">
-          <SimpleGrid minChildWidth="360px" spacing="1rem" pb="3rem">
+          <SimpleGrid minChildWidth="360px" spacing="1rem" pb="7rem">
             {stories.map((story) => (
               <StoryContent key={story.sys.id} story={story} />
             ))}

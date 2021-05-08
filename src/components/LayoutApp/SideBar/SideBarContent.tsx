@@ -3,11 +3,12 @@ import {
   HiOutlineGlobe,
   HiOutlineHome,
   HiOutlineBookOpen,
-  HiOutlineUserCircle,
 } from "react-icons/hi";
 import { BiNetworkChart } from "react-icons/bi";
+
 import { SideBarLink } from "./SideBarLink";
 import DarkModeSwitch from "../../CompDarkModeSwitch";
+import { AccountButton } from "./AccountButton";
 type SideBarProps = {};
 
 export const SideBarContent: React.FC<SideBarProps> = () => {
@@ -18,6 +19,7 @@ export const SideBarContent: React.FC<SideBarProps> = () => {
         // display={["block", "block", "none"]}
         size="md"
         fontWeight="extrabold"
+        color="gray.50"
       >
         Water Stories
       </Heading>
@@ -34,9 +36,7 @@ export const SideBarContent: React.FC<SideBarProps> = () => {
         <SideBarLink href="/client/explore" icon={<BiNetworkChart />}>
           Explore
         </SideBarLink>
-        <SideBarLink href="/client/account" icon={<HiOutlineUserCircle />}>
-          Account
-        </SideBarLink>
+        <AccountButton />
       </VStack>
 
       <DarkModeSwitch />

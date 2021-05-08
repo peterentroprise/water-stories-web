@@ -20,7 +20,6 @@ export const ScrollWrapper: React.FC<ScrollWrapperProps> = ({ children }) => {
         maxW="2560px"
         bg={useColorModeValue("white", "gray.700")}
         height="100%"
-        pb="6"
         rounded={{ md: "lg" }}
       >
         <Flex
