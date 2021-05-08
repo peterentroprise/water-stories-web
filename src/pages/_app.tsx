@@ -30,13 +30,7 @@ function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <Provider
-        options={{
-          clientMaxAge: 0,
-          keepAlive: 0,
-        }}
-        session={pageProps.session}
-      >
+      <Provider session={pageProps.session}>
         <ChakraProvider resetCSS theme={theme}>
           <AnimateSharedLayout>
             <AnimatePresence onExitComplete={handleExitComplete}>

@@ -8,8 +8,8 @@ import { hasuraClient } from "../../../utils/hasuraClient";
 export default NextAuth({
   providers: [
     Providers.Google({
-      clientId: process.env.GOOGLE_OAUTH_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+      clientId: process.env.OAUTH_GOOGLE_CLIENT_ID,
+      clientSecret: process.env.OAUTH_GOOGLE_CLIENT_SECRET,
     }),
     Providers.Apple({
       clientId: process.env.OAUTH_APPLE_ID,
@@ -18,6 +18,11 @@ export default NextAuth({
         privateKey: process.env.OAUTH_APPLE_PRIVATE_KEY,
         keyId: process.env.OAUTH_APPLE_KEY_ID,
       },
+    }),
+    Providers.Auth0({
+      clientId: process.env.OAUTH_AUTH0_CLIENT_ID,
+      clientSecret: process.env.OAUTH_AUTH0_CLIENT_SECRET,
+      domain: process.env.OAUTH_AUTH0_DOMAIN,
     }),
   ],
   secret: process.env.OAUTH_SECRET,

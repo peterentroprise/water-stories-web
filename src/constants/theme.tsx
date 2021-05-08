@@ -48,6 +48,12 @@ const theme = extendTheme({
       baseStyle: {
         borderRadius: "16px",
       },
+      defaultProps: {},
+      variants: {
+        solid: {
+          bg: "gray.50",
+        },
+      },
     },
   },
   styles: {
