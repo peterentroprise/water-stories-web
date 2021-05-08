@@ -11,12 +11,14 @@ const PageClient = () => {
   return (
     <LayoutApp pageName="Hello Universe">
       <MotionBox layout>
-        <CompHeader
-          heading="Hello Universe"
-          text="Welcome to the experience."
-          action="Find a Story"
-          href="/client/browse"
-        />
+        <Box px="1rem">
+          <CompHeader
+            heading="Hello Universe"
+            text="Welcome to the experience."
+            action="Find a Story"
+            href="/client/browse"
+          />
+        </Box>
       </MotionBox>
     </LayoutApp>
   );

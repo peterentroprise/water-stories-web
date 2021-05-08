@@ -30,12 +30,15 @@ const PageBrowse = ({ stories }) => {
   return (
     <LayoutApp pageName={pageName}>
       <MotionBox layout>
-        <CompHeader
-          heading="Browse"
-          text="Learn from these stories."
-          action="Try Exploring"
-          href="/client/explore"
-        />
+        <Box px="1rem">
+          <CompHeader
+            heading="Browse"
+            text="Learn from these stories."
+            action="Try Exploring"
+            href="/client/explore"
+          />
+        </Box>
+
         <MotionBox variants={container} initial="hidden" animate="visible">
           <SimpleGrid minChildWidth="360px" spacing="1rem" pb="3rem">
             {stories.map((story) => (

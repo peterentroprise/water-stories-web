@@ -23,18 +23,23 @@ const PageAuthClient = ({ providers }) => {
   };
   return (
     <LayoutApp pageName="Sign In">
-      <MotionBox layout px="1rem" maxW="container.sm">
+      <MotionBox layout maxW="container.sm" px="1rem">
         <CompHeader
           heading="Sign In"
           text="Don't want to sign in?"
           action="Continue Without"
         />
-        <Flex flexDirection="column" align="center">
+        <Flex flexDirection="column" align={["left", "left", "left", "left"]}>
           {Object.values(providers).map((provider) => (
             <>
               {provider.name == "Auth0" && (
-                <Flex w="full" flexDirection="row" my=".5rem">
-                  <Flex flexGrow="1" flexDirection="column">
+                <Flex
+                  key="auth-option-divider"
+                  w="full"
+                  flexDirection="row"
+                  my=".5rem"
+                >
+                  <Flex w="1.5rem" flexDirection="column">
                     <Box mb="1rem" />
                     <Box borderTop="1px" borderColor="gray.50" mb="1rem" />
                   </Flex>

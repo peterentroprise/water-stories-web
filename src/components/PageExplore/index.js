@@ -14,12 +14,15 @@ const PageExplore = ({ pageName }) => {
   return (
     <LayoutApp pageName="Explore">
       <MotionBox layout>
-        <CompHeader
-          heading="Explore"
-          text="Traverse the nodes for experience."
-          action="Lost?"
-          href="/client/browse"
-        />
+        <Box px="1rem">
+          <CompHeader
+            heading="Explore"
+            text="Traverse the nodes for experience."
+            action="Lost?"
+            href="/client/browse"
+          />
+        </Box>
+
         <Box pb="30rem"></Box>
         <MapGraph data={data} />
       </MotionBox>

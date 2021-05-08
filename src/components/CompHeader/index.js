@@ -9,7 +9,7 @@ const MotionFlex = motion(Flex);
 
 const CompHeader = ({ heading, text, action, href = "/client" }) => {
   return (
-    <MotionBox layout pt="3rem" pb="2rem" pl="1rem">
+    <MotionBox layout pt="3rem" pb="2rem">
       <MotionHeading layout size="2xl" fontWeight="extrabold" pb=".5rem">
         {heading}
       </MotionHeading>
