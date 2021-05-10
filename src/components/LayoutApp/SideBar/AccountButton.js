@@ -25,15 +25,16 @@ export const AccountButton = () => {
       }}
       width="full"
       pl="1rem"
-      pr="1rem"
+      pr="1.5rem"
       py=".5rem"
       bg="white"
       borderTopRightRadius="1rem"
       borderBottomRightRadius="1rem"
-      _hover={{ bg: "gray.50" }}
+      bg="gray.50"
+      _hover={{}}
       _active={{}}
       _focus={{}}
-      boxShadow="0 8px 32px 0 rgba( 31, 38, 135, 0.37 )"
+      // boxShadow="0 8px 32px 0 rgba( 31, 38, 135, 0.37 )"
     >
       <Flex>
         <Avatar
