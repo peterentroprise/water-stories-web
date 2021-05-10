@@ -1,9 +1,14 @@
-import { Box } from "@chakra-ui/react";
+import { Box, useBreakpointValue } from "@chakra-ui/react";
 import { SideBarContent } from "./SideBarContent";
 
 type DesktopSideBarProps = {};
 
 const SideBar: React.FC<DesktopSideBarProps> = () => {
+  const showSideBarContent = useBreakpointValue({
+    base: false,
+    md: true,
+  });
+
   return (
     <Box
       as="nav"
@@ -15,7 +20,8 @@ const SideBar: React.FC<DesktopSideBarProps> = () => {
       pr="1rem"
       position="fixed"
     >
-      <SideBarContent />
+      {console.log(showSideBarContent)}
+      {showSideBarContent && <SideBarContent />}
     </Box>
   );
 };

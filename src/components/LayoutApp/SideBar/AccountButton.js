@@ -1,9 +1,12 @@
 import { Avatar, Flex, Text, Box, VStack, Heading } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { signIn, signOut, useSession } from "next-auth/client";
+import { useMobileMenuState } from "../../../hooks/useMobileMenuState";
+
 export const AccountButton = () => {
   const [session, loading] = useSession();
   const router = useRouter();
+  const { closeMobileMenu } = useMobileMenuState();
   return (
     <Box
       as="button"
@@ -11,10 +14,12 @@ export const AccountButton = () => {
       onClick={(e) => {
         if (!session) {
           e.preventDefault();
+          closeMobileMenu();
           signIn();
         }
         if (session) {
           e.preventDefault();
+          closeMobileMenu();
           router.push("/client/account");
         }
       }}

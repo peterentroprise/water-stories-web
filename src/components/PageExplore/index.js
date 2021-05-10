@@ -24,7 +24,7 @@ const PageExplore = ({ pageName }) => {
         </Box>
 
         <Box pb="30rem"></Box>
-        <MapGraph data={data} />
+        {/* <MapGraph data={data} /> */}
       </MotionBox>
     </LayoutApp>
   );

@@ -8,25 +8,18 @@ import {
 import { SideBarContent } from "../SideBar/SideBarContent";
 
 import { bgColor, textColor } from "../../../constants";
+import { useMobileMenuState } from "../../../hooks/useMobileMenuState";
 
-type MobileMenuDrawerProps = {
-  isOpen: boolean;
-  onOpen: () => void;
-  onClose: () => void;
-};
-
-export const MobileMenuDrawer: React.FC<MobileMenuDrawerProps> = ({
-  isOpen,
-  onClose,
-}) => {
+export const MobileMenuDrawer = () => {
   const { colorMode } = useColorMode();
+  const { mobileMenuIsOpen, closeMobileMenu } = useMobileMenuState();
   return (
     <Drawer
       size="xs"
       placement="left"
-      isOpen={isOpen}
+      isOpen={mobileMenuIsOpen}
       blockScrollOnMount={false}
-      onClose={onClose}
+      onClose={closeMobileMenu}
     >
       <DrawerOverlay />
       <DrawerContent

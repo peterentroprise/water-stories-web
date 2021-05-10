@@ -1,4 +1,5 @@
-import * as React from "react";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import {
   Box,
   Flex,
@@ -8,6 +9,7 @@ import {
   useColorModeValue as mode,
 } from "@chakra-ui/react";
 import { HiX } from "react-icons/hi";
+import { useMobileMenuState } from "../../../hooks/useMobileMenuState";
 
 import CompLink from "../../CompLink";
 
@@ -18,9 +20,17 @@ interface SideBarLinkProps extends BoxProps {
 
 export const SideBarLink = (props: SideBarLinkProps) => {
   const { children, icon = <HiX />, href = "/" } = props;
+  const router = useRouter();
+  const { closeMobileMenu } = useMobileMenuState();
+
+  const [matchesUrl] = useState(router.pathname === href);
+
   return (
     <CompLink href={href}>
       <Flex
+        as="button"
+        w="full"
+        onClick={closeMobileMenu}
         align="center"
         height="40px"
         py=".5rem"
@@ -28,14 +38,17 @@ export const SideBarLink = (props: SideBarLinkProps) => {
         borderLeftRadius="none"
         borderRightRadius="3xl"
         cursor="pointer"
-        _hover={{
-          color: mode("white", "white"),
-          bg: mode("purple.400", "gray.600"),
-        }}
+        bg={(matchesUrl && mode("purple.400", "gray.600")) || "none"}
       >
         <HStack align="center">
-          <Box>{icon}</Box>
-          <Text fontSize="sm" fontWeight="semibold">
+          <Box color={(matchesUrl && mode("white", "white")) || "normal"}>
+            {icon}
+          </Box>
+          <Text
+            fontSize="sm"
+            color={(matchesUrl && mode("white", "white")) || "normal"}
+            fontWeight={(matchesUrl && "bold") || "normal"}
+          >
             {children}
           </Text>
         </HStack>

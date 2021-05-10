@@ -13,7 +13,6 @@ import {
   CONTENTFUL_SPACE,
   CONTENTFUL_ACCESS_TOKEN,
 } from "../../constants/contentful";
-import { count } from "d3-array";
 
 import { graphQLClient } from "../../utils/graphqlClient";
 import CompHeader from "../../components/CompHeader";
