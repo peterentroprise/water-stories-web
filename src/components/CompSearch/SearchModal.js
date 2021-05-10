@@ -23,6 +23,7 @@ export const SearchModal = () => {
   return (
     <Drawer
       size="full"
+      placement="bottom"
       isOpen={searchDrawerIsOpen}
       blockScrollOnMount={false}
       onOverlayClick={toggleSearchDrawer}
