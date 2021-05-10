@@ -18,7 +18,7 @@ export const ScrollWrapper: React.FC<ScrollWrapperProps> = ({ children }) => {
     >
       <Box
         maxW="2560px"
-        bg={useColorModeValue("white", "gray.700")}
+        // bg={useColorModeValue("white", "gray.700")}
         height="100%"
         rounded={{ md: "lg" }}
       >
