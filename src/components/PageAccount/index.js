@@ -1,16 +1,13 @@
-import { Box, Button, Text, Avatar, Heading, Flex } from "@chakra-ui/react";
+import { Box, Button, Text, Avatar, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { signIn, signOut, useSession } from "next-auth/client";
+import { signOut } from "next-auth/client";
 
 import LayoutApp from "../LayoutApp";
 import CompHeader from "../../components/CompHeader";
 
 const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
 
-const PageClient = () => {
-  const [session, loading] = useSession();
-
+const PageClient = ({ session }) => {
   return (
     <LayoutApp pageName="Account">
       <MotionBox layout px="1rem">
@@ -20,43 +17,29 @@ const PageClient = () => {
           action="Find Your Community"
           href="/"
         />
-        {(session && (
-          <Box>
-            <Flex>
-              {session.user.image && (
-                <Avatar
-                  mr="1rem"
-                  src={session.user.image}
-                  name={session.user.name}
-                />
-              )}
-              <Box>
-                <Text>Signed in as</Text>
-                <Text>{session.user.email || session.user.name}</Text>
-              </Box>
-            </Flex>
-            <Button
-              mt="1rem"
-              href={`/api/auth/signout`}
-              onClick={(e) => {
-                e.preventDefault();
-                signOut();
-              }}
-            >
-              Sign out
-            </Button>
-          </Box>
-        )) || (
+        <Box>
+          <Flex>
+            <Avatar
+              mr="1rem"
+              src={session.user.image}
+              name={session.user.name}
+            />
+            <Box>
+              <Text>Signed in as</Text>
+              <Text>{session.user.email || session.user.name}</Text>
+            </Box>
+          </Flex>
           <Button
-            href={`/client/auth/signin`}
+            mt="1rem"
+            href={`/api/auth/signout`}
             onClick={(e) => {
               e.preventDefault();
-              signIn();
+              signOut();
             }}
           >
-            Sign In
+            Sign out
           </Button>
-        )}
+        </Box>
       </MotionBox>
     </LayoutApp>
   );

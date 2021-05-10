@@ -22,19 +22,13 @@ export const AccountButton = () => {
       pl="1rem"
       pr="1rem"
       py=".5rem"
-      bg="gray.50"
+      bg="white"
       borderTopRightRadius="1rem"
       borderBottomRightRadius="1rem"
-      _hover={{ bg: "#ebedf0" }}
-      _active={{
-        bg: "#dddfe2",
-        transform: "scale(0.98)",
-        borderColor: "#bec3c9",
-      }}
-      _focus={{
-        boxShadow:
-          "0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)",
-      }}
+      _hover={{ bg: "gray.50" }}
+      _active={{}}
+      _focus={{}}
+      boxShadow="0 8px 32px 0 rgba( 31, 38, 135, 0.37 )"
     >
       <Flex>
         <Avatar

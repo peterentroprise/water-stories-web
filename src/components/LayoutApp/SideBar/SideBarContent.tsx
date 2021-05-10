@@ -1,4 +1,4 @@
-import { VStack, Heading } from "@chakra-ui/react";
+import { VStack, Heading, Box } from "@chakra-ui/react";
 import {
   HiOutlineGlobe,
   HiOutlineHome,
@@ -35,10 +35,12 @@ export const SideBarContent: React.FC<SideBarProps> = () => {
         <SideBarLink href="/client/explore" icon={<BiNetworkChart />}>
           Explore
         </SideBarLink>
-        <AccountButton />
       </VStack>
 
       <DarkModeSwitch />
+      <Box position="fixed" bottom="1.5rem">
+        <AccountButton />
+      </Box>
     </>
   );
 };

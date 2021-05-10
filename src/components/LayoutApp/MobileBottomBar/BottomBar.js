@@ -1,4 +1,4 @@
-import { Box, Flex, useColorMode } from "@chakra-ui/react";
+import { Box, Flex, useColorMode, AlertDialogOverlay } from "@chakra-ui/react";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooksOutlined";
 import AutoGraphIcon from "@material-ui/icons/AutoGraphOutlined";
 import SearchIcon from "@material-ui/icons/SearchOutlined";
@@ -16,6 +16,7 @@ export const BottomBar = () => {
 
   return (
     <Flex position="fixed" bottom="0rem" height="4rem" w="full" align="center">
+      {/* <AlertDialogOverlay>asd</AlertDialogOverlay> */}
       <Box
         bg={bgColor[colorMode]}
         borderTopRightRadius="1rem"

@@ -1,8 +1,7 @@
 import { Button, Flex, Text, Box, Heading } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { signIn } from "next-auth/client";
-
+import { signIn, useSession } from "next-auth/client";
 import { FcGoogle } from "react-icons/fc";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaApple } from "react-icons/fa";
@@ -15,12 +14,17 @@ const MotionHeading = motion(Heading);
 
 const PageAuthClient = ({ providers }) => {
   const router = useRouter();
+  const [session, loading] = useSession();
 
   const providerDisplay = {
     Google: { icon: <FcGoogle />, name: "Google" },
     Apple: { icon: <FaApple />, name: "Apple" },
     Auth0: { icon: <HiOutlineMail />, name: "Email" },
   };
+
+  if (loading) return null;
+  if (!loading && session) return router.push("/client/account");
+
   return (
     <LayoutApp pageName="Sign In">
       <MotionBox layout maxW="container.sm" px="1rem">
