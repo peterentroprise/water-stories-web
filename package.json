@@ -4,8 +4,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "dev:proxy": "local-ssl-proxy --config local-ssl-proxy-config.json"
+    "start": "next start"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.5",
