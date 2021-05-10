@@ -1,11 +1,15 @@
 import {
-  Modal,
-  ModalOverlay,
-  ModalHeader,
-  ModalBody,
-  ModalContent,
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
   useColorMode,
+  IconButton,
+  Flex,
 } from "@chakra-ui/react";
+import ArrowBackIcon from "@material-ui/icons/ArrowBackRounded";
+import ClearIcon from "@material-ui/icons/ClearRounded";
 
 import { bgColor, textColor } from "../../constants";
 import { useSearchDrawerState } from "../../hooks/useSearchDrawerState";
@@ -17,24 +21,33 @@ export const SearchModal = () => {
   const { colorMode } = useColorMode();
   const { searchDrawerIsOpen, toggleSearchDrawer } = useSearchDrawerState();
   return (
-    <Modal
-      size="md"
+    <Drawer
+      size="full"
       isOpen={searchDrawerIsOpen}
       blockScrollOnMount={false}
       onOverlayClick={toggleSearchDrawer}
       scrollBehavior="inside"
     >
-      <ModalOverlay />
+      <DrawerOverlay />
+
       <SearchWrapper>
-        <ModalContent bg={bgColor[colorMode]} color={textColor[colorMode]}>
-          <ModalHeader>
-            <SearchBar />
-          </ModalHeader>
-          <ModalBody>
+        <DrawerContent bg={bgColor[colorMode]} color={textColor[colorMode]}>
+          <DrawerHeader>
+            <Flex>
+              <IconButton
+                aria-label="Close Search"
+                icon={<ClearIcon />}
+                onClick={toggleSearchDrawer}
+                mr="1rem"
+              />
+              <SearchBar />
+            </Flex>
+          </DrawerHeader>
+          <DrawerBody>
             <SearchContent />
-          </ModalBody>
-        </ModalContent>
+          </DrawerBody>
+        </DrawerContent>
       </SearchWrapper>
-    </Modal>
+    </Drawer>
   );
 };

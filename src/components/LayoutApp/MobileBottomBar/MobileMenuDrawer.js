@@ -23,6 +23,8 @@ export const MobileMenuDrawer = () => {
     >
       <DrawerOverlay />
       <DrawerContent
+        marginTop="2.5rem"
+        borderTopRightRadius="1rem"
         bg={bgColor[colorMode]}
         color={textColor[colorMode]}
         shadow="none"

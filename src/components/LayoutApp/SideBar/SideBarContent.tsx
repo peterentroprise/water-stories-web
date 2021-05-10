@@ -27,7 +27,7 @@ export const SideBarContent: React.FC<SideBarProps> = () => {
           Community
         </SideBarLink>
         <SideBarLink href="/client" icon={<HiOutlineHome />}>
-          Water Stories
+          Hello Universe
         </SideBarLink>
         <SideBarLink href="/client/browse" icon={<HiOutlineBookOpen />}>
           Browse
