@@ -34,7 +34,7 @@ export const SearchModal = () => {
 
       <SearchWrapper>
         <DrawerContent bg={bgColor[colorMode]} color={textColor[colorMode]}>
-          <DrawerHeader px="1rem">
+          <DrawerHeader px="1rem" mt="4rem">
             <Flex>
               <Box flexGrow="1">
                 <SearchBar />
