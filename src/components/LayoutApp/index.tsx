@@ -1,6 +1,5 @@
 import { Flex } from "@chakra-ui/react";
 
-import { Background } from "./Background";
 import { ScrollWrapper } from "./ScrollWrapper";
 import { PageWrapper } from "./PageWrapper";
 import MobileBottomBar from "./MobileBottomBar";
@@ -22,7 +21,6 @@ const LayoutApp: React.FC<LayoutAppProps> = ({ children }) => {
       }}
     >
       <CompSearch />
-      <Background />
       <SideBar />
       <ScrollWrapper>
         <PageWrapper>{children}</PageWrapper>

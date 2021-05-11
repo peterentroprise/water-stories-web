@@ -90,9 +90,7 @@ export default NextAuth({
           "x-hasura-admin-secret": HASURA_ADMIN_SECRET,
         };
         await hasuraClient.request(INSERT_USERS_ONE, variables, requestHeaders);
-      } catch (err) {
-        console.log("User already exists.");
-      }
+      } catch (err) {}
 
       return Promise.resolve(token);
     },

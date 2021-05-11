@@ -8,7 +8,7 @@ export const SearchHit = ({ hit }) => {
 
   return (
     <CompLink href={`/client/stories/${hit.fields.slug["en-US"]}`}>
-      <Flex onClick={toggleSearchDrawer} width="full">
+      <Flex onClick={toggleSearchDrawer} width="full" py="1rem">
         <Box maxW="128px" pr="1rem">
           <video src={`${hit.fields.coverVideoUrl["en-US"]}`} />
         </Box>

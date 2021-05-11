@@ -15,6 +15,7 @@ import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { RecoilRoot } from "recoil";
 import { Provider } from "next-auth/client";
 
+import CompBackground from "../components/CompBackground";
 import theme from "../constants/theme";
 
 function handleExitComplete() {
@@ -53,6 +54,7 @@ function App({ Component, pageProps }: AppProps) {
             <AnimatePresence onExitComplete={handleExitComplete}>
               <RecoilRoot>
                 <Component {...pageProps} key={router.route} />
+                <CompBackground />
               </RecoilRoot>
             </AnimatePresence>
           </AnimateSharedLayout>

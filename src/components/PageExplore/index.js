@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import LayoutApp from "../LayoutApp";
 import CompHeader from "../../components/CompHeader";
 
-import MapGraph from "./MapGraph";
-import data from "../../data/mapNodes.json";
+// import MapGraph from "./MapGraph";
+// import data from "../../data/mapNodes.json";
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);

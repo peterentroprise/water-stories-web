@@ -20,10 +20,11 @@ export const MobileMenuDrawer = () => {
       isOpen={mobileMenuIsOpen}
       blockScrollOnMount={false}
       onClose={closeMobileMenu}
+      autoFocus={false}
     >
       <DrawerOverlay />
       <DrawerContent
-        marginTop="4rem"
+        marginTop="8rem"
         borderTopRightRadius="1rem"
         bg={bgColor[colorMode]}
         color={textColor[colorMode]}

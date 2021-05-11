@@ -27,15 +27,44 @@ export const BottomBarNavButton: React.FC<BottomBarNavButtonProps> = ({
       as="button"
       h="full"
       w="full"
-      py="12px"
       transition="color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,padding-top 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms"
     >
       {(!onClick && (
-        <Link href={href}>
+        <Link href={href} h="full">
+          <Flex flexDirection="column" h="full" justifyContent="flex-end">
+            <Flex
+              flexDirection="column"
+              align="center"
+              h="40px"
+              mb="6px"
+              color={(matchesUrl && primaryColor[colorMode]) || "current"}
+              fontWeight={(matchesUrl && "bold") || "semibold"}
+            >
+              <Icon as={icon} h="20px" w="20px" />
+              <Text h="16px" fontSize="14px">
+                {children}
+              </Text>
+            </Flex>
+            <Box
+              mx=".5rem"
+              h="4px"
+              borderTopRadius="1rem"
+              bg={(matchesUrl && primaryColor[colorMode]) || "none"}
+            />
+          </Flex>
+        </Link>
+      )) || (
+        <Flex
+          flexDirection="column"
+          h="full"
+          justifyContent="flex-end"
+          onClick={onClick}
+        >
           <Flex
             flexDirection="column"
             align="center"
             h="40px"
+            mb="6px"
             color={(matchesUrl && primaryColor[colorMode]) || "current"}
             fontWeight={(matchesUrl && "bold") || "semibold"}
           >
@@ -44,13 +73,12 @@ export const BottomBarNavButton: React.FC<BottomBarNavButtonProps> = ({
               {children}
             </Text>
           </Flex>
-        </Link>
-      )) || (
-        <Flex flexDirection="column" align="center" h="40px" onClick={onClick}>
-          <Icon as={icon} h="20px" w="20px" />
-          <Text h="16px" fontSize="14px">
-            {children}
-          </Text>
+          <Box
+            h="4px"
+            width="full"
+            borderTopRadius="1rem"
+            bg={(matchesUrl && primaryColor[colorMode]) || "none"}
+          />
         </Flex>
       )}
     </Box>

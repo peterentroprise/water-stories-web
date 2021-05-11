@@ -20,7 +20,6 @@ const SideBar: React.FC<DesktopSideBarProps> = () => {
       pr="1rem"
       position="fixed"
     >
-      {console.log(showSideBarContent)}
       {showSideBarContent && <SideBarContent />}
     </Box>
   );

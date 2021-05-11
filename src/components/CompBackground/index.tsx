@@ -5,9 +5,7 @@ import { useColorModeValue } from "@chakra-ui/react";
 import nature from "./nature.json";
 import night from "./night.json";
 
-type BackgroundProps = {};
-
-export const Background: React.FC<BackgroundProps> = () => {
+const CompBackground = () => {
   const options = {
     animationData: useColorModeValue(nature, night),
     loop: true,
@@ -29,3 +27,5 @@ export const Background: React.FC<BackgroundProps> = () => {
   const { View } = useLottie(options, style);
   return View;
 };
+
+export default CompBackground;

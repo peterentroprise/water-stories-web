@@ -7,6 +7,7 @@ import {
   useColorMode,
   IconButton,
   Flex,
+  Box,
 } from "@chakra-ui/react";
 import ArrowBackIcon from "@material-ui/icons/ArrowBackRounded";
 import ClearIcon from "@material-ui/icons/ClearRounded";
@@ -33,18 +34,20 @@ export const SearchModal = () => {
 
       <SearchWrapper>
         <DrawerContent bg={bgColor[colorMode]} color={textColor[colorMode]}>
-          <DrawerHeader>
+          <DrawerHeader px="1rem">
             <Flex>
+              <Box flexGrow="1">
+                <SearchBar />
+              </Box>
               <IconButton
                 aria-label="Close Search"
                 icon={<ClearIcon />}
                 onClick={toggleSearchDrawer}
-                mr="1rem"
+                ml="1rem"
               />
-              <SearchBar />
             </Flex>
           </DrawerHeader>
-          <DrawerBody>
+          <DrawerBody px="1rem">
             <SearchContent />
           </DrawerBody>
         </DrawerContent>

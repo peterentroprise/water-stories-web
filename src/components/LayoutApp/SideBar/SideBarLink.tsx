@@ -34,19 +34,24 @@ export const SideBarLink = (props: SideBarLinkProps) => {
         align="center"
         height="40px"
         py=".5rem"
-        pl={["1rem", "2rem"]}
+        // pl={["1rem", "2rem"]}
         borderLeftRadius="none"
         borderRightRadius="3xl"
         cursor="pointer"
-        bg={(matchesUrl && mode("purple.400", "gray.600")) || "none"}
+        bg={(matchesUrl && mode("purple.50", "gray.600")) || "none"}
       >
+        <Box
+          bg={(matchesUrl && "purple.500") || "none"}
+          w="4px"
+          h="full"
+          borderRightRadius="1rem"
+          mr=".75rem"
+        />
         <HStack align="center">
-          <Box color={(matchesUrl && mode("white", "white")) || "normal"}>
-            {icon}
-          </Box>
+          <Box color={(matchesUrl && "purple.500") || "normal"}>{icon}</Box>
           <Text
             fontSize="sm"
-            color={(matchesUrl && mode("white", "white")) || "normal"}
+            color={(matchesUrl && "purple.500") || "normal"}
             fontWeight={(matchesUrl && "bold") || "normal"}
           >
             {children}

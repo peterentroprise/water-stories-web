@@ -35,14 +35,9 @@ const PageAuthClient = ({ providers }) => {
         />
         <Flex flexDirection="column" align={["left", "left", "left", "left"]}>
           {Object.values(providers).map((provider) => (
-            <>
+            <Box key={provider.name}>
               {provider.name == "Auth0" && (
-                <Flex
-                  key="auth-option-divider"
-                  w="full"
-                  flexDirection="row"
-                  my=".5rem"
-                >
+                <Flex w="full" flexDirection="row" my=".5rem">
                   <Flex w="1.5rem" flexDirection="column">
                     <Box mb="1rem" />
                     <Box borderTop="1px" borderColor="gray.50" mb="1rem" />
@@ -59,7 +54,7 @@ const PageAuthClient = ({ providers }) => {
                   </Flex>
                 </Flex>
               )}
-              <Box key={provider.name}>
+              <Box>
                 <Button
                   leftIcon={providerDisplay[provider.name].icon}
                   my=".5rem"
@@ -72,7 +67,7 @@ const PageAuthClient = ({ providers }) => {
                   Sign in with {providerDisplay[provider.name].name}
                 </Button>
               </Box>
-            </>
+            </Box>
           ))}
         </Flex>
       </MotionBox>

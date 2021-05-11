@@ -1,13 +1,12 @@
 import { VStack, Heading, Box } from "@chakra-ui/react";
+
 import {
   HiOutlineGlobe,
   HiOutlineHome,
   HiOutlineBookOpen,
 } from "react-icons/hi";
 import { BiNetworkChart } from "react-icons/bi";
-
 import { SideBarLink } from "./SideBarLink";
-import DarkModeSwitch from "../../CompDarkModeSwitch";
 import { AccountButton } from "./AccountButton";
 type SideBarProps = {};
 
@@ -39,7 +38,6 @@ export const SideBarContent: React.FC<SideBarProps> = () => {
         </SideBarLink>
       </VStack>
 
-      <DarkModeSwitch />
       <Box position="fixed" bottom="1.5rem">
         <AccountButton />
       </Box>
