@@ -22,8 +22,11 @@ const MotionHeading = motion(Heading);
 
 const fetcher = async (query) => await graphQLClient.request(query);
 
-const PageBrowse = ({ stories }) => {
+const PageBrowse = ({ stories, content }) => {
   const { data, error } = useSWR(GET_STORY_COLLECTION, fetcher);
+
+  console.log(data);
+  console.log(content);
 
   const pageName = "Browse";
   return (
