@@ -46,7 +46,7 @@ function App({ Component, pageProps }: AppProps) {
           type="image/png"
           sizes="16x16"
         />
-        <meta name="theme-color" content="#2D29D6" />
+        <meta name="theme-color" content="#fff" />
       </Head>
       <Provider session={pageProps.session}>
         <ChakraProvider resetCSS theme={theme}>
