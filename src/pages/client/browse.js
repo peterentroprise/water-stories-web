@@ -36,7 +36,14 @@ const Browse = (props) => {
 
   // if (error) return <>failed to load</>;
   // if (!contenTier) return <>loading...</>;
-  const content = initialData.contentTier.storyGroups[0].stories;
+  // const content = initialData.contentTier.storyGroups[0].stories;
+
+  const content = initialData.contentTier.storyGroups.reduce(
+    (list, storyGroup) => {
+      return list.concat(storyGroup.stories);
+    },
+    []
+  );
 
   return <PageBrowse content={content} />;
 };
@@ -44,17 +51,21 @@ const Browse = (props) => {
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 
+  const token = (session && session.token) || null;
+
+  const contentTier =
+    (session && session.user.content_tier) || "ckom1y4sw0rpn0b70rca9xby8";
+
   const variables = {
-    id: "ckom1y4sw0rpn0b70rca9xby8",
+    id: contentTier,
   };
+
   const headers = {
-    // authorization: `Bearer ${session.token}`,
+    // authorization: `Bearer ${token}`,
     "x-hasura-admin-secret": HASURA_ADMIN_SECRET,
   };
 
   const data = await fetcher(GET_STORIES_BY_TIER, variables, headers);
-  // console.log("SESSION");
-  // console.log(session);
 
   return {
     props: { data },
