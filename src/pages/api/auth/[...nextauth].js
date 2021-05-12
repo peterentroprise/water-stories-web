@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
+import { GraphQLClient } from "graphql-request";
 import Providers from "next-auth/providers";
 import jwt from "jsonwebtoken";
-import { INSERT_USERS_ONE } from "../../../gql/user";
-import { HASURA_ADMIN_SECRET } from "../../../constants/hasura";
-import { hasuraClient } from "../../../utils/hasuraClient";
+import { INSERT_USER_ONE } from "../../../gql/user";
+import { HASURA_ADMIN_SECRET, HASURA_API_URL } from "../../../constants/hasura";
 
 export default NextAuth({
   providers: [
@@ -86,11 +86,15 @@ export default NextAuth({
       }
       try {
         const variables = { id: token.sub, name: token.name };
-        const requestHeaders = {
-          "x-hasura-admin-secret": HASURA_ADMIN_SECRET,
-        };
-        await hasuraClient.request(INSERT_USERS_ONE, variables, requestHeaders);
-      } catch (err) {}
+        const client = new GraphQLClient(HASURA_API_URL, {
+          headers: {
+            "x-hasura-admin-secret": HASURA_ADMIN_SECRET,
+          },
+        });
+        await client.request(INSERT_USER_ONE, variables);
+      } catch (err) {
+        console.log("Probably, already a user.");
+      }
 
       return Promise.resolve(token);
     },

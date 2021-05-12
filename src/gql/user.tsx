@@ -1,7 +1,8 @@
-export const INSERT_USERS_ONE = `
-mutation insert_users_one($id: String!, $name: String!) {
-  insert_users_one(object: {id: $id, name: $name}) {
+export const INSERT_USER_ONE = `
+mutation insert_user_one($id: String!, $name: String!) {
+  insert_user_one(object: {id: $id, name: $name}) {
     id
+    name
     created_at
   }
 }`;
