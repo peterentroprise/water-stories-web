@@ -6,8 +6,9 @@ import PageBrowse from "components/PageBrowse";
 import contenfulFetch from "utils/contenfulFetch";
 
 import { GET_STORY_COLLECTION } from "gql/story";
-import { GET_USER_CONTENT } from "gql/content";
-import { HASURA_API_URL, HASURA_ADMIN_SECRET } from "constants/hasura";
+import { GET_STORIES_BY_TIER } from "gql/content";
+
+import { HASURA_API_URL, HASURA_ADMIN_SECRET } from "lib/config";
 
 const fetcher = async (query, variables, headers) => {
   const client = new GraphQLClient(HASURA_API_URL, { headers });
@@ -15,8 +16,7 @@ const fetcher = async (query, variables, headers) => {
 };
 
 const Browse = (props) => {
-  const initialData = props.content;
-  const stories = props.stories;
+  const initialData = props.data;
 
   const [session, loading] = useSession();
 
@@ -26,35 +26,38 @@ const Browse = (props) => {
     // "x-hasura-admin-secret": HASURA_ADMIN_SECRET,
   };
 
-  const { data: content, error } = useSWR(
-    [GET_USER_CONTENT, variables, headers],
-    fetcher,
-    {
-      initialData,
-    }
-  );
+  // const { data: contenTier, error } = useSWR(
+  //   [GET_STORIES_BY_TIER, variables, headers],
+  //   fetcher,
+  //   {
+  //     initialData,
+  //   }
+  // );
 
-  if (error) return <>failed to load</>;
-  if (!content) return <>loading...</>;
-  return <PageBrowse stories={stories} content={content} />;
+  // if (error) return <>failed to load</>;
+  // if (!contenTier) return <>loading...</>;
+  const content = initialData.contentTier.storyGroups[0].stories;
+
+  return <PageBrowse content={content} />;
 };
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 
-  const variables = {};
+  const variables = {
+    id: "ckom1y4sw0rpn0b70rca9xby8",
+  };
   const headers = {
     // authorization: `Bearer ${session.token}`,
-    // "x-hasura-admin-secret": HASURA_ADMIN_SECRET,
+    "x-hasura-admin-secret": HASURA_ADMIN_SECRET,
   };
 
-  const content = await fetcher(GET_USER_CONTENT, variables, headers);
-
-  const data = await contenfulFetch(GET_STORY_COLLECTION);
-  const stories = data.storyCollection.items;
+  const data = await fetcher(GET_STORIES_BY_TIER, variables, headers);
+  // console.log("SESSION");
+  // console.log(session);
 
   return {
-    props: { stories, content },
+    props: { data },
   };
 }
 

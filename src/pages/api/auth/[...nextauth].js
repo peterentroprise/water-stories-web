@@ -2,38 +2,55 @@ import NextAuth from "next-auth";
 import { GraphQLClient } from "graphql-request";
 import Providers from "next-auth/providers";
 import jwt from "jsonwebtoken";
-import { INSERT_USER_ONE } from "../../../gql/user";
-import { HASURA_ADMIN_SECRET, HASURA_API_URL } from "../../../constants/hasura";
+import { INSERT_USER_ACCOUNT_ONE } from "gql/user";
+import {
+  HASURA_ADMIN_SECRET,
+  HASURA_API_URL,
+  OAUTH_GOOGLE_CLIENT_ID,
+  OAUTH_GOOGLE_CLIENT_SECRET,
+  OAUTH_APPLE_ID,
+  OAUTH_APPLE_TEAM_ID,
+  OAUTH_APPLE_PRIVATE_KEY,
+  OAUTH_APPLE_KEY_ID,
+  OAUTH_AUTH0_CLIENT_ID,
+  OAUTH_AUTH0_CLIENT_SECRET,
+  OAUTH_AUTH0_DOMAIN,
+  OAUTH_SECRET,
+} from "lib/config";
 
 export default NextAuth({
   providers: [
     Providers.Google({
-      clientId: process.env.OAUTH_GOOGLE_CLIENT_ID,
-      clientSecret: process.env.OAUTH_GOOGLE_CLIENT_SECRET,
+      clientId: OAUTH_GOOGLE_CLIENT_ID,
+      clientSecret: OAUTH_GOOGLE_CLIENT_SECRET,
     }),
     Providers.Apple({
-      clientId: process.env.OAUTH_APPLE_ID,
+      clientId: OAUTH_APPLE_ID,
       clientSecret: {
-        teamId: process.env.OAUTH_APPLE_TEAM_ID,
-        privateKey: process.env.OAUTH_APPLE_PRIVATE_KEY,
-        keyId: process.env.OAUTH_APPLE_KEY_ID,
+        teamId: OAUTH_APPLE_TEAM_ID,
+        privateKey: OAUTH_APPLE_PRIVATE_KEY,
+        keyId: OAUTH_APPLE_KEY_ID,
       },
     }),
     Providers.Auth0({
-      clientId: process.env.OAUTH_AUTH0_CLIENT_ID,
-      clientSecret: process.env.OAUTH_AUTH0_CLIENT_SECRET,
-      domain: process.env.OAUTH_AUTH0_DOMAIN,
+      clientId: OAUTH_AUTH0_CLIENT_ID,
+      clientSecret: OAUTH_AUTH0_CLIENT_SECRET,
+      domain: OAUTH_AUTH0_DOMAIN,
     }),
   ],
-  secret: process.env.OAUTH_SECRET,
+  secret: OAUTH_SECRET,
   session: {
     jwt: true,
   },
   jwt: {
-    secret: process.env.OAUTH_SECRET,
+    secret: OAUTH_SECRET,
     encode: async ({ secret, token, maxAge }) => {
+      //Step 3: Add hasura JWT claims to token.
+      console.log("CLAIM TOKEN IN");
+      console.log(token);
       const jwtClaims = {
-        sub: token.id,
+        sub: token.user_id,
+        user_id: token.user_id,
         name: token.name,
         email: token.email,
         image: token.image,
@@ -43,7 +60,7 @@ export default NextAuth({
           "x-hasura-allowed-roles": ["admin", "user"],
           "x-hasura-default-role": "user",
           "x-hasura-role": "user",
-          "x-hasura-user-id": token.id,
+          "x-hasura-user-id": token.user_id,
         },
       };
       const encodedToken = jwt.sign(jwtClaims, secret, { algorithm: "HS256" });
@@ -67,33 +84,78 @@ export default NextAuth({
         : Promise.resolve(baseUrl);
     },
     async session(session, token) {
-      const encodedToken = jwt.sign(token, process.env.OAUTH_SECRET, {
+      const encodedToken = jwt.sign(token, OAUTH_SECRET, {
         algorithm: "HS256",
       });
 
-      session.id = token.id;
+      console.log("SESSION IN");
+      console.log(session);
+
+      console.log("SESSION TOKEN");
+      console.log(token);
+
+      //Step 4: Add token attributes to session
+
+      // Create session attributes from token
       session.token = encodedToken;
+      session.user.user_id = token.user_id;
+      session.user.name = token.name;
+      session.user.email = token.email;
       session.user.image = token.image;
+      session.user.content_tier = token.content_tier;
+
+      console.log("SESSION OUT");
+      console.log(session);
 
       return Promise.resolve(session);
     },
     //jwt
     async jwt(token, user, account, profile, isNewUser) {
+      const isToken = token ? true : false;
       const isUserSignedIn = user ? true : false;
+
+      console.log("JWT TOKEN IN");
+      console.log({ token, user, account, profile });
+
+      //Step 0: Get token from provider and attach user attributes
       if (isUserSignedIn) {
-        token.id = user.id.toString();
+        console.log("USERISSIGNED IN");
+        console.log(isUserSignedIn);
+        token.user_id = user.id;
+        token.name = user.name;
+        token.email = user.email;
         token.image = user.image;
       }
+      console.log("JWT TOKEN OUT");
+      console.log(token);
+
+      //Step 1: Create and return user_account in DB with the populated token.
       try {
-        const variables = { id: token.sub, name: token.name };
+        const variables = {
+          user_id: token.user_id,
+          name: token.name,
+          email: token.email,
+          image: token.image,
+        };
+        console.log("VARIABLES");
+        console.log(variables);
         const client = new GraphQLClient(HASURA_API_URL, {
           headers: {
             "x-hasura-admin-secret": HASURA_ADMIN_SECRET,
           },
         });
-        await client.request(INSERT_USER_ONE, variables);
+
+        const data = await client.request(INSERT_USER_ACCOUNT_ONE, variables);
+        const content_tier = data.insert_user_account_one.content_tier;
+        console.log("DATA");
+        console.log(data);
+        //Step 2: Populate token with user_account attributes from DB
+        if (data) {
+          token.content_tier = content_tier;
+        }
       } catch (err) {
-        console.log("Probably, already a user.");
+        console.log("NextAuth - JWT Error");
+        // console.log(err);
       }
 
       return Promise.resolve(token);

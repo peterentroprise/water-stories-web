@@ -53,10 +53,10 @@ export const StoryContent = ({ story }) => {
               lineHeight="normal"
               fontWeight="semibold"
             >
-              {story.storyName}
+              {story.title}
             </Text>
 
-            <Text mt=".5rem">{story.storyShortDescription}</Text>
+            <Text mt=".5rem">{story.description}</Text>
           </Box>
 
           <Flex my=".5rem" alignItems="baseline">
