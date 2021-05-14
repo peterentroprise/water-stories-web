@@ -49,6 +49,7 @@ export default NextAuth({
       const jwtClaims = {
         sub: token.user_id,
         user_id: token.user_id,
+        role: token.role,
         name: token.name,
         email: token.email,
         image: token.image,
@@ -57,7 +58,7 @@ export default NextAuth({
         "https://hasura.io/jwt/claims": {
           "x-hasura-allowed-roles": ["admin", "user"],
           "x-hasura-default-role": "user",
-          "x-hasura-role": "user",
+          "x-hasura-role": token.role,
           "x-hasura-user-id": token.user_id,
         },
       };
@@ -88,6 +89,7 @@ export default NextAuth({
       // Step 4: Add token attributes to session
       session.token = encodedToken;
       session.user.user_id = token.user_id;
+      session.user.role = token.role;
       session.user.name = token.name;
       session.user.email = token.email;
       session.user.image = token.image;
@@ -122,11 +124,11 @@ export default NextAuth({
         });
 
         const data = await client.request(INSERT_USER_ACCOUNT_ONE, variables);
-        const content_tier = data.insert_user_account_one.content_tier;
 
         //Step 2: Populate token with user_account attributes from DB
         if (data) {
-          token.content_tier = content_tier;
+          token.content_tier = data.insert_user_account_one.content_tier;
+          token.role = data.insert_user_account_one.role;
         }
       } catch (err) {
         console.log("NextAuth - JWT Error");
