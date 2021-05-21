@@ -1,76 +1,84 @@
-import useSWR from "swr";
-import { getSession, useSession } from "next-auth/client";
-import { GraphQLClient } from "graphql-request";
+import { useSession, getSession } from "next-auth/client";
+import { withUrqlClient, initUrqlClient } from "next-urql";
+import {
+  ssrExchange,
+  dedupExchange,
+  cacheExchange,
+  fetchExchange,
+  useQuery,
+} from "urql";
 
 import PageBrowse from "components/PageBrowse";
 import { GET_STORIES_BY_TIER } from "gql/content";
 import { HASURA_API_URL } from "lib/config";
 
-const fetcher = async (query, variables, headers) => {
-  const client = new GraphQLClient(HASURA_API_URL, { headers });
-  return await client.request(query, variables);
-};
-
 const Browse = (props) => {
-  const initialData = props.data;
-
-  const [session, loading] = useSession();
-
-  const tier_id =
-    (session && session.user.content_tier) || "ckom1y4sw0rpn0b70rca9xby8";
-
-  const variables = {
-    id: tier_id,
-  };
-
+  const session = useSession();
+  const contentTier =
+    (session && session?.user?.content_tier) || "ckom1yh5c10y20c75a4oj0mym";
   const token = (session && session.token) || null;
+  console.log(token);
 
-  const headers = session && {
-    Authorization: `Bearer ${token}`,
-  };
-
-  const { data: contentTier, error } = useSWR(
-    [GET_STORIES_BY_TIER, variables, headers],
-    fetcher,
-    {
-      initialData,
-    }
-  );
-
-  if (error) return <>failed to load</>;
-  if (!contentTier) return <>loading...</>;
-
-  const content = initialData.contentTier.storyGroups.reduce(
-    (list, storyGroup) => {
-      return list.concat(storyGroup.stories);
+  const [result] = useQuery({
+    query: GET_STORIES_BY_TIER,
+    variables: {
+      id: contentTier,
     },
-    []
-  );
+  });
+  const { data, fetching, error } = result;
+  if (fetching) return <p>Loading...</p>;
+  if (error) return <p>Oh no... {error.message}</p>;
 
-  return <PageBrowse content={content} />;
+  const content = data.contentTier.storyGroups.reduce((list, storyGroup) => {
+    return list.concat(storyGroup.stories);
+  }, []);
+
+  return (
+    <>
+      <PageBrowse content={content} />
+    </>
+  );
 };
 
 export async function getServerSideProps(context) {
-  const session = await getSession(context);
-
+  const session = getSession(context);
   const token = (session && session.token) || null;
-
   const contentTier =
-    (session && session.user.content_tier) || "ckom1y4sw0rpn0b70rca9xby8";
+    (session && session?.user?.content_tier) || "ckom1yh5c10y20c75a4oj0mym";
 
-  const variables = {
-    id: contentTier,
-  };
+  const ssrCache = ssrExchange({ isClient: false });
+  const client = initUrqlClient(
+    {
+      url: HASURA_API_URL,
+      fetchOptions: {
+        headers: {
+          Authorization: `Bearer ${token ?? ""}`,
+        },
+      },
+      exchanges: [dedupExchange, cacheExchange, ssrCache, fetchExchange],
+    },
+    false
+  );
 
-  const headers = session && {
-    Authorization: `Bearer ${token}`,
-  };
+  const urqlState = ssrCache.extractData();
 
-  const data = await fetcher(GET_STORIES_BY_TIER, variables, headers);
+  await client
+    .query(GET_STORIES_BY_TIER, {
+      id: contentTier,
+    })
+    .toPromise();
 
   return {
-    props: { data },
+    props: {
+      urqlState: urqlState,
+    },
+    // revalidate: 600,
   };
 }
 
-export default Browse;
+export default withUrqlClient(
+  (ssr) => ({
+    url: HASURA_API_URL,
+  }),
+  { ssr: false }
+)(Browse);
