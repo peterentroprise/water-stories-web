@@ -52,7 +52,7 @@ export const SideBarLink = (props: SideBarLinkProps) => {
           <Text
             fontSize="sm"
             color={(matchesUrl && "purple.500") || "normal"}
-            fontWeight={(matchesUrl && "bold") || "normal"}
+            fontWeight={(matchesUrl && "bold") || "medium"}
           >
             {children}
           </Text>

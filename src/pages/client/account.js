@@ -1,6 +1,7 @@
 import { getSession, useSession } from "next-auth/client";
 
-import PageAccount from "../../components/PageAccount";
+import LayoutApp from "components/LayoutApp";
+import PageAccount from "components/PageAccount";
 
 const Account = () => {
   const [session, loading] = useSession();
@@ -31,3 +32,5 @@ export async function getServerSideProps(context) {
 }
 
 export default Account;
+
+Account.Layout = LayoutApp;

@@ -1,8 +1,7 @@
 import { Box, Heading } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-import LayoutApp from "../LayoutApp";
-import CompHeader from "../../components/CompHeader";
+import CompHeader from "components/CompHeader";
 
 // import MapGraph from "./MapGraph";
 // import data from "../../data/mapNodes.json";
@@ -10,23 +9,21 @@ import CompHeader from "../../components/CompHeader";
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 
-const PageExplore = ({ pageName }) => {
+const PageExplore = () => {
   return (
-    <LayoutApp pageName="Explore">
-      <MotionBox layout>
-        <Box px="1rem">
-          <CompHeader
-            heading="Explore"
-            text="Traverse the nodes for experience."
-            action="Lost?"
-            href="/client/browse"
-          />
-        </Box>
+    <MotionBox layout>
+      <Box px="1rem">
+        <CompHeader
+          heading="Explore"
+          text="Traverse the nodes for experience."
+          action="Lost?"
+          href="/client/browse"
+        />
+      </Box>
 
-        <Box pb="30rem"></Box>
-        {/* <MapGraph data={data} /> */}
-      </MotionBox>
-    </LayoutApp>
+      <Box pb="30rem"></Box>
+      {/* <MapGraph data={data} /> */}
+    </MotionBox>
   );
 };
 

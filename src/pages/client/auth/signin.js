@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import { getProviders, getSession, useSession } from "next-auth/client";
-import PageAuthSignIn from "../../../components/PageAuthSignIn";
+import PageAuthSignIn from "components/PageAuthSignIn";
+import LayoutApp from "components/LayoutApp";
 
-export default function SignIn({ providers }) {
+const SignIn = ({ providers }) => {
   const router = useRouter();
   const [session, loading] = useSession();
 
@@ -10,7 +11,7 @@ export default function SignIn({ providers }) {
 
   if (session) return router.push("/client/account");
   if (!session) return <PageAuthSignIn providers={providers} />;
-}
+};
 
 export async function getServerSideProps(context) {
   const providers = await getProviders();
@@ -30,3 +31,6 @@ export async function getServerSideProps(context) {
     };
   }
 }
+
+export default SignIn;
+SignIn.Layout = LayoutApp;

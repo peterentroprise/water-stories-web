@@ -8,11 +8,12 @@ import {
   useQuery,
 } from "urql";
 
+import LayoutApp from "components/LayoutApp";
 import PageBrowse from "components/PageBrowse";
 import { GET_STORIES_BY_TIER } from "gql/content";
 import { HASURA_API_URL } from "lib/config";
 
-const Browse = (props) => {
+const Browse = () => {
   const session = useSession();
   const contentTier =
     (session && session?.user?.content_tier) || "ckom1yh5c10y20c75a4oj0mym";
@@ -76,9 +77,13 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default withUrqlClient(
+const BrowseWrapper = withUrqlClient(
   (ssr) => ({
     url: HASURA_API_URL,
   }),
   { ssr: false }
 )(Browse);
+
+export default BrowseWrapper;
+
+BrowseWrapper.Layout = LayoutApp;

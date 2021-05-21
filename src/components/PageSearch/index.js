@@ -11,7 +11,6 @@ import { motion } from "framer-motion";
 
 import { Flex, Box, Heading } from "@chakra-ui/react";
 
-import LayoutApp from "../LayoutApp";
 import { Hit } from "./Hit";
 
 const MotionBox = motion(Box);
@@ -29,7 +28,6 @@ const PageSearch = ({
   ...rest
 }) => {
   return (
-    // <LayoutApp pageName={pageName}>
     <MotionBox layout>
       <Flex
         p="1rem"
@@ -74,7 +72,6 @@ const PageSearch = ({
         </InstantSearch>
       </Flex>
     </MotionBox>
-    // </LayoutApp>
   );
 };
 

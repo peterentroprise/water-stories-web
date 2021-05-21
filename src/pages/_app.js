@@ -24,8 +24,15 @@ function handleExitComplete() {
   }
 }
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }) {
   const router = useRouter();
+  const wrappedComponent = Component.Layout ? (
+    <Component.Layout>
+      <Component {...pageProps} key={router.route} />
+    </Component.Layout>
+  ) : (
+    <Component {...pageProps} key={router.route} />
+  );
   return (
     <>
       <Head>
@@ -53,7 +60,7 @@ function App({ Component, pageProps }: AppProps) {
           <AnimateSharedLayout>
             <AnimatePresence onExitComplete={handleExitComplete}>
               <RecoilRoot>
-                <Component {...pageProps} key={router.route} />
+                {wrappedComponent}
                 <CompBackground />
               </RecoilRoot>
             </AnimatePresence>

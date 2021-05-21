@@ -6,11 +6,7 @@ import MobileBottomBar from "./MobileBottomBar";
 import SideBar from "./SideBar";
 import CompSearch from "../CompSearch";
 
-type LayoutAppProps = {
-  pageName: string;
-};
-
-const LayoutApp: React.FC<LayoutAppProps> = ({ children }) => {
+const LayoutApp = ({ children }) => {
   return (
     <Flex
       height="100vh"
