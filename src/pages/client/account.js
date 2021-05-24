@@ -1,14 +1,14 @@
 import { getSession, useSession } from "next-auth/client";
 
 import LayoutApp from "components/LayoutApp";
-import PageAccount from "components/PageAccount";
+import ViewAccount from "views/Account";
 
 const Account = () => {
   const [session, loading] = useSession();
 
   if (typeof window !== "undefined" && loading) return null;
 
-  if (session) return <PageAccount session={session} />;
+  if (session) return <ViewAccount session={session} />;
   if (!session) return router.push("/client/auth/signin");
 };
 

@@ -9,16 +9,15 @@ import {
 } from "urql";
 
 import LayoutApp from "components/LayoutApp";
-import PageBrowse from "components/PageBrowse";
+import ViewBrowse from "views/Browse";
+import CompLoading from "components/CompLoading";
 import { GET_STORIES_BY_TIER } from "gql/content";
 import { HASURA_API_URL } from "lib/config";
 
 const Browse = () => {
   const session = useSession();
   const contentTier =
-    (session && session?.user?.content_tier) || "ckom1yh5c10y20c75a4oj0mym";
-  const token = (session && session.token) || null;
-  console.log(token);
+    (session && session[0]?.user?.content_tier) || "ckom1y4sw0rpn0b70rca9xby8";
 
   const [result] = useQuery({
     query: GET_STORIES_BY_TIER,
@@ -27,8 +26,8 @@ const Browse = () => {
     },
   });
   const { data, fetching, error } = result;
-  if (fetching) return <p>Loading...</p>;
-  if (error) return <p>Oh no... {error.message}</p>;
+  if (fetching) return <CompLoading />;
+  if (error) return <CompLoading />;
 
   const content = data.contentTier.storyGroups.reduce((list, storyGroup) => {
     return list.concat(storyGroup.stories);
@@ -36,16 +35,16 @@ const Browse = () => {
 
   return (
     <>
-      <PageBrowse content={content} />
+      <ViewBrowse content={content} />
     </>
   );
 };
 
 export async function getServerSideProps(context) {
   const session = getSession(context);
-  const token = (session && session.token) || null;
   const contentTier =
-    (session && session?.user?.content_tier) || "ckom1yh5c10y20c75a4oj0mym";
+    (session && session[0]?.user?.content_tier) || "ckom1y4sw0rpn0b70rca9xby8";
+  const token = (session && session[0]?.token) || null;
 
   const ssrCache = ssrExchange({ isClient: false });
   const client = initUrqlClient(

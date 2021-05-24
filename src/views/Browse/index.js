@@ -3,12 +3,12 @@ import { Box, SimpleGrid } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 import CompHeader from "components/CompHeader";
-import { StoryContent } from "./StoryContent";
 import { container } from "constants/motion";
+import { StoryContent } from "./StoryContent";
 
 const MotionBox = motion(Box);
 
-const PageBrowse = ({ content }) => {
+const ViewBrowse = ({ content }) => {
   return (
     <MotionBox layout>
       <Box px="1rem">
@@ -31,4 +31,4 @@ const PageBrowse = ({ content }) => {
   );
 };
 
-export default PageBrowse;
+export default ViewBrowse;

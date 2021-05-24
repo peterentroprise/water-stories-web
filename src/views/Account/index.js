@@ -6,7 +6,7 @@ import CompHeader from "components/CompHeader";
 
 const MotionBox = motion(Box);
 
-const PageClient = ({ session }) => {
+const ViewAccount = ({ session }) => {
   return (
     <MotionBox layout px="1rem">
       <CompHeader
@@ -38,4 +38,4 @@ const PageClient = ({ session }) => {
   );
 };
 
-export default PageClient;
+export default ViewAccount;

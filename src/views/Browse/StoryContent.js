@@ -10,10 +10,9 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-import { LinkOverlay } from "../CompLink";
-
-import { textColor, bgColor } from "../../constants";
-import { item } from "../../constants/motion";
+import { LinkOverlay } from "components/CompLink";
+import { textColor, bgColor } from "constants/index";
+import { item } from "constants/motion";
 
 const MotionBox = motion(Box);
 
@@ -23,6 +22,7 @@ export const StoryContent = ({ story }) => {
   return (
     <MotionBox
       borderRadius="sm"
+      overflow="hidden"
       variants={item}
       borderTopRightRadius="2xl"
       bg={bgColor[colorMode]}
@@ -56,7 +56,9 @@ export const StoryContent = ({ story }) => {
               {story.title}
             </Text>
 
-            <Text mt=".5rem">{story.description}</Text>
+            <Box mt=".5rem" isTruncated>
+              {story.description}
+            </Box>
           </Box>
 
           <Flex my=".5rem" alignItems="baseline">
