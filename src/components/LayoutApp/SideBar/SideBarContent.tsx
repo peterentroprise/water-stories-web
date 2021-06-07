@@ -36,7 +36,7 @@ export const SideBarContent: React.FC<SideBarProps> = () => {
         <SideBarLink href="/client/explore" icon={<BiNetworkChart />}>
           Explore
         </SideBarLink>
-        <SideBarLink href="/client/explore" icon={<BiNetworkChart />}>
+        <SideBarLink href="/client/player" icon={<BiNetworkChart />}>
           Player
         </SideBarLink>
       </VStack>
