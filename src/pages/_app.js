@@ -61,7 +61,7 @@ function App({ Component, pageProps }) {
             <AnimatePresence onExitComplete={handleExitComplete}>
               <RecoilRoot>
                 {wrappedComponent}
-                <CompBackground />
+                {/* <CompBackground /> */}
               </RecoilRoot>
             </AnimatePresence>
           </AnimateSharedLayout>

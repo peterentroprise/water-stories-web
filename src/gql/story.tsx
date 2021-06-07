@@ -19,21 +19,16 @@ query getStory($id: String!) {
 
 export const GET_STORY_FROM_SLUG = `
 query getStoryFromSlug($slug: String!) {
-  storyCollection(where: { slug: $slug }) {
-    items {
+  story(where: { slug: $slug }) {
+    coverImage {
+        url
+      }
+      description
+      id
       slug
-      storyName
-      coverImage {
-        url(transform: {format: JPG_PROGRESSIVE})
-      }
-      coverVideoUrl
-      storyShortDescription
-      storyLongDescription {
-        json
-      }
-      sys {
-        id
-      }
+      title
+      subTitle
+      videoUrl
     }
   }
 }`;
