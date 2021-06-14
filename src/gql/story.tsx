@@ -17,8 +17,8 @@ query getStory($id: String!) {
   }
 }`;
 
-export const GET_STORY_FROM_SLUG = `
-query getStoryFromSlug($slug: String!) {
+export const GET_STORY_BY_SLUG = `
+query getStoryBySlug($slug: String!) {
   story(where: { slug: $slug }) {
     coverImage {
         url
@@ -31,25 +31,19 @@ query getStoryFromSlug($slug: String!) {
       videoUrl
     }
   }
-}`;
+`;
 
-export const GET_STORY_COLLECTION = `
-query getStoryCollection {
-  storyCollection {
-    items {
-      slug
-      storyName
-      coverImage {
-        url(transform: {format: JPG_PROGRESSIVE})
-      }
-      coverVideoUrl
-      storyShortDescription
-      storyLongDescription {
-        json
-      }
-      sys {
-        id
-      }
+export const GET_STORIES = `
+query getStories {
+  stories {
+    coverImage {
+      url
     }
+    description
+    id
+    slug
+    subTitle
+    title
+    videoUrl
   }
 }`;
