@@ -4,6 +4,7 @@ import { Box, Button, Text, Avatar, AspectRatio } from "@chakra-ui/react";
 import { useFlowplayer } from "@flowplayer/react-flowplayer";
 import { PAUSE, PLAYING } from "@flowplayer/player/core/events";
 import SubtitlesPlugin from "@flowplayer/player/plugins/subtitles";
+import OVPPlugin from "@flowplayer/player/plugins/ovp";
 import flowplayer from "@flowplayer/player";
 
 import "@flowplayer/player/flowplayer.css";
@@ -31,7 +32,7 @@ const subtitles = {
   ],
 };
 
-flowplayer(SubtitlesPlugin);
+flowplayer(SubtitlesPlugin, OVPPlugin);
 
 const PreviewPlayer = ({ startTime }) => {
   const { Flowplayer, api: playerApi } = useFlowplayer({
