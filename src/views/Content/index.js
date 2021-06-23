@@ -1,5 +1,14 @@
 import dynamic from "next/dynamic";
-import { Text, Tag, Box } from "@chakra-ui/react";
+import {
+  Text,
+  Tag,
+  Box,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useQuery } from "urql";
 
@@ -33,36 +42,76 @@ const ViewContent = ({ contentPreview }) => {
       <Box pl="1rem">
         <CompHeader
           heading={contentPreview.title}
-          text="Already read this story?"
-          action="Find Your Next"
-          href="/"
+          text={contentPreview.subTitle}
+          action="back to browse"
+          href="/client/browse"
         />
       </Box>
 
       <Box
         borderTopRightRadius="2xl"
+        pb="6rem"
         sx={{
           boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
           backdropFilter: "blur( 8px )",
           WebkitBackdropFilter: "blur( 8px )",
         }}
       >
-        <VideoPlayer videoSrc={data.contentPayload.videoUrl} />
-        <Box pb="6rem">
-          <Box p="1rem">
-            <Text fontWeight="semibold" fontSize="lg" mb=".5rem">
-              {contentPreview.subTitle}
-            </Text>
-            <Tag mb=".5rem">{contentPreview.slug}</Tag>
-            <Text>{contentPreview.description}</Text>
+        <Tabs isFitted>
+          <Box bg="white" position="sticky" top="0px" zIndex={10}>
+            <VideoPlayer videoSrc={data.contentPayload.videoUrl} />
+            <TabList>
+              <Tab fontWeight="bold" fontSize="14px">
+                Time Clips
+              </Tab>
+              <Tab fontWeight="bold" fontSize="14px">
+                Transcript
+              </Tab>
+              <Tab fontWeight="bold" fontSize="14px">
+                Information
+              </Tab>
+            </TabList>
           </Box>
-        </Box>
-        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={5} />
-        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={10} />
-        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={15} />
-        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={20} />
-        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={25} />
-        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={30} />
+
+          <TabPanels>
+            <TabPanel>
+              <PreviewPlayer
+                videoSrc={data.contentPayload.videoUrl}
+                startTime={5}
+              />
+              <PreviewPlayer
+                videoSrc={data.contentPayload.videoUrl}
+                startTime={10}
+              />
+              <PreviewPlayer
+                videoSrc={data.contentPayload.videoUrl}
+                startTime={15}
+              />
+              <PreviewPlayer
+                videoSrc={data.contentPayload.videoUrl}
+                startTime={20}
+              />
+              <PreviewPlayer
+                videoSrc={data.contentPayload.videoUrl}
+                startTime={25}
+              />
+              <PreviewPlayer
+                videoSrc={data.contentPayload.videoUrl}
+                startTime={30}
+              />
+            </TabPanel>
+            <TabPanel>
+              <Text>{contentPreview.description}</Text>
+            </TabPanel>
+            <TabPanel>
+              <Text fontWeight="semibold" fontSize="lg" mb=".5rem">
+                {contentPreview.subTitle}
+              </Text>
+              <Tag mb=".5rem">{contentPreview.slug}</Tag>
+              <Text>{contentPreview.description}</Text>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </Box>
     </MotionBox>
   );

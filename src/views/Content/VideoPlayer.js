@@ -21,23 +21,6 @@ const VideoPlayer = ({ videoSrc }) => {
     token: NEXT_PUBLIC_FLOWPLAYER_PLAYER_TOKEN,
   });
 
-  const [demoPlaybackState, setDemoPlaybackState] = useState("paused");
-
-  useEffect(() => {
-    if (!playerApi) return;
-    function stateHandler(ev) {
-      if (ev.type === PAUSE) setDemoPlaybackState("paused");
-      if (ev.type === PLAYING) setDemoPlaybackState("playing");
-    }
-
-    playerApi.on([PAUSE, PLAYING], stateHandler);
-
-    return () => {
-      if (!playerApi) return;
-      playerApi.off(PAUSE, stateHandler);
-      playerApi.off(PLAYING, stateHandler);
-    };
-  }, [playerApi]);
   return (
     <Box position="sticky" top="0px" zIndex={10}>
       <Flowplayer
