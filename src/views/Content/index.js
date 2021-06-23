@@ -13,6 +13,11 @@ const VideoPlayer = dynamic(() => import("./VideoPlayer"), {
   ssr: false,
 });
 
+const PreviewPlayer = dynamic(() => import("./PreviewPlayer"), {
+  loading: () => <CompLoading />,
+  ssr: false,
+});
+
 const MotionBox = motion(Box);
 
 const ViewContent = ({ contentPreview }) => {
@@ -52,6 +57,12 @@ const ViewContent = ({ contentPreview }) => {
             <Text>{contentPreview.description}</Text>
           </Box>
         </Box>
+        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={5} />
+        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={10} />
+        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={15} />
+        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={20} />
+        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={25} />
+        <PreviewPlayer videoSrc={data.contentPayload.videoUrl} startTime={30} />
       </Box>
     </MotionBox>
   );

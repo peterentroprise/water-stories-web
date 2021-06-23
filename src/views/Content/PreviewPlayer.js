@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Box, Button, Text, Avatar, AspectRatio } from "@chakra-ui/react";
 
-import { motion } from "framer-motion";
 import { useFlowplayer } from "@flowplayer/react-flowplayer";
 import { PAUSE, PLAYING } from "@flowplayer/player/core/events";
+import SubtitlesPlugin from "@flowplayer/player/plugins/subtitles";
+import OVPPlugin from "@flowplayer/player/plugins/ovp";
+import flowplayer from "@flowplayer/player";
 
 import "@flowplayer/player/flowplayer.css";
 
@@ -15,9 +17,24 @@ const SOURCES = [
   "https://cdn.flowplayer.com/demo_videos/crashing_waves/1080p.mp4",
 ];
 
-const MotionBox = motion(Box);
+const VTT_FILE =
+  "https://ljsp.lwcdn.com/sub/c5d08883-e427-4bfa-aea9-71e483608b50/671d8371-5824-46ee-8397-beba99182e46/s-7b9b08d8-ecc5-4289-8e59-91df5c2341ee.vtt";
 
-const VideoPlayer = ({ session }) => {
+const subtitles = {
+  tracks: [
+    {
+      src: VTT_FILE,
+      label: "English",
+      id: "English-en",
+      default: true,
+      crossorigin: "anonymous",
+    },
+  ],
+};
+
+flowplayer(SubtitlesPlugin, OVPPlugin);
+
+const PreviewPlayer = ({ videoSrc, startTime }) => {
   const { Flowplayer, api: playerApi } = useFlowplayer({
     token: NEXT_PUBLIC_FLOWPLAYER_PLAYER_TOKEN,
   });
@@ -28,12 +45,24 @@ const VideoPlayer = ({ session }) => {
 
   const togglePlay = () => {
     if (!playerApi) return;
-    playerApi.togglePlay();
+    playerApi.Play();
   };
 
   const toggleSrc = () => {
     const nextIndex = SOURCES.indexOf(demoSrc) + 1;
     setDemoSrc(SOURCES[nextIndex] || SOURCES[0]);
+  };
+
+  const hoverPlay = () => {
+    if (!playerApi) return;
+    console.log("hover- enter");
+    playerApi.play();
+  };
+
+  const hoverPause = () => {
+    if (!playerApi) return;
+    console.log("hover- exit");
+    playerApi.pause();
   };
 
   useEffect(() => {
@@ -52,13 +81,23 @@ const VideoPlayer = ({ session }) => {
     };
   }, [playerApi]);
   return (
-    <Box position="sticky" top="0px" zIndex={10}>
-      <Flowplayer src={demoSrc} multiplay={true} autopause={false} />
-      {/* <Text>{demoPlaybackState}</Text>
-      <Button onClick={togglePlay}>Play / pause</Button>
-      <Button onClick={toggleSrc}>Toggle source</Button> */}
+    <Box
+      onMouseOver={hoverPlay}
+      onMouseLeave={hoverPause}
+      onTouchStart={hoverPlay}
+      onTouchEnd={hoverPause}
+    >
+      <Flowplayer
+        src={videoSrc}
+        muted
+        multiplay={true}
+        autopause={false}
+        start_time={startTime}
+        subtitles={subtitles}
+        ui={flowplayer.ui.NO_CONTROLS}
+      />
     </Box>
   );
 };
 
-export default VideoPlayer;
+export default PreviewPlayer;
