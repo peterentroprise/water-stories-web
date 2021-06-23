@@ -7,6 +7,22 @@ query getContentPreviewsSlugs {
 }
 `;
 
+export const GET_CONTENT_PREVIEWS = `
+query getContentPreviews {
+  contentPreviews {
+    id
+    slug
+    tags
+    title
+    subTitle
+    description
+    coverImage {
+      url
+    }
+  }
+}
+`;
+
 export const GET_CONTENT_PREVIEW_BY_SLUG = `
 query getContentPreviewBySlug($slug: String!) {
   contentPreview(where: {slug: $slug}) {

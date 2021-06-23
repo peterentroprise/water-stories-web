@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 import CompHeader from "components/CompHeader";
 import { container } from "constants/motion";
-import { StoryContent } from "./StoryContent";
+import { ContentPreview } from "./ContentPreview";
 
 const MotionBox = motion(Box);
 
-const ViewBrowse = ({ content }) => {
+const ViewBrowse = ({ contentPreviews }) => {
   return (
     <MotionBox layout>
       <Box px="1rem">
@@ -22,8 +22,11 @@ const ViewBrowse = ({ content }) => {
 
       <MotionBox variants={container} initial="hidden" animate="visible">
         <SimpleGrid minChildWidth="360px" spacing="1rem" pb="7rem">
-          {content.map((story) => (
-            <StoryContent key={story.id} story={story} />
+          {contentPreviews.map((contentPreview) => (
+            <ContentPreview
+              key={contentPreview.id}
+              contentPreview={contentPreview}
+            />
           ))}
         </SimpleGrid>
       </MotionBox>

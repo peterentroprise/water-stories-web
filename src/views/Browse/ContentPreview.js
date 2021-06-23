@@ -16,7 +16,7 @@ import { item } from "constants/motion";
 
 const MotionBox = motion(Box);
 
-export const StoryContent = ({ story }) => {
+export const ContentPreview = ({ contentPreview }) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -39,30 +39,34 @@ export const StoryContent = ({ story }) => {
           <Image
             borderRadius="sm"
             borderTopRightRadius="2xl"
-            src={story.coverImage.url}
+            src={contentPreview.coverImage.url}
             alt="Moat"
             objectFit="cover"
           />
         </AspectRatio>
         <Box p="1rem">
           <Box mt=".5rem">
-            <LinkOverlay href={`/client/stories/${story.slug}`}></LinkOverlay>
+            <LinkOverlay
+              href={`/client/content/${contentPreview.slug}`}
+            ></LinkOverlay>
             <Text
               display="block"
               fontSize="lg"
               lineHeight="normal"
               fontWeight="semibold"
             >
-              {story.title}
+              {contentPreview.title}
             </Text>
-
             <Box mt=".5rem" isTruncated>
-              {story.description}
+              {contentPreview.description}
             </Box>
           </Box>
-
           <Flex my=".5rem" alignItems="baseline">
-            <Tag>{story.slug}</Tag>
+            {contentPreview.tags.map((tag) => (
+              <Tag key={tag} mr=".5rem">
+                {tag}
+              </Tag>
+            ))}
           </Flex>
         </Box>
       </LinkBox>

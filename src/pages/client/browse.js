@@ -11,68 +11,42 @@ import {
 import LayoutApp from "components/LayoutApp";
 import ViewBrowse from "views/Browse";
 import CompLoading from "components/CompLoading";
-import { GET_STORIES_BY_TIER } from "gql/content";
+import { GET_CONTENT_PREVIEWS } from "gql/content";
 import { HASURA_API_URL } from "lib/config";
 
-const Browse = () => {
-  const session = useSession();
-  const contentTier =
-    (session && session[0]?.user?.content_tier) || "ckom1y4sw0rpn0b70rca9xby8";
-
+const PageBrowse = () => {
   const [result] = useQuery({
-    query: GET_STORIES_BY_TIER,
-    variables: {
-      id: contentTier,
-    },
+    query: GET_CONTENT_PREVIEWS,
   });
   const { data, fetching, error } = result;
   if (fetching) return <CompLoading />;
   if (error) return <CompLoading />;
 
-  const content = data.contentTier.storyGroups.reduce((list, storyGroup) => {
-    return list.concat(storyGroup.stories);
-  }, []);
-
   return (
     <>
-      <ViewBrowse content={content} />
+      <ViewBrowse contentPreviews={data.contentPreviews} />
     </>
   );
 };
 
-export async function getServerSideProps(context) {
-  const session = getSession(context);
-  const contentTier =
-    (session && session[0]?.user?.content_tier) || "ckom1y4sw0rpn0b70rca9xby8";
-  const token = (session && session[0]?.token) || null;
-
+export async function getStaticProps() {
   const ssrCache = ssrExchange({ isClient: false });
   const client = initUrqlClient(
     {
       url: HASURA_API_URL,
-      fetchOptions: {
-        headers: {
-          Authorization: `Bearer ${token ?? ""}`,
-        },
-      },
       exchanges: [dedupExchange, cacheExchange, ssrCache, fetchExchange],
     },
     false
   );
 
   const urqlState = ssrCache.extractData();
-
-  await client
-    .query(GET_STORIES_BY_TIER, {
-      id: contentTier,
-    })
-    .toPromise();
+  await client.query(GET_CONTENT_PREVIEWS).toPromise();
 
   return {
     props: {
       urqlState: urqlState,
     },
-    // revalidate: 600,
+    revalidate: 600,
   };
 }
 
@@ -81,7 +55,7 @@ const BrowseWrapper = withUrqlClient(
     url: HASURA_API_URL,
   }),
   { ssr: false }
-)(Browse);
+)(PageBrowse);
 
 export default BrowseWrapper;
 
