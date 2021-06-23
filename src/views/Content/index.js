@@ -42,8 +42,8 @@ const ViewContent = ({ contentPreview }) => {
       <Box pl="1rem">
         <CompHeader
           heading={contentPreview.title}
-          text={contentPreview.subTitle}
-          action="back to browse"
+          text="Looking for something else?"
+          action="Back To Browse"
           href="/client/browse"
         />
       </Box>
